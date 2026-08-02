@@ -1,0 +1,77 @@
+---
+import '@fontsource-variable/noto-sans';
+import '@fontsource-variable/noto-sans-arabic';
+import '@fontsource-variable/space-grotesk';
+import '../styles/global.css';
+
+interface Props {
+  locale: 'en' | 'ar' | 'tr';
+  direction: 'ltr' | 'rtl';
+  title: string;
+  description: string;
+  name: string;
+  headline: string;
+}
+
+const { locale, direction, title, description, name, headline } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const localePath = (value: 'en' | 'ar' | 'tr') => (value === 'en' ? base : `${base}${value}/`);
+const canonical = new URL(localePath(locale), Astro.site);
+const ogImage = new URL(`${base}og.svg`, Astro.site);
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name,
+  url: canonical.toString(),
+  email: 'mailto:mohammad.mtr.hussein@gmail.com',
+  sameAs: ['https://github.com/MoeHussein', 'https://orcid.org/0009-0009-7211-0974'],
+  jobTitle: headline,
+  homeLocation: { '@type': 'Place', name: 'Istanbul, Türkiye' },
+  knowsAbout: [
+    'Computational imaging',
+    'Digital holographic microscopy',
+    'Polarization imaging',
+    'Jones matrix reconstruction',
+    'Biomedical engineering',
+  ],
+};
+---
+
+<!doctype html>
+<html lang={locale} dir={direction} data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#080b12" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL(localePath('en'), Astro.site)} />
+    <link rel="alternate" hreflang="ar" href={new URL(localePath('ar'), Astro.site)} />
+    <link rel="alternate" hreflang="tr" href={new URL(localePath('tr'), Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(localePath('en'), Astro.site)} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('portfolio-theme');
+        const theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <slot />
+  </body>
+</html>

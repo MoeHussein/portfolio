@@ -1,0 +1,292 @@
+{
+  "locale": "tr",
+  "direction": "ltr",
+  "name": "Mohammad M. T.R. Hussein",
+  "headline": "Biomedical Engineering & Bioinformatics | Computational Imaging | Digital Holographic Microscopy",
+  "metadata": {
+    "title": "Mohammad Hussein | Biyomedikal Optik ve Hesaplamalı Görüntüleme",
+    "description": "Mohammad M. T.R. Hussein'in hesaplamalı görüntüleme, dijital holografik mikroskopi, biyomedikal mühendisliği, simülasyon ve ürün tasarımı portfolyosu."
+  },
+  "nav": [
+    { "label": "Hakkımda", "href": "#about" },
+    { "label": "Araştırma", "href": "#research" },
+    { "label": "Projeler", "href": "#projects" },
+    { "label": "Deneyim", "href": "#experience" },
+    { "label": "Beceriler", "href": "#skills" }
+  ],
+  "ui": {
+    "contact": "İletişime geç",
+    "downloadCv": "CV indir",
+    "viewResearch": "Araştırmayı incele",
+    "viewCaseStudy": "Vaka çalışmasını aç",
+    "close": "Kapat",
+    "role": "Rolüm",
+    "problem": "Problem",
+    "process": "Süreç",
+    "outcome": "Doğrulanmış sonuç",
+    "technologies": "Teknolojiler",
+    "experience": "Araştırma ve eğitim",
+    "skills": "Beceriler",
+    "achievements": "Yayınlar ve başarılar",
+    "learning": "Şu anda öğreniyorum",
+    "collaboration": "İş birliğine açığım",
+    "contactTitle": "Birlikte faydalı bir şey üretelim",
+    "contactText": "Biyomedikal ve optik alanındaki fırsatlara, bilimsel iş birliklerine ve anlamlı ürün çalışmalarına açığım.",
+    "theme": "Renk temasını değiştir",
+    "language": "Dili değiştir",
+    "copyright": "İstanbul, Türkiye'de özenle hazırlandı.",
+    "cvPending": "CV dosyaları son sürüm için hazırlanıyor."
+  },
+  "hero": {
+    "statement": "Optik, hesaplama ve biyomedikal mühendisliğinin kesişiminde çalışıyorum. Karmaşık ölçümleri faydalı görüntülere, modellere ve araçlara dönüştürmeye odaklanıyorum.",
+    "availability": "İstanbul'da · Biyomedikal, optik ve araştırma fırsatlarına açık"
+  },
+  "about": {
+    "title": "Merak zamanla bir yöne dönüştü",
+    "paragraphs": [
+      "Biyomedikal mühendisliği beni programlama, sinyal işleme, elektronik, tıp bilimi, CAD ve simülasyonla tanıştırdı. Programlama bana çizimi hatırlattığı için tanıdık geldi. Boş bir alanla başlıyor ve ondan faydalı bir şey üretiyorsunuz.",
+      "Merak beni hesaplamalı görüntülemeye yöneltti. Derinleştikçe ışığın davranışını ve polarizasyonun, Jones matrislerinin ve hologram rekonstrüksiyonunun sıradan görüntülerde görünmeyen bilgileri nasıl açığa çıkardığını öğrenmekten daha çok keyif aldım.",
+      "Ayrıca yeni fikirleri faydalı ürünlere ve sürdürülebilir girişimlere dönüştürmek istiyorum. Benim için bu, problemi anlamak, doğru şekilde incelemek ve amaçla üretmekle başlıyor."
+    ]
+  },
+  "research": {
+    "title": "Öne çıkan araştırma",
+    "paperTitle": "Dual-shot polarization digital holographic microscopy with phase bias equalization for full-field Jones matrix imaging",
+    "citation": "Mohammad M. T. R. Hussein and M. Fatih Toy · Biomedical Optics Express 17, 1877–1896 · 2026",
+    "explanation": "Ardışık hologram alımları Jones matrisi doğruluğunu azaltan faz farkları oluşturabilir. Bu çalışma, çekimler arası faz sapmasını izotropik referans bölgeleriyle düzelten çift çekimli bir PDHM sistemi sunuyor. Yöntem çift kırıcı filmle doğrulandı ve fare beyni ile insan korneası örneklerine uygulandı.",
+    "limitation": "Yayımlanan yöntem izotropik bir referans bölgesi gerektirir ve statik ya da yarı statik örnekler için tasarlanmıştır.",
+    "doi": "https://doi.org/10.1364/BOE.585564"
+  },
+  "projects": [
+    {
+      "id": "dual-shot-pdhm",
+      "title": "Çift Çekimli PDHM",
+      "status": "Yayımlanmış araştırma · 2026",
+      "summary": "Çekimler arası faz sapması eşitlemeli tam alan Jones matrisi görüntüleme.",
+      "role": "Akademik danışmanımla birlikte araştırma sürecini uçtan uca yürüttüm. Sistem tasarımı, kurulum, satın alma, kamera ayarları, işleme, deney, doğrulama, görselleştirme ve yazım bu kapsama dahildi.",
+      "problem": "Ardışık polarizasyon ölçümlerindeki göreli faz kaymaları, Jones matrisi yeniden oluşturulduğunda büyük hatalar doğurabilir.",
+      "process": "Çift çekimli optik düzenek ve FFT filtreleme, faz rekonstrüksiyonu, faz açma, düzeltme, retardans ve optik eksen analizini kapsayan bir Python hattı geliştirdim.",
+      "outcome": "Çekimler arası faz sapması izotropik referans bölgeleriyle eşitlendi, yöntem çift kırıcı filmle doğrulandı ve fare beyni ile insan korneası örneklerinde gösterildi.",
+      "technologies": [
+        "PDHM",
+        "Jones matrisleri",
+        "Python",
+        "FFT",
+        "Faz açma",
+        "Polarizasyon analizi"
+      ],
+      "links": [{ "label": "Makaleyi oku", "url": "https://doi.org/10.1364/BOE.585564" }],
+      "featured": true
+    },
+    {
+      "id": "reference-free-phase-bias",
+      "title": "Referanssız Faz Sapması Eşitleme",
+      "status": "Taslak tamamlandı · Henüz gönderilmedi",
+      "summary": "İzotropik referans bölgesi ihtiyacını kaldıran optimizasyon tabanlı yaklaşım.",
+      "role": "Yaklaşımı tasarladım, işleme hattını kurdum, yöntemi test ettim, sonuçları analiz ettim ve akademik danışmanımla birlikte makale taslağını tamamladım.",
+      "problem": "İlk yöntem izotropik bir referans bölgesine dayanıyor. Bazı örneklerde böyle bir bölge bulunmuyor.",
+      "process": "Faz sapmasını bir optimizasyon problemi olarak formüle ettim ve örnek içi referans olmadan Jones matrisinin düzeltilmesini değerlendirdim.",
+      "outcome": "Optimizasyon tabanlı referanssız yöntem ve tam makale taslağı tamamlandı. Çalışma henüz gönderilmedi veya yayımlanmadı.",
+      "technologies": [
+        "Optimizasyon",
+        "Jones matrisleri",
+        "Python",
+        "Faz düzeltme",
+        "Hesaplamalı görüntüleme"
+      ],
+      "links": [],
+      "featured": true
+    },
+    {
+      "id": "patient-specific-knee",
+      "title": "Hastaya Özel Diz Rekonstrüksiyonu ve FEA",
+      "status": "Lisans hesaplamalı tasarım ve simülasyon projesi",
+      "summary": "Hastaya özel diz modelleri, implant konsepti ve karşılaştırmalı yapısal simülasyonlar.",
+      "role": "Resmî TÜBİTAK 2209-A Proje Ortağı olarak araştırma, görüntü işleme, 3B rekonstrüksiyon, implant fikirleri, simülasyon, rapor ve ekip koordinasyonunun büyük bölümünü üstlendim.",
+      "problem": "Hasta görüntülerinin ve hesaplamalı simülasyonun diz protezi tasarım fikirlerini karşılaştırmakta nasıl kullanılabileceğini araştırmak.",
+      "process": "CT, MRI ve DICOM verilerini inceledim, 3D Slicer ile birden fazla hasta dizini yeniden oluşturdum, Fusion 360'ta implant konseptleri tasarladım ve ANSYS dahil FEA araçlarıyla yapısal davranışı karşılaştırdım.",
+      "outcome": "Hastaya özel diz modelleri oluşturuldu, yeni bir implant konsepti önerildi ve deformasyon, yer değiştirme ve von Mises gerilimi karşılaştırmaları tamamlandı. Çalışma hesaplamalıdır ve klinik olarak doğrulanmamıştır.",
+      "technologies": ["DICOM", "3D Slicer", "Fusion 360", "ANSYS", "FEA", "3B baskı"],
+      "links": [],
+      "featured": true
+    },
+    {
+      "id": "vitromech",
+      "title": "VitroMech",
+      "status": "Duraklatılmış girişim",
+      "summary": "Hastaya özel anatomiye odaklanan erken aşama biyomedikal 3B modelleme fikri.",
+      "role": "Yazılım ve teknik geliştirme ile ortopedi yönüne odaklanan kurucu ortak.",
+      "problem": "Tıbbi görüntüleri araştırma ve görselleştirme için hastaya özel 3B anatomik modellere dönüştüren daha açık bir iş akışını araştırmak.",
+      "process": "DICOM segmentasyonu ve anatomik modelleme etrafında erken ürün yönünü, teknik fikri ve kamuya açık web sitesini geliştirdim.",
+      "outcome": "Erken girişim fikri oluşturuldu ve sunuldu. Girişim şu anda duraklatılmıştır ve klinik sonuç iddiası yoktur.",
+      "technologies": [
+        "Tıbbi görüntüleme",
+        "DICOM",
+        "3B modelleme",
+        "Ürün tasarımı",
+        "Web tasarımı"
+      ],
+      "links": [{ "label": "VitroMech'i ziyaret et", "url": "https://vitromech.framer.website/" }],
+      "featured": false
+    },
+    {
+      "id": "workin",
+      "title": "Workin",
+      "status": "Kişisel ürün",
+      "summary": "Kanıta dayalı, telefon öncelikli kalistenik antrenman takipçisi.",
+      "role": "Ürünü oluşturdum, antrenman akışını yapılandırdım ve tüm açık deneyimi geliştirdim.",
+      "problem": "Evde düzenli kalistenik çalışmayı karmaşık bir kontrol paneline dönüştürmeden kolaylaştırmak.",
+      "process": "Dört haftalık plan, günlük egzersiz kaydı, dinlenme zamanlayıcısı, notlar ve indirilebilir materyaller etrafında mobil öncelikli bir akış tasarladım.",
+      "outcome": "Gün ve hafta ilerlemesi, zamanlayıcılar, notlar ve indirilebilir planlar içeren açık bir takipçi yayımlandı.",
+      "technologies": ["Ürün tasarımı", "Next.js", "TypeScript", "Yerel veri", "GitHub Pages"],
+      "links": [{ "label": "Workin'i aç", "url": "https://moehussein.github.io/Workin/" }],
+      "featured": false
+    },
+    {
+      "id": "salat-plans",
+      "title": "Salat Plans",
+      "status": "Kişisel ürün",
+      "summary": "Günlük öncelikleri namaz vakitleri etrafında düzenleyen görev planlayıcısı.",
+      "role": "Ürün fikrini, deneyimi ve açık uygulamanın tamamını oluşturdum.",
+      "problem": "Günlük planlar çoğu zaman güne zaten yapı kazandıran sabit anları görmezden geliyor.",
+      "process": "Görevleri namaz vakitleri arasına yerleştiren ve kaçırılan günlerden sonra baskısız dönüşü destekleyen sakin bir planlama akışı tasarladım.",
+      "outcome": "Namaz temelli zaman blokları ve odaklı günlük planlama deneyimi sunan yerel öncelikli çalışan bir planlayıcı yayımlandı.",
+      "technologies": ["Ürün tasarımı", "React", "TypeScript", "Vite", "Supabase", "Vercel"],
+      "links": [{ "label": "Salat Plans'i aç", "url": "https://salat-plans.vercel.app/" }],
+      "featured": false
+    },
+    {
+      "id": "client-web-design",
+      "title": "Seçili Müşteri Web Tasarımları",
+      "status": "Web ve marka tasarımı",
+      "summary": "Küçük müşteri işletmeleri için odaklı web sitesi ve kimlik çalışmaları.",
+      "role": "BeLinked ve YaTaiba için web deneyimini ve marka kimliğini tasarladım.",
+      "problem": "Her işletmeye kitlesine uygun daha açık bir kamu kimliği ve web varlığı kazandırmak.",
+      "process": "İş ihtiyaçlarını sayfa yapısına, görsel kimliğe, duyarlı düzenlere ve yayımlanmış web sitelerine dönüştürdüm.",
+      "outcome": "İki müşteri web sitesi yayımlandı. Doğrulanmamış performans veya iş sonucu iddiası yoktur.",
+      "technologies": ["Web tasarımı", "Marka kimliği", "Duyarlı tasarım"],
+      "links": [
+        { "label": "BeLinked", "url": "https://belinked.io/" },
+        { "label": "YaTaiba", "url": "https://www.yatayba.com/" }
+      ],
+      "featured": false
+    }
+  ],
+  "timeline": [
+    {
+      "period": "2023 — Günümüz",
+      "title": "Lisansüstü Araştırmacı · Optik Görüntüleme ve Polarizasyon Analizi",
+      "organization": "İstanbul Medipol Üniversitesi",
+      "description": "Jones matrisi rekonstrüksiyonu, faz işleme, retardans, yönelim ve bilimsel görselleştirme için polarizasyona duyarlı holografi sistemleri ve Python iş akışları geliştiriyorum."
+    },
+    {
+      "period": "15 Oca 2024 — Günümüz",
+      "title": "Yüksek Lisans Bursiyeri · Proje 123N774",
+      "organization": "TÜBİTAK 2530 Türkiye–Moldova İkili İş Birliği",
+      "description": "Biyomedikal uygulamalar için tekil yapılandırılmış aydınlatmalı polarizasyona duyarlı DHM çalışmalarına katkı sağlıyorum."
+    }
+  ],
+  "education": [
+    {
+      "period": "15 Eyl 2023 — Günümüz",
+      "degree": "Yüksek Lisans · Biyomedikal Mühendisliği ve Biyoinformatik",
+      "institution": "İstanbul Medipol Üniversitesi",
+      "details": [
+        "Devam ediyor",
+        "Tez savunması 13 Ağustos 2026 için planlandı",
+        "Odak: polarizasyona duyarlı dijital holografik mikroskopi"
+      ]
+    },
+    {
+      "period": "11 Eyl 2019 — 10 Haz 2023",
+      "degree": "Lisans · Biyomedikal Mühendisliği",
+      "institution": "İstanbul Medipol Üniversitesi",
+      "details": [
+        "GNO 3.35/4.00",
+        "Onur derecesiyle mezuniyet",
+        "Üniversite kayıtlarına göre Biyomedikal Mühendisliği sınıfında üçüncülük"
+      ]
+    }
+  ],
+  "skillGroups": [
+    {
+      "title": "Hesaplamalı görüntüleme",
+      "items": [
+        "PDHM",
+        "Jones matrisi rekonstrüksiyonu",
+        "Polarizasyon analizi",
+        "FFT hologram rekonstrüksiyonu",
+        "Faz işleme",
+        "Retardans ve optik eksen analizi"
+      ]
+    },
+    {
+      "title": "Programlama",
+      "items": ["Python", "Bilimsel görüntü işleme", "Sayısal analiz", "Bilimsel görselleştirme"]
+    },
+    {
+      "title": "Tıbbi 3B ve simülasyon",
+      "items": [
+        "DICOM",
+        "3D Slicer",
+        "Fusion 360",
+        "ANSYS statik yapısal",
+        "Sonlu elemanlar analizi",
+        "3B baskı"
+      ]
+    },
+    {
+      "title": "Tasarım ve ürün",
+      "items": ["Web tasarımı", "Marka kimliği", "Ürün prototipleme", "Araştırma iletişimi"]
+    }
+  ],
+  "achievements": [
+    {
+      "date": "2026",
+      "title": "Biomedical Optics Express yayını",
+      "detail": "Dual-shot polarization digital holographic microscopy with phase bias equalization for full-field Jones matrix imaging."
+    },
+    {
+      "date": "12 Eyl 2025",
+      "title": "Üçüncülük · En İyi Poster Yarışması · FOTONİK 2025",
+      "detail": "Enhancing Jones Matrix Reconstruction in Polarization DHM via Phase Bias Equalization · Koç Üniversitesi."
+    },
+    {
+      "date": "27–29 Ağu 2025",
+      "title": "Sözlü sunum · NanoTR-19",
+      "detail": "Jones Matrix Analysis via a Polarization-Sensitive Sensor in Digital Holographic Microscopy · sözlü sunum formatı şu anda kişisel kayıtlarla desteklenmektedir."
+    }
+  ],
+  "learning": [
+    {
+      "label": "Stanford CS231N · Bilgisayarlı Görü için Derin Öğrenme",
+      "url": "https://cs231n.stanford.edu/"
+    },
+    { "label": "OSSU Bilgisayar Bilimi", "url": "https://cs.ossu.dev/" },
+    {
+      "label": "The Complete Full-Stack Web Development Bootcamp",
+      "url": "https://www.udemy.com/course/the-complete-web-development-bootcamp/"
+    },
+    { "label": "KIT Hesaplamalı Görüntüleme", "url": "https://computational-imaging.de/" }
+  ],
+  "collaboration": [
+    {
+      "title": "Bilimsel iş birliği",
+      "detail": "Hesaplamalı görüntüleme, PDHM, bilimsel Python ve görüntü işleme."
+    },
+    {
+      "title": "Tıbbi 3B ve simülasyon",
+      "detail": "Araştırma amaçlı DICOM segmentasyonu, modelleme, görselleştirme ve keşifsel FEA."
+    },
+    {
+      "title": "Dijital tasarım",
+      "detail": "Web tasarımı, marka kimliği ve odaklı ürün prototipleri."
+    }
+  ],
+  "contact": {
+    "email": "mohammad.mtr.hussein@gmail.com",
+    "github": "https://github.com/MoeHussein",
+    "orcid": "https://orcid.org/0009-0009-7211-0974",
+    "location": "İstanbul, Türkiye"
+  }
+}

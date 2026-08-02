@@ -1,0 +1,21 @@
+import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config';
+import process from 'node:process';
+
+const site = process.env.PUBLIC_SITE_URL ?? 'https://moehussein.github.io';
+const base = process.env.PUBLIC_BASE_PATH || undefined;
+
+export default defineConfig({
+  site,
+  base,
+  output: 'static',
+  trailingSlash: 'always',
+  integrations: [sitemap()],
+  i18n: {
+    locales: ['en', 'ar', 'tr'],
+    defaultLocale: 'en',
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
+});

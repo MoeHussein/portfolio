@@ -307,7 +307,7 @@
     "Use the three unmodified OFL-1.1 Fontsource packages with bundled license notices.",
     "Use BartoszJarocki/cv only as a conceptual print-density reference with no copied source or styling."
   ],
-  "approvalStatus": "pending",
+  "approvalStatus": "approved",
   "conflicts": [
     "No React runtime, Next.js router, Tailwind foundation, Nextra content system, Once UI system, CMS, analytics, server runtime, database, or contact backend will be introduced.",
     "No secondary portfolio repository may supply the application shell, router, styling foundation, content system, or deployment model."

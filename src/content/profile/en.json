@@ -1,0 +1,297 @@
+{
+  "locale": "en",
+  "direction": "ltr",
+  "name": "Mohammad M. T.R. Hussein",
+  "headline": "Biomedical Engineering & Bioinformatics | Computational Imaging | Digital Holographic Microscopy",
+  "metadata": {
+    "title": "Mohammad Hussein | Biomedical Optics & Computational Imaging",
+    "description": "Portfolio of Mohammad M. T.R. Hussein across computational imaging, digital holographic microscopy, biomedical engineering, simulation and product design."
+  },
+  "nav": [
+    { "label": "About", "href": "#about" },
+    { "label": "Research", "href": "#research" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Experience", "href": "#experience" },
+    { "label": "Skills", "href": "#skills" }
+  ],
+  "ui": {
+    "contact": "Contact me",
+    "downloadCv": "Download CV",
+    "viewResearch": "View research",
+    "viewCaseStudy": "View case study",
+    "close": "Close",
+    "role": "My role",
+    "problem": "The problem",
+    "process": "Process",
+    "outcome": "Verified outcome",
+    "technologies": "Technologies",
+    "experience": "Research & education",
+    "skills": "Skills",
+    "achievements": "Publications & recognition",
+    "learning": "Currently learning",
+    "collaboration": "Open to collaboration",
+    "contactTitle": "Let’s build something useful",
+    "contactText": "I am open to biomedical and optics opportunities, scientific collaborations and thoughtful product work.",
+    "theme": "Change color theme",
+    "language": "Change language",
+    "copyright": "Built with care in Istanbul, Türkiye.",
+    "cvPending": "CV downloads are being prepared for the final release."
+  },
+  "hero": {
+    "statement": "I work where optics, computation and biomedical engineering meet. My focus is turning complex measurements into useful images, models and tools.",
+    "availability": "Based in Istanbul · Open to biomedical, optics and research opportunities"
+  },
+  "about": {
+    "title": "Curiosity became a direction",
+    "paragraphs": [
+      "Biomedical engineering introduced me to programming, signal processing, electronics, medical science, CAD and simulation. Programming felt familiar because it reminded me of drawing. You begin with an empty space then build something useful from it.",
+      "Curiosity led me toward computational imaging. The deeper I went, the more I enjoyed learning how light behaves and how polarization, Jones matrices and hologram reconstruction can reveal information that ordinary images miss.",
+      "I also want to turn novel ideas into useful products and sustainable ventures. For me that starts with understanding the problem, studying it properly and building with purpose."
+    ]
+  },
+  "research": {
+    "title": "Featured research",
+    "paperTitle": "Dual-shot polarization digital holographic microscopy with phase bias equalization for full-field Jones matrix imaging",
+    "citation": "Mohammad M. T. R. Hussein and M. Fatih Toy · Biomedical Optics Express 17, 1877–1896 · 2026",
+    "explanation": "Sequential hologram acquisitions can introduce phase differences that reduce Jones matrix accuracy. This work presents a dual-shot PDHM system that uses isotropic reference regions to correct inter-shot phase bias. It was validated with birefringent film and applied to mouse brain and human cornea samples.",
+    "limitation": "The published method requires an isotropic reference region and is intended for static or quasi-static samples.",
+    "doi": "https://doi.org/10.1364/BOE.585564"
+  },
+  "projects": [
+    {
+      "id": "dual-shot-pdhm",
+      "title": "Dual-shot PDHM",
+      "status": "Published research · 2026",
+      "summary": "Full-field Jones matrix imaging with inter-shot phase bias equalization.",
+      "role": "Led the end-to-end research workflow while collaborating with my academic advisor. This included system design, setup, purchasing, camera configuration, processing, experiments, validation, visualization and writing.",
+      "problem": "Sequential polarization measurements contain relative phase offsets. Once the Jones matrix is reconstructed, those offsets can produce large errors in the recovered polarization information.",
+      "process": "Designed a dual-shot optical configuration and a Python reconstruction pipeline covering FFT filtering, phase reconstruction, unwrapping, correction, retardance and optical-axis analysis.",
+      "outcome": "Equalized inter-shot phase bias through isotropic reference regions, validated the method with birefringent film and demonstrated full-field imaging on mouse brain and human cornea samples.",
+      "technologies": [
+        "PDHM",
+        "Jones matrices",
+        "Python",
+        "FFT",
+        "Phase unwrapping",
+        "Polarization analysis"
+      ],
+      "links": [{ "label": "Read the paper", "url": "https://doi.org/10.1364/BOE.585564" }],
+      "featured": true
+    },
+    {
+      "id": "reference-free-phase-bias",
+      "title": "Reference-Free Phase Bias Equalization",
+      "status": "Completed draft · Not submitted",
+      "summary": "An optimization-based approach that removes the need for an isotropic reference region.",
+      "role": "Designed the approach, built the processing workflow, tested the method, analyzed the results and completed the manuscript draft in collaboration with my academic advisor.",
+      "problem": "The first method depends on finding an isotropic reference region. Some samples do not provide one, which limits where the correction can be used.",
+      "process": "Formulated phase bias as an optimization problem and evaluated whether the Jones matrix can be corrected without a sample reference region.",
+      "outcome": "Completed an optimization-based reference-free method and a full manuscript draft. The work is not yet submitted or published.",
+      "technologies": [
+        "Optimization",
+        "Jones matrices",
+        "Python",
+        "Phase correction",
+        "Computational imaging"
+      ],
+      "links": [],
+      "featured": true
+    },
+    {
+      "id": "patient-specific-knee",
+      "title": "Patient-Specific Knee Reconstruction & FEA",
+      "status": "Undergraduate computational design and simulation",
+      "summary": "Patient-specific knee models, an implant concept and comparative structural simulations.",
+      "role": "Official TÜBİTAK 2209-A Project Partner. I handled the research, image processing, 3D reconstruction, implant concepts, simulation work, report preparation and much of the team coordination.",
+      "problem": "Explore how patient imaging and computational simulation can support the comparison of knee-replacement design ideas.",
+      "process": "Studied CT, MRI and DICOM data, reconstructed multiple patient knees in 3D Slicer, designed implant concepts in Fusion 360 and compared static structural behavior using FEA tools including ANSYS.",
+      "outcome": "Reconstructed patient-specific knee models, proposed a new implant concept and completed FEA comparisons covering deformation, displacement and von Mises stress. The work was computational and not clinically validated.",
+      "technologies": ["DICOM", "3D Slicer", "Fusion 360", "ANSYS", "FEA", "3D printing"],
+      "links": [],
+      "featured": true
+    },
+    {
+      "id": "vitromech",
+      "title": "VitroMech",
+      "status": "Paused startup",
+      "summary": "An early biomedical 3D modeling concept focused on patient-specific anatomy.",
+      "role": "Co-founder focused on software and technical development as well as the orthopedics direction.",
+      "problem": "Explore a clearer workflow for turning medical imaging into patient-specific 3D anatomical models for research and visualization.",
+      "process": "Developed the early product direction, technical concept and public website around DICOM segmentation and anatomical modeling.",
+      "outcome": "Built and presented an early startup concept. The startup is currently paused and no clinical outcomes are claimed.",
+      "technologies": ["Medical imaging", "DICOM", "3D modeling", "Product design", "Web design"],
+      "links": [{ "label": "Visit VitroMech", "url": "https://vitromech.framer.website/" }],
+      "featured": false
+    },
+    {
+      "id": "workin",
+      "title": "Workin",
+      "status": "Personal product",
+      "summary": "An evidence-informed, phone-first calisthenics workout tracker.",
+      "role": "Created the product, structured its training flow and built the complete public experience.",
+      "problem": "Make structured at-home calisthenics easier to follow without turning the workout into another complicated dashboard.",
+      "process": "Designed a mobile-first flow around a four-week plan, daily exercise logging, rest timing, notes and downloadable workout material.",
+      "outcome": "Delivered a public tracker with day and week progress, rest timers, notes and downloadable plans.",
+      "technologies": [
+        "Product design",
+        "Next.js",
+        "TypeScript",
+        "Local-first data",
+        "GitHub Pages"
+      ],
+      "links": [{ "label": "Open Workin", "url": "https://moehussein.github.io/Workin/" }],
+      "featured": false
+    },
+    {
+      "id": "salat-plans",
+      "title": "Salat Plans",
+      "status": "Personal product",
+      "summary": "A task planner that organizes daily priorities around prayer times.",
+      "role": "Created the product concept, experience and complete public application.",
+      "problem": "Daily plans often ignore the fixed moments that already give the day structure.",
+      "process": "Designed a calm planning flow that places tasks between prayer times and supports recovery after missed days without shame-based streaks.",
+      "outcome": "Released a working local-first planner with prayer-based time blocks and a focused daily planning experience.",
+      "technologies": ["Product design", "React", "TypeScript", "Vite", "Supabase", "Vercel"],
+      "links": [{ "label": "Open Salat Plans", "url": "https://salat-plans.vercel.app/" }],
+      "featured": false
+    },
+    {
+      "id": "client-web-design",
+      "title": "Selected Client Web Design",
+      "status": "Web and brand design",
+      "summary": "Focused website and identity work for small client businesses.",
+      "role": "Designed the web experience and brand identity for BeLinked and YaTaiba.",
+      "problem": "Give each business a clearer public identity and a web presence suited to its audience.",
+      "process": "Translated business needs into page structure, visual identity, responsive layouts and production websites.",
+      "outcome": "Published two client websites. No unverified performance or business metrics are claimed.",
+      "technologies": ["Web design", "Brand identity", "Responsive design"],
+      "links": [
+        { "label": "BeLinked", "url": "https://belinked.io/" },
+        { "label": "YaTaiba", "url": "https://www.yatayba.com/" }
+      ],
+      "featured": false
+    }
+  ],
+  "timeline": [
+    {
+      "period": "2023 — Present",
+      "title": "Graduate Researcher · Optical Imaging & Polarization Analysis",
+      "organization": "Istanbul Medipol University",
+      "description": "Developing polarization-sensitive holography systems and Python workflows for Jones matrix reconstruction, phase processing, retardance, orientation and scientific visualization."
+    },
+    {
+      "period": "15 Jan 2024 — Present",
+      "title": "Master’s Scholarship Researcher · Project 123N774",
+      "organization": "TÜBİTAK 2530 Türkiye–Moldova Bilateral Cooperation",
+      "description": "Contributing to polarization-sensitive DHM with singular structured illumination for biomedical applications."
+    }
+  ],
+  "education": [
+    {
+      "period": "15 Sep 2023 — Present",
+      "degree": "MSc · Biomedical Engineering and Bioinformatics",
+      "institution": "Istanbul Medipol University",
+      "details": [
+        "Ongoing",
+        "Thesis defense scheduled for 13 Aug 2026",
+        "Focus: polarization-sensitive digital holographic microscopy"
+      ]
+    },
+    {
+      "period": "11 Sep 2019 — 10 Jun 2023",
+      "degree": "BSc · Biomedical Engineering",
+      "institution": "Istanbul Medipol University",
+      "details": [
+        "CGPA 3.35/4.00",
+        "Graduated with Honors",
+        "Ranked third in the Biomedical Engineering class according to university records"
+      ]
+    }
+  ],
+  "skillGroups": [
+    {
+      "title": "Computational imaging",
+      "items": [
+        "PDHM",
+        "Jones matrix reconstruction",
+        "Polarization analysis",
+        "FFT hologram reconstruction",
+        "Phase processing",
+        "Retardance and optical-axis analysis"
+      ]
+    },
+    {
+      "title": "Programming",
+      "items": [
+        "Python",
+        "Scientific image processing",
+        "Numerical analysis",
+        "Scientific visualization"
+      ]
+    },
+    {
+      "title": "Medical 3D & simulation",
+      "items": [
+        "DICOM",
+        "3D Slicer",
+        "Fusion 360",
+        "ANSYS static structural",
+        "Finite element analysis",
+        "3D printing"
+      ]
+    },
+    {
+      "title": "Design & product",
+      "items": ["Web design", "Brand identity", "Product prototyping", "Research communication"]
+    }
+  ],
+  "achievements": [
+    {
+      "date": "2026",
+      "title": "Biomedical Optics Express publication",
+      "detail": "Dual-shot polarization digital holographic microscopy with phase bias equalization for full-field Jones matrix imaging."
+    },
+    {
+      "date": "12 Sep 2025",
+      "title": "Third Place · Best Poster Competition · FOTONİK 2025",
+      "detail": "Enhancing Jones Matrix Reconstruction in Polarization DHM via Phase Bias Equalization · Koç University."
+    },
+    {
+      "date": "27–29 Aug 2025",
+      "title": "Oral presentation · NanoTR-19",
+      "detail": "Jones Matrix Analysis via a Polarization-Sensitive Sensor in Digital Holographic Microscopy · oral format is currently supported by personal records."
+    }
+  ],
+  "learning": [
+    {
+      "label": "Stanford CS231N · Deep Learning for Computer Vision",
+      "url": "https://cs231n.stanford.edu/"
+    },
+    { "label": "OSSU Computer Science", "url": "https://cs.ossu.dev/" },
+    {
+      "label": "The Complete Full-Stack Web Development Bootcamp",
+      "url": "https://www.udemy.com/course/the-complete-web-development-bootcamp/"
+    },
+    { "label": "KIT Computational Imaging", "url": "https://computational-imaging.de/" }
+  ],
+  "collaboration": [
+    {
+      "title": "Scientific collaboration",
+      "detail": "Computational imaging, PDHM, scientific Python and image processing."
+    },
+    {
+      "title": "Medical 3D & simulation",
+      "detail": "DICOM segmentation, modeling, visualization and exploratory FEA for research use."
+    },
+    {
+      "title": "Digital design",
+      "detail": "Web design, brand identity and focused product prototypes."
+    }
+  ],
+  "contact": {
+    "email": "mohammad.mtr.hussein@gmail.com",
+    "github": "https://github.com/MoeHussein",
+    "orcid": "https://orcid.org/0009-0009-7211-0974",
+    "location": "Istanbul, Türkiye"
+  }
+}

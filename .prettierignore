@@ -1,0 +1,7 @@
+.astro/
+dist/
+node_modules/
+tmp/
+public/downloads/
+docs/reference-first/
+pnpm-lock.yaml
