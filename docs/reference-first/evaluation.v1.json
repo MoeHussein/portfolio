@@ -1,0 +1,667 @@
+{
+  "schemaVersion": "1.0.0",
+  "evaluatedAt": "2026-08-02T16:49:28.916Z",
+  "brief": {
+    "schemaVersion": "1.0.0",
+    "projectType": "multilingual static professional portfolio",
+    "capabilities": [
+      "single-page responsive portfolio",
+      "research project case studies accessible progressive disclosure",
+      "english arabic turkish localization right-to-left support",
+      "dark light themes reduced-motion support",
+      "structured content evidence public-disclosure status",
+      "localized academic cv industry resume downloads",
+      "static search metadata social sharing structured data",
+      "github pages deployment",
+      "accessibility performance budget validation"
+    ],
+    "constraints": {
+      "stack": [
+        "static site generation",
+        "github pages",
+        "typescript preferred",
+        "one application shell",
+        "one router",
+        "one styling foundation",
+        "one content system",
+        "no runtime server"
+      ],
+      "architecturecandidates": [
+        "astro",
+        "next.js static export",
+        "other actively maintained static-first architecture"
+      ],
+      "content": [
+        "single factual source truth",
+        "locale-specific static urls",
+        "english default locale",
+        "complete arabic turkish locales",
+        "user-reviewed translations"
+      ],
+      "hosting": [
+        "public source repository",
+        "github actions deployment",
+        "future custom domain support"
+      ],
+      "excluded": [
+        "cms",
+        "blog",
+        "analytics",
+        "contact form",
+        "user accounts",
+        "database",
+        "third-party runtime tracking"
+      ],
+      "quality": [
+        "wcag 2.2 aa target",
+        "keyboard visible-focus support",
+        "prefers-reduced-motion support",
+        "lcp below 2.5 seconds",
+        "cls below 0.1",
+        "inp below 200 milliseconds",
+        "initial javascript below 120 kb compressed"
+      ]
+    },
+    "riskProfile": "professional-standard",
+    "riskElevations": [],
+    "licensePolicy": "permissive-default",
+    "explicitRepositoryHints": [],
+    "sanitizedSearchTerms": "multilingual static professional portfolio single-page responsive portfolio research project case studies accessible progressive disclosure english arabic turki"
+  },
+  "items": [
+    {
+      "id": "github:withastro/astro-minimal",
+      "sourceType": "github",
+      "candidateClass": "primary-scaffold",
+      "name": "withastro/astro examples/minimal",
+      "description": "Official Astro minimal starter for a content-driven static portfolio.",
+      "url": "https://github.com/withastro/astro/tree/astro%407.1.6/examples/minimal",
+      "commit": "9865d1c03af6d1a1f15c9811858778cc952ca4e4",
+      "stars": 61471,
+      "archived": false,
+      "deprecated": false,
+      "compatible": true,
+      "pushedAt": "2026-07-29T14:21:56Z",
+      "updatedAt": "2026-07-29T14:21:56Z",
+      "fetchedAt": "2026-08-02T16:40:01.575Z",
+      "license": "MIT",
+      "release": "astro@7.1.6",
+      "releasePublishedAt": "2026-07-29T14:21:56Z",
+      "hasRelease": true,
+      "hasDocs": true,
+      "hasCI": true,
+      "hasTests": true,
+      "hasSecurityPolicy": true,
+      "typed": true,
+      "securityEvidence": "partial",
+      "criticalAdvisories": 0,
+      "highAdvisories": 0,
+      "foundationClaims": [
+        "framework:astro",
+        "router:astro-file-routing",
+        "deployment:static-github-pages"
+      ],
+      "approvalRequired": true,
+      "inspectionWarnings": [
+        "Pinned-lockfile dependency audit remains required before adoption."
+      ],
+      "signals": {
+        "functionalFit": 97,
+        "architectureCompatibility": 98,
+        "maintenanceHealth": 100,
+        "quality": 96,
+        "security": 82,
+        "licenseClarity": 100,
+        "integrationEffort": 96,
+        "communityAdoption": 100
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/withastro/astro/tree/astro%407.1.6/examples/minimal",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Official minimal scaffold",
+            "Astro 7.1.6 dependency",
+            "Node 22.12 or newer"
+          ]
+        },
+        {
+          "source": "https://raw.githubusercontent.com/withastro/astro/9865d1c03af6d1a1f15c9811858778cc952ca4e4/LICENSE",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "MIT license text"
+          ]
+        },
+        {
+          "source": "https://docs.astro.build/en/guides/internationalization/",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Built-in locale configuration",
+            "Default-locale routing",
+            "Localized static routes"
+          ]
+        },
+        {
+          "source": "https://docs.astro.build/en/guides/deploy/github/",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Official static GitHub Pages workflow",
+            "Base-path handling",
+            "Future custom-domain path"
+          ]
+        },
+        {
+          "source": "https://docs.astro.build/en/guides/content-collections/",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Schema-validated structured content",
+            "Type-safe content collections"
+          ]
+        },
+        {
+          "source": "https://github.com/withastro/astro/security/advisories",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Published advisory history reviewed",
+            "No critical advisory identified for the selected static-only exposure",
+            "Dependency audit still required"
+          ]
+        }
+      ],
+      "licenseConflict": false,
+      "identityConflict": false,
+      "disposition": "adoptable",
+      "reasons": [],
+      "warnings": [
+        "Pinned-lockfile dependency audit remains required before adoption.",
+        "security evidence is partial"
+      ],
+      "score": 96.35,
+      "strength": "strong",
+      "approvalLevel": "required",
+      "automaticAdoption": false
+    },
+    {
+      "id": "github:BartoszJarocki/cv",
+      "sourceType": "github",
+      "candidateClass": "pattern-reference",
+      "name": "BartoszJarocki/cv",
+      "description": "Maintained print-friendly minimalist CV page used only as a bounded content-density reference.",
+      "url": "https://github.com/BartoszJarocki/cv",
+      "commit": "b9c9c2bacf539d6bbab13714fa1c39a1afd0ad08",
+      "stars": 9675,
+      "archived": false,
+      "deprecated": false,
+      "compatible": true,
+      "pushedAt": "2026-03-03T22:25:48Z",
+      "updatedAt": "2026-08-02T16:22:35Z",
+      "fetchedAt": "2026-08-02T16:40:01.575Z",
+      "license": "MIT",
+      "hasRelease": false,
+      "hasDocs": true,
+      "hasCI": false,
+      "hasTests": false,
+      "hasSecurityPolicy": false,
+      "typed": true,
+      "securityEvidence": "partial",
+      "criticalAdvisories": 0,
+      "highAdvisories": 0,
+      "intakeMode": "concept",
+      "approvalRequired": false,
+      "inspectionWarnings": [
+        "Only print hierarchy and concise information density may be referenced; no code or styling will be copied.",
+        "Its Vercel Analytics dependency is expressly excluded."
+      ],
+      "signals": {
+        "functionalFit": 78,
+        "architectureCompatibility": 62,
+        "maintenanceHealth": 92,
+        "quality": 58,
+        "security": 66,
+        "licenseClarity": 100,
+        "integrationEffort": 88,
+        "communityAdoption": 100
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/BartoszJarocki/cv/tree/b9c9c2bacf539d6bbab13714fa1c39a1afd0ad08",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Print-friendly concise CV structure",
+            "MIT license",
+            "Current Next.js source",
+            "No CI or tests"
+          ]
+        }
+      ],
+      "licenseConflict": false,
+      "identityConflict": false,
+      "disposition": "adoptable",
+      "reasons": [],
+      "warnings": [
+        "Only print hierarchy and concise information density may be referenced; no code or styling will be copied.",
+        "Its Vercel Analytics dependency is expressly excluded.",
+        "security evidence is partial"
+      ],
+      "score": 77.3,
+      "strength": "conditional",
+      "approvalLevel": "automatic-eligible",
+      "automaticAdoption": false
+    },
+    {
+      "id": "github:RyanFitzgerald/devportfolio",
+      "sourceType": "github",
+      "candidateClass": "primary-scaffold",
+      "name": "RyanFitzgerald/devportfolio",
+      "description": "Popular Astro and Tailwind portfolio template.",
+      "url": "https://github.com/RyanFitzgerald/devportfolio",
+      "commit": "852d650fb0a8cf0c98f874af5a56a0a9b7d7d4b7",
+      "stars": 4947,
+      "archived": false,
+      "deprecated": false,
+      "compatible": false,
+      "pushedAt": "2025-07-26T19:15:41Z",
+      "updatedAt": "2026-08-02T04:21:34Z",
+      "fetchedAt": "2026-08-02T16:40:01.575Z",
+      "license": "MIT",
+      "hasRelease": false,
+      "hasDocs": true,
+      "hasCI": false,
+      "hasTests": false,
+      "hasSecurityPolicy": false,
+      "typed": true,
+      "securityEvidence": "failed",
+      "criticalAdvisories": 0,
+      "highAdvisories": 3,
+      "foundationClaims": [
+        "framework:astro",
+        "styling:tailwind"
+      ],
+      "approvalRequired": true,
+      "inspectionWarnings": [
+        "Pinned dependencies use Astro 5.12.3 rather than the current stable release.",
+        "The repository contains no CI workflow or automated tests.",
+        "Adopting its styling would work against the distinctive custom visual system."
+      ],
+      "signals": {
+        "functionalFit": 82,
+        "architectureCompatibility": 70,
+        "maintenanceHealth": 72,
+        "quality": 45,
+        "security": 18,
+        "licenseClarity": 100,
+        "integrationEffort": 48,
+        "communityAdoption": 77.14927162961666
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/RyanFitzgerald/devportfolio/tree/852d650fb0a8cf0c98f874af5a56a0a9b7d7d4b7",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Astro 5.12.3 and Tailwind 4 dependencies",
+            "MIT license",
+            "No CI or tests"
+          ]
+        },
+        {
+          "source": "https://github.com/withastro/astro/security/advisories",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Pinned Astro version falls within multiple published high-severity advisory ranges"
+          ]
+        }
+      ],
+      "licenseConflict": false,
+      "identityConflict": false,
+      "disposition": "rejected",
+      "reasons": [
+        "candidate is incompatible with the approved stack"
+      ],
+      "warnings": [
+        "Pinned dependencies use Astro 5.12.3 rather than the current stable release.",
+        "The repository contains no CI workflow or automated tests.",
+        "Adopting its styling would work against the distinctive custom visual system."
+      ],
+      "score": 66.61,
+      "strength": "rejected",
+      "approvalLevel": "required",
+      "automaticAdoption": false
+    },
+    {
+      "id": "github:once-ui-system/magic-portfolio",
+      "sourceType": "github",
+      "candidateClass": "primary-scaffold",
+      "name": "once-ui-system/magic-portfolio",
+      "description": "Feature-rich Next.js portfolio template using Once UI.",
+      "url": "https://github.com/once-ui-system/magic-portfolio",
+      "commit": "d8dbd32aa13899775b5d2624426e27e0141cbe0d",
+      "stars": 1365,
+      "archived": false,
+      "deprecated": false,
+      "compatible": false,
+      "pushedAt": "2026-06-17T08:23:11Z",
+      "updatedAt": "2026-08-02T05:23:50Z",
+      "fetchedAt": "2026-08-02T16:40:01.575Z",
+      "license": "CC-BY-NC-4.0",
+      "release": "v1.3.0",
+      "releasePublishedAt": "2025-01-12T15:31:13Z",
+      "hasRelease": true,
+      "hasDocs": true,
+      "hasCI": true,
+      "hasTests": false,
+      "hasSecurityPolicy": false,
+      "typed": true,
+      "securityEvidence": "unknown",
+      "criticalAdvisories": 0,
+      "highAdvisories": 0,
+      "foundationClaims": [
+        "framework:nextjs",
+        "styling:once-ui",
+        "content:mdx"
+      ],
+      "approvalRequired": true,
+      "inspectionWarnings": [
+        "CC BY-NC 4.0 prohibits commercial use and is outside the permissive-default policy.",
+        "The package manifest uses an unpinned latest dependency for Once UI.",
+        "Its UI and content foundations would compete with the approved custom architecture."
+      ],
+      "signals": {
+        "functionalFit": 86,
+        "architectureCompatibility": 42,
+        "maintenanceHealth": 92,
+        "quality": 52,
+        "security": 42,
+        "licenseClarity": 45,
+        "integrationEffort": 24,
+        "communityAdoption": 65.47634084827104
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/once-ui-system/magic-portfolio/tree/d8dbd32aa13899775b5d2624426e27e0141cbe0d",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Current Next.js portfolio feature set",
+            "Unpinned latest Once UI dependency",
+            "No automated tests"
+          ]
+        },
+        {
+          "source": "https://raw.githubusercontent.com/once-ui-system/magic-portfolio/d8dbd32aa13899775b5d2624426e27e0141cbe0d/LICENSE",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "CC BY-NC 4.0 noncommercial license"
+          ]
+        }
+      ],
+      "licenseConflict": false,
+      "identityConflict": false,
+      "disposition": "rejected",
+      "reasons": [
+        "candidate is incompatible with the approved stack"
+      ],
+      "warnings": [
+        "CC BY-NC 4.0 prohibits commercial use and is outside the permissive-default policy.",
+        "The package manifest uses an unpinned latest dependency for Once UI.",
+        "Its UI and content foundations would compete with the approved custom architecture."
+      ],
+      "score": 62.57,
+      "strength": "rejected",
+      "approvalLevel": "required",
+      "automaticAdoption": false
+    },
+    {
+      "id": "github:markhorn-dev/astro-nano",
+      "sourceType": "github",
+      "candidateClass": "primary-scaffold",
+      "name": "markhorn-dev/astro-nano",
+      "description": "Minimal Astro portfolio and blog theme.",
+      "url": "https://github.com/markhorn-dev/astro-nano",
+      "commit": "66aa017d614828ba5dba02a9e51a1a714850ad31",
+      "stars": 912,
+      "archived": false,
+      "deprecated": false,
+      "compatible": false,
+      "pushedAt": "2025-06-16T11:37:57Z",
+      "updatedAt": "2026-07-25T13:56:31Z",
+      "fetchedAt": "2026-08-02T16:40:01.575Z",
+      "license": "MIT",
+      "release": "v1.1.1",
+      "releasePublishedAt": "2025-06-16T11:43:16Z",
+      "hasRelease": true,
+      "hasDocs": true,
+      "hasCI": false,
+      "hasTests": false,
+      "hasSecurityPolicy": false,
+      "typed": true,
+      "securityEvidence": "failed",
+      "criticalAdvisories": 0,
+      "highAdvisories": 4,
+      "foundationClaims": [
+        "framework:astro",
+        "styling:tailwind",
+        "content:markdown-blog"
+      ],
+      "approvalRequired": true,
+      "inspectionWarnings": [
+        "Pinned dependencies use Astro 5.0.5 and an older linting stack.",
+        "Blog, RSS, and MDX foundations are outside version-one scope.",
+        "The repository contains no CI workflow or automated tests."
+      ],
+      "signals": {
+        "functionalFit": 73,
+        "architectureCompatibility": 63,
+        "maintenanceHealth": 66,
+        "quality": 45,
+        "security": 12,
+        "licenseClarity": 100,
+        "integrationEffort": 38,
+        "communityAdoption": 61.822306356672605
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/markhorn-dev/astro-nano/tree/66aa017d614828ba5dba02a9e51a1a714850ad31",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Astro 5.0.5 dependency",
+            "Blog, MDX, and RSS foundations",
+            "MIT license",
+            "No CI or tests"
+          ]
+        },
+        {
+          "source": "https://github.com/withastro/astro/security/advisories",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Pinned Astro version falls within multiple published high-severity advisory ranges"
+          ]
+        }
+      ],
+      "licenseConflict": false,
+      "identityConflict": false,
+      "disposition": "rejected",
+      "reasons": [
+        "candidate is incompatible with the approved stack"
+      ],
+      "warnings": [
+        "Pinned dependencies use Astro 5.0.5 and an older linting stack.",
+        "Blog, RSS, and MDX foundations are outside version-one scope.",
+        "The repository contains no CI workflow or automated tests."
+      ],
+      "score": 60.54,
+      "strength": "rejected",
+      "approvalLevel": "required",
+      "automaticAdoption": false
+    },
+    {
+      "id": "github:nextjs/deploy-github-pages",
+      "sourceType": "github",
+      "candidateClass": "primary-scaffold",
+      "name": "nextjs/deploy-github-pages",
+      "description": "Official Next.js template for static GitHub Pages deployment.",
+      "url": "https://github.com/nextjs/deploy-github-pages",
+      "commit": "8cef01dd18d210683452e7ce434ce776235e0779",
+      "stars": 154,
+      "archived": false,
+      "deprecated": false,
+      "compatible": false,
+      "pushedAt": "2025-12-14T23:02:52Z",
+      "updatedAt": "2026-07-30T11:30:45Z",
+      "fetchedAt": "2026-08-02T16:40:01.575Z",
+      "license": null,
+      "hasRelease": false,
+      "hasDocs": true,
+      "hasCI": true,
+      "hasTests": false,
+      "hasSecurityPolicy": false,
+      "typed": true,
+      "securityEvidence": "failed",
+      "criticalAdvisories": 0,
+      "highAdvisories": 3,
+      "foundationClaims": [
+        "framework:nextjs",
+        "router:next-app-router",
+        "deployment:static-github-pages"
+      ],
+      "approvalRequired": true,
+      "inspectionWarnings": [
+        "No repository license file or SPDX identity was available.",
+        "The pinned template uses Next.js 15.1.10 instead of the current stable release.",
+        "Static export requires additional image and internationalization handling."
+      ],
+      "signals": {
+        "functionalFit": 68,
+        "architectureCompatibility": 62,
+        "maintenanceHealth": 72,
+        "quality": 48,
+        "security": 35,
+        "licenseClarity": 0,
+        "integrationEffort": 58,
+        "communityAdoption": 45.7398054034485
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/nextjs/deploy-github-pages/tree/8cef01dd18d210683452e7ce434ce776235e0779",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Official GitHub Pages template",
+            "Next.js 15.1.10 dependency",
+            "Missing repository license"
+          ]
+        },
+        {
+          "source": "https://nextjs.org/docs/app/guides/static-exports",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Static export is supported",
+            "Default image optimization is unsupported",
+            "Several server features are unsupported"
+          ]
+        },
+        {
+          "source": "https://github.com/vercel/next.js/security/advisories",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Pinned Next.js version is behind current security releases"
+          ]
+        }
+      ],
+      "licenseConflict": false,
+      "identityConflict": false,
+      "disposition": "rejected",
+      "reasons": [
+        "candidate is incompatible with the approved stack"
+      ],
+      "warnings": [
+        "No repository license file or SPDX identity was available.",
+        "The pinned template uses Next.js 15.1.10 instead of the current stable release.",
+        "Static export requires additional image and internationalization handling."
+      ],
+      "score": 52.99,
+      "strength": "rejected",
+      "approvalLevel": "required",
+      "automaticAdoption": false
+    },
+    {
+      "id": "github:vercel/nextjs-portfolio-starter",
+      "sourceType": "github",
+      "candidateClass": "primary-scaffold",
+      "name": "vercel/nextjs-portfolio-starter",
+      "description": "Official Vercel portfolio starter using Next.js, Nextra, Markdown, and blog features.",
+      "url": "https://github.com/vercel/nextjs-portfolio-starter",
+      "commit": "90cfee0f74c25bb3688369a0587e435f8b8f114d",
+      "stars": 727,
+      "archived": false,
+      "deprecated": false,
+      "compatible": false,
+      "pushedAt": "2023-12-10T21:49:13Z",
+      "updatedAt": "2026-07-31T14:57:31Z",
+      "fetchedAt": "2026-08-02T16:40:01.575Z",
+      "license": null,
+      "hasRelease": false,
+      "hasDocs": true,
+      "hasCI": false,
+      "hasTests": false,
+      "hasSecurityPolicy": false,
+      "typed": false,
+      "securityEvidence": "failed",
+      "criticalAdvisories": 1,
+      "highAdvisories": 4,
+      "foundationClaims": [
+        "framework:nextjs",
+        "router:next-pages-router",
+        "content:nextra-markdown"
+      ],
+      "approvalRequired": true,
+      "inspectionWarnings": [
+        "No repository license file or SPDX identity was available.",
+        "The pinned scaffold uses Next.js 13.5.6 and Nextra 2.13.2.",
+        "Next.js 13.5.6 falls within a published critical advisory range."
+      ],
+      "signals": {
+        "functionalFit": 64,
+        "architectureCompatibility": 40,
+        "maintenanceHealth": 22,
+        "quality": 30,
+        "security": 0,
+        "licenseClarity": 0,
+        "integrationEffort": 35,
+        "communityAdoption": 59.768724727054504
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/vercel/nextjs-portfolio-starter/tree/90cfee0f74c25bb3688369a0587e435f8b8f114d",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Next.js 13.5.6 and Nextra 2.13.2 dependencies",
+            "Blog and RSS scope",
+            "No license file",
+            "No CI or tests"
+          ]
+        },
+        {
+          "source": "https://github.com/vercel/next.js/security/advisories/GHSA-f82v-jwr5-mffw",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Next.js 13.5.6 is inside a published critical advisory range"
+          ]
+        }
+      ],
+      "licenseConflict": false,
+      "identityConflict": false,
+      "disposition": "rejected",
+      "reasons": [
+        "candidate is incompatible with the approved stack",
+        "candidate has unresolved critical advisories"
+      ],
+      "warnings": [
+        "No repository license file or SPDX identity was available.",
+        "The pinned scaffold uses Next.js 13.5.6 and Nextra 2.13.2.",
+        "Next.js 13.5.6 falls within a published critical advisory range."
+      ],
+      "score": 34.54,
+      "strength": "rejected",
+      "approvalLevel": "required",
+      "automaticAdoption": false
+    }
+  ]
+}

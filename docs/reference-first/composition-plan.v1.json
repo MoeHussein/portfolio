@@ -1,0 +1,352 @@
+{
+  "schemaVersion": "1.0.0",
+  "createdAt": "2026-08-02T16:42:21.947Z",
+  "primary": {
+    "id": "github:withastro/astro-minimal",
+    "name": "Official Astro minimal starter",
+    "url": "https://github.com/withastro/astro/tree/astro%407.1.6/examples/minimal",
+    "commit": "9865d1c03af6d1a1f15c9811858778cc952ca4e4",
+    "license": "MIT",
+    "licenseObligations": "Preserve the Astro MIT copyright and license notice in third-party notices.",
+    "modificationSummary": "Adopt only the minimal application shell and replace the example page with the approved multilingual portfolio architecture, content model, visual system, tests, and GitHub Pages configuration.",
+    "contributionBoundary": "The sole application shell, framework, file router, content-collection foundation, and static build model.",
+    "intakeMode": "copy-source"
+  },
+  "secondary": [
+    {
+      "id": "npm:astro@7.1.6",
+      "name": "astro",
+      "url": "https://www.npmjs.com/package/astro/v/7.1.6",
+      "version": "7.1.6",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in dependency records.",
+      "modificationSummary": "Use unmodified as the static site framework.",
+      "contributionBoundary": "Static rendering, file routing, content collections, asset processing, and localized route generation.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:@astrojs/sitemap@3.7.3",
+      "name": "@astrojs/sitemap",
+      "url": "https://www.npmjs.com/package/@astrojs/sitemap/v/3.7.3",
+      "version": "3.7.3",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in dependency records.",
+      "modificationSummary": "Use unmodified.",
+      "contributionBoundary": "Generate locale-aware sitemap output only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:sharp@0.35.3",
+      "name": "sharp",
+      "url": "https://www.npmjs.com/package/sharp/v/0.35.3",
+      "version": "0.35.3",
+      "license": "Apache-2.0",
+      "licenseObligations": "Retain the Apache-2.0 license and notices in dependency records.",
+      "modificationSummary": "Use unmodified as a build-time image processor.",
+      "contributionBoundary": "Create responsive AVIF and WebP image derivatives during static builds.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:@fontsource-variable/space-grotesk@5.3.0",
+      "name": "@fontsource-variable/space-grotesk",
+      "url": "https://www.npmjs.com/package/@fontsource-variable/space-grotesk/v/5.3.0",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "licenseObligations": "Ship the OFL-1.1 license, retain reserved font names, and use the font files unmodified.",
+      "modificationSummary": "Import only required local subsets and weights.",
+      "contributionBoundary": "Self-hosted Latin and Turkish display typography only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:@fontsource-variable/noto-sans@5.3.0",
+      "name": "@fontsource-variable/noto-sans",
+      "url": "https://www.npmjs.com/package/@fontsource-variable/noto-sans/v/5.3.0",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "licenseObligations": "Ship the OFL-1.1 license, retain reserved font names, and use the font files unmodified.",
+      "modificationSummary": "Import only required local subsets and weights.",
+      "contributionBoundary": "Self-hosted Latin and Turkish body typography only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:@fontsource-variable/noto-sans-arabic@5.3.0",
+      "name": "@fontsource-variable/noto-sans-arabic",
+      "url": "https://www.npmjs.com/package/@fontsource-variable/noto-sans-arabic/v/5.3.0",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "licenseObligations": "Ship the OFL-1.1 license, retain reserved font names, and use the font files unmodified.",
+      "modificationSummary": "Import only required local subsets and weights.",
+      "contributionBoundary": "Self-hosted Arabic body and interface typography only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:@astrojs/check@0.9.10",
+      "name": "@astrojs/check",
+      "url": "https://www.npmjs.com/package/@astrojs/check/v/0.9.10",
+      "version": "0.9.10",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in development dependency records.",
+      "modificationSummary": "Use unmodified.",
+      "contributionBoundary": "Astro and TypeScript diagnostics only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:typescript@6.0.3",
+      "name": "typescript",
+      "url": "https://www.npmjs.com/package/typescript/v/6.0.3",
+      "version": "6.0.3",
+      "license": "Apache-2.0",
+      "licenseObligations": "Retain the Apache-2.0 license and notices in development dependency records.",
+      "modificationSummary": "Use unmodified in strict mode.",
+      "contributionBoundary": "Static typing and build-time type validation only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:@types/node@24.13.3",
+      "name": "@types/node",
+      "url": "https://www.npmjs.com/package/@types/node/v/24.13.3",
+      "version": "24.13.3",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in development dependency records.",
+      "modificationSummary": "Use unmodified.",
+      "contributionBoundary": "Node 24 build-script types only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:eslint@10.8.0",
+      "name": "eslint",
+      "url": "https://www.npmjs.com/package/eslint/v/10.8.0",
+      "version": "10.8.0",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in development dependency records.",
+      "modificationSummary": "Use unmodified with project-owned flat configuration.",
+      "contributionBoundary": "JavaScript and TypeScript lint orchestration only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:eslint-plugin-astro@3.1.0",
+      "name": "eslint-plugin-astro",
+      "url": "https://www.npmjs.com/package/eslint-plugin-astro/v/3.1.0",
+      "version": "3.1.0",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in development dependency records.",
+      "modificationSummary": "Use unmodified.",
+      "contributionBoundary": "Astro template lint rules only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:typescript-eslint@8.65.0",
+      "name": "typescript-eslint",
+      "url": "https://www.npmjs.com/package/typescript-eslint/v/8.65.0",
+      "version": "8.65.0",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in development dependency records.",
+      "modificationSummary": "Use unmodified.",
+      "contributionBoundary": "Type-aware TypeScript lint rules only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:prettier@3.9.6",
+      "name": "prettier",
+      "url": "https://www.npmjs.com/package/prettier/v/3.9.6",
+      "version": "3.9.6",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in development dependency records.",
+      "modificationSummary": "Use unmodified.",
+      "contributionBoundary": "Source formatting only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:prettier-plugin-astro@0.14.1",
+      "name": "prettier-plugin-astro",
+      "url": "https://www.npmjs.com/package/prettier-plugin-astro/v/0.14.1",
+      "version": "0.14.1",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in development dependency records.",
+      "modificationSummary": "Use unmodified.",
+      "contributionBoundary": "Astro source formatting only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:vitest@4.1.10",
+      "name": "vitest",
+      "url": "https://www.npmjs.com/package/vitest/v/4.1.10",
+      "version": "4.1.10",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in development dependency records.",
+      "modificationSummary": "Use unmodified.",
+      "contributionBoundary": "Unit tests for content, localization, metadata, and pure interaction logic only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:@playwright/test@1.62.1",
+      "name": "@playwright/test",
+      "url": "https://www.npmjs.com/package/@playwright/test/v/1.62.1",
+      "version": "1.62.1",
+      "license": "Apache-2.0",
+      "licenseObligations": "Retain the Apache-2.0 license and notices in development dependency records.",
+      "modificationSummary": "Use unmodified.",
+      "contributionBoundary": "Browser behavior, keyboard, RTL, responsive, and PDF-generation checks only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:lighthouse@13.4.1",
+      "name": "lighthouse",
+      "url": "https://www.npmjs.com/package/lighthouse/v/13.4.1",
+      "version": "13.4.1",
+      "license": "Apache-2.0",
+      "licenseObligations": "Retain the Apache-2.0 license and notices in development dependency records.",
+      "modificationSummary": "Use unmodified.",
+      "contributionBoundary": "Automated accessibility, SEO, best-practice, and performance budget audits only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "npm:html-validate@11.6.1",
+      "name": "html-validate",
+      "url": "https://www.npmjs.com/package/html-validate/v/11.6.1",
+      "version": "11.6.1",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in development dependency records.",
+      "modificationSummary": "Use unmodified with project rules.",
+      "contributionBoundary": "Validate generated semantic HTML and accessible-name rules only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "github:actions/checkout@fbc6f399",
+      "name": "actions/checkout",
+      "url": "https://github.com/actions/checkout/tree/fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+      "commit": "fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in workflow provenance records.",
+      "modificationSummary": "Use by immutable commit.",
+      "contributionBoundary": "Repository checkout in CI and deployment only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "github:actions/setup-node@a0853c24",
+      "name": "actions/setup-node",
+      "url": "https://github.com/actions/setup-node/tree/a0853c24544627f65ddf259abe73b1d18a591444",
+      "commit": "a0853c24544627f65ddf259abe73b1d18a591444",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in workflow provenance records.",
+      "modificationSummary": "Use by immutable commit.",
+      "contributionBoundary": "Install pinned Node 24 for quality workflows only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "github:pnpm/action-setup@0ebf4713",
+      "name": "pnpm/action-setup",
+      "url": "https://github.com/pnpm/action-setup/tree/0ebf47130e4866e96fce0953f49152a61190b271",
+      "commit": "0ebf47130e4866e96fce0953f49152a61190b271",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in workflow provenance records.",
+      "modificationSummary": "Use by immutable commit.",
+      "contributionBoundary": "Install pinned pnpm for quality workflows only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "github:withastro/action@e84f40bd",
+      "name": "withastro/action",
+      "url": "https://github.com/withastro/action/tree/e84f40bd8d2caa9e768ec82ad30dd81f0b280853",
+      "commit": "e84f40bd8d2caa9e768ec82ad30dd81f0b280853",
+      "license": "MIT",
+      "licenseObligations": "Retain the Astro and adapted GitHub MIT notices in workflow provenance records.",
+      "modificationSummary": "Use by immutable commit.",
+      "contributionBoundary": "Build and upload the static Astro Pages artifact only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "github:actions/deploy-pages@cd2ce8fc",
+      "name": "actions/deploy-pages",
+      "url": "https://github.com/actions/deploy-pages/tree/cd2ce8fcbc39b97be8ca5fce6e763baed58fa128",
+      "commit": "cd2ce8fcbc39b97be8ca5fce6e763baed58fa128",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in workflow provenance records.",
+      "modificationSummary": "Use by immutable commit.",
+      "contributionBoundary": "Deploy the prepared artifact to GitHub Pages only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "github:actions/dependency-review-action@a1d282b3",
+      "name": "actions/dependency-review-action",
+      "url": "https://github.com/actions/dependency-review-action/tree/a1d282b36b6f3519aa1f3fc636f609c47dddb294",
+      "commit": "a1d282b36b6f3519aa1f3fc636f609c47dddb294",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in workflow provenance records.",
+      "modificationSummary": "Use by immutable commit.",
+      "contributionBoundary": "Pull-request dependency review only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "github:github/codeql-action@f205ea1c",
+      "name": "github/codeql-action",
+      "url": "https://github.com/github/codeql-action/tree/f205ea1c3313d32999d8d6a48b4f6530d4437b38",
+      "commit": "f205ea1c3313d32999d8d6a48b4f6530d4437b38",
+      "license": "MIT",
+      "licenseObligations": "Retain the MIT notice in workflow provenance records.",
+      "modificationSummary": "Use by immutable commit.",
+      "contributionBoundary": "Static code analysis in GitHub Actions only.",
+      "intakeMode": "package"
+    },
+    {
+      "id": "github:BartoszJarocki/cv",
+      "name": "BartoszJarocki/cv",
+      "url": "https://github.com/BartoszJarocki/cv/tree/b9c9c2bacf539d6bbab13714fa1c39a1afd0ad08",
+      "commit": "b9c9c2bacf539d6bbab13714fa1c39a1afd0ad08",
+      "license": "MIT",
+      "licenseObligations": "No source is copied; preserve this provenance record for the conceptual reference.",
+      "modificationSummary": "Reference only the principle of compact print hierarchy and scan-friendly information density; do not copy code, content, styling, components, or analytics.",
+      "contributionBoundary": "Conceptual reference for the six printable CV and resume layouts only.",
+      "intakeMode": "concept"
+    }
+  ],
+  "requiredApprovals": [
+    "Adopt the official Astro minimal starter at commit 9865d1c03af6d1a1f15c9811858778cc952ca4e4 as the sole application scaffold.",
+    "Use Astro file routing, Astro content collections, project-owned vanilla CSS, and static GitHub Pages deployment as the only framework, router, content, styling, and deployment foundations.",
+    "Install the exact package versions and immutable GitHub Action commits listed in this plan after verification.",
+    "Use the three unmodified OFL-1.1 Fontsource packages with bundled license notices.",
+    "Use BartoszJarocki/cv only as a conceptual print-density reference with no copied source or styling."
+  ],
+  "approvalStatus": "pending",
+  "conflicts": [
+    "No React runtime, Next.js router, Tailwind foundation, Nextra content system, Once UI system, CMS, analytics, server runtime, database, or contact backend will be introduced.",
+    "No secondary portfolio repository may supply the application shell, router, styling foundation, content system, or deployment model."
+  ],
+  "remainingUncertainty": [
+    "A clean pinned install, lifecycle-script review, lockfile audit, and license inventory are required before scaffold adoption.",
+    "The final GitHub repository name and temporary Pages base path are not yet known.",
+    "The final custom domain is not yet known.",
+    "Headshot and additional approved media are pending.",
+    "Published-paper figure reuse rights and attribution are pending.",
+    "Arabic and Turkish translations require user review before release.",
+    "One unapproved client project remains excluded pending naming and screenshot permission.",
+    "MSc and second-manuscript statuses may change after their respective milestones."
+  ],
+  "rejectedFinalists": [
+    {
+      "id": "github:RyanFitzgerald/devportfolio",
+      "score": 66.61,
+      "reason": "Rejected as primary because it pins an older Astro release with published high-severity advisory exposure, lacks tests and CI, and would import a generic Tailwind visual foundation."
+    },
+    {
+      "id": "github:once-ui-system/magic-portfolio",
+      "score": 62.57,
+      "reason": "Rejected because its CC BY-NC 4.0 license restricts commercial use, an application dependency is unpinned, and Once UI conflicts with the approved custom visual system."
+    },
+    {
+      "id": "github:markhorn-dev/astro-nano",
+      "score": 60.54,
+      "reason": "Rejected because its old Astro and lint stack have published advisory exposure and its blog, RSS, MDX, and Tailwind foundations exceed version-one scope."
+    },
+    {
+      "id": "github:nextjs/deploy-github-pages",
+      "score": 52.99,
+      "reason": "Rejected because the official template has no clear repository license, is behind current Next.js, and adds static-export image and localization complexity without a requirement benefit."
+    },
+    {
+      "id": "github:vercel/nextjs-portfolio-starter",
+      "score": 34.54,
+      "reason": "Rejected because it has no clear repository license, uses outdated Next.js and Nextra versions, lacks tests and CI, and its Next.js version falls within a published critical advisory range."
+    }
+  ]
+}

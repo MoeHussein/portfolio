@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "fetchedAt": "2026-08-02T16:49:28.858Z",
+  "dryRun": true,
+  "queries": {
+    "base": "multilingual static professional portfolio single-page responsive portfolio research project case studies accessible progressive disclosure english arabic turki",
+    "github": [
+      "multilingual static professional portfolio single-page responsive in:name,description,readme archived:false stars:>=25",
+      "multilingual static professional portfolio single-page responsive starter template in:name,description,readme archived:false stars:>=10",
+      "multilingual static professional portfolio single-page responsive portfolio in:name,description archived:false stars:>=100"
+    ],
+    "npm": [
+      "single-page responsive portfolio",
+      "research project case studies accessible progressive disclosure",
+      "english arabic turkish localization right-to-left support",
+      "dark light themes reduced-motion support"
+    ],
+    "repositoryHints": []
+  },
+  "items": [],
+  "warnings": []
+}

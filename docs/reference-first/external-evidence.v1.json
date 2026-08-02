@@ -1,0 +1,276 @@
+{
+  "schemaVersion": "1.0.0",
+  "items": [
+    {
+      "id": "github:withastro/astro-minimal",
+      "commit": "9865d1c03af6d1a1f15c9811858778cc952ca4e4",
+      "license": "MIT",
+      "securityEvidence": "partial",
+      "signals": {
+        "functionalFit": 97,
+        "architectureCompatibility": 98,
+        "maintenanceHealth": 100,
+        "quality": 96,
+        "security": 82,
+        "licenseClarity": 100,
+        "integrationEffort": 96
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/withastro/astro/tree/astro%407.1.6/examples/minimal",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Official minimal scaffold",
+            "Astro 7.1.6 dependency",
+            "Node 22.12 or newer"
+          ]
+        },
+        {
+          "source": "https://raw.githubusercontent.com/withastro/astro/9865d1c03af6d1a1f15c9811858778cc952ca4e4/LICENSE",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "MIT license text"
+          ]
+        },
+        {
+          "source": "https://docs.astro.build/en/guides/internationalization/",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Built-in locale configuration",
+            "Default-locale routing",
+            "Localized static routes"
+          ]
+        },
+        {
+          "source": "https://docs.astro.build/en/guides/deploy/github/",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Official static GitHub Pages workflow",
+            "Base-path handling",
+            "Future custom-domain path"
+          ]
+        },
+        {
+          "source": "https://docs.astro.build/en/guides/content-collections/",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Schema-validated structured content",
+            "Type-safe content collections"
+          ]
+        },
+        {
+          "source": "https://github.com/withastro/astro/security/advisories",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Published advisory history reviewed",
+            "No critical advisory identified for the selected static-only exposure",
+            "Dependency audit still required"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "github:nextjs/deploy-github-pages",
+      "commit": "8cef01dd18d210683452e7ce434ce776235e0779",
+      "license": null,
+      "securityEvidence": "failed",
+      "signals": {
+        "functionalFit": 68,
+        "architectureCompatibility": 62,
+        "maintenanceHealth": 72,
+        "quality": 48,
+        "security": 35,
+        "licenseClarity": 0,
+        "integrationEffort": 58
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/nextjs/deploy-github-pages/tree/8cef01dd18d210683452e7ce434ce776235e0779",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Official GitHub Pages template",
+            "Next.js 15.1.10 dependency",
+            "Missing repository license"
+          ]
+        },
+        {
+          "source": "https://nextjs.org/docs/app/guides/static-exports",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Static export is supported",
+            "Default image optimization is unsupported",
+            "Several server features are unsupported"
+          ]
+        },
+        {
+          "source": "https://github.com/vercel/next.js/security/advisories",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Pinned Next.js version is behind current security releases"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "github:vercel/nextjs-portfolio-starter",
+      "commit": "90cfee0f74c25bb3688369a0587e435f8b8f114d",
+      "license": null,
+      "securityEvidence": "failed",
+      "signals": {
+        "functionalFit": 64,
+        "architectureCompatibility": 40,
+        "maintenanceHealth": 22,
+        "quality": 30,
+        "security": 0,
+        "licenseClarity": 0,
+        "integrationEffort": 35
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/vercel/nextjs-portfolio-starter/tree/90cfee0f74c25bb3688369a0587e435f8b8f114d",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Next.js 13.5.6 and Nextra 2.13.2 dependencies",
+            "Blog and RSS scope",
+            "No license file",
+            "No CI or tests"
+          ]
+        },
+        {
+          "source": "https://github.com/vercel/next.js/security/advisories/GHSA-f82v-jwr5-mffw",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Next.js 13.5.6 is inside a published critical advisory range"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "github:RyanFitzgerald/devportfolio",
+      "commit": "852d650fb0a8cf0c98f874af5a56a0a9b7d7d4b7",
+      "license": "MIT",
+      "securityEvidence": "failed",
+      "signals": {
+        "functionalFit": 82,
+        "architectureCompatibility": 70,
+        "maintenanceHealth": 72,
+        "quality": 45,
+        "security": 18,
+        "licenseClarity": 100,
+        "integrationEffort": 48
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/RyanFitzgerald/devportfolio/tree/852d650fb0a8cf0c98f874af5a56a0a9b7d7d4b7",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Astro 5.12.3 and Tailwind 4 dependencies",
+            "MIT license",
+            "No CI or tests"
+          ]
+        },
+        {
+          "source": "https://github.com/withastro/astro/security/advisories",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Pinned Astro version falls within multiple published high-severity advisory ranges"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "github:markhorn-dev/astro-nano",
+      "commit": "66aa017d614828ba5dba02a9e51a1a714850ad31",
+      "license": "MIT",
+      "securityEvidence": "failed",
+      "signals": {
+        "functionalFit": 73,
+        "architectureCompatibility": 63,
+        "maintenanceHealth": 66,
+        "quality": 45,
+        "security": 12,
+        "licenseClarity": 100,
+        "integrationEffort": 38
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/markhorn-dev/astro-nano/tree/66aa017d614828ba5dba02a9e51a1a714850ad31",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Astro 5.0.5 dependency",
+            "Blog, MDX, and RSS foundations",
+            "MIT license",
+            "No CI or tests"
+          ]
+        },
+        {
+          "source": "https://github.com/withastro/astro/security/advisories",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Pinned Astro version falls within multiple published high-severity advisory ranges"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "github:once-ui-system/magic-portfolio",
+      "commit": "d8dbd32aa13899775b5d2624426e27e0141cbe0d",
+      "license": "CC-BY-NC-4.0",
+      "securityEvidence": "unknown",
+      "signals": {
+        "functionalFit": 86,
+        "architectureCompatibility": 42,
+        "maintenanceHealth": 92,
+        "quality": 52,
+        "security": 42,
+        "licenseClarity": 45,
+        "integrationEffort": 24
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/once-ui-system/magic-portfolio/tree/d8dbd32aa13899775b5d2624426e27e0141cbe0d",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Current Next.js portfolio feature set",
+            "Unpinned latest Once UI dependency",
+            "No automated tests"
+          ]
+        },
+        {
+          "source": "https://raw.githubusercontent.com/once-ui-system/magic-portfolio/d8dbd32aa13899775b5d2624426e27e0141cbe0d/LICENSE",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "CC BY-NC 4.0 noncommercial license"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "github:BartoszJarocki/cv",
+      "commit": "b9c9c2bacf539d6bbab13714fa1c39a1afd0ad08",
+      "license": "MIT",
+      "securityEvidence": "partial",
+      "signals": {
+        "functionalFit": 78,
+        "architectureCompatibility": 62,
+        "maintenanceHealth": 92,
+        "quality": 58,
+        "security": 66,
+        "licenseClarity": 100,
+        "integrationEffort": 88
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/BartoszJarocki/cv/tree/b9c9c2bacf539d6bbab13714fa1c39a1afd0ad08",
+          "retrievedAt": "2026-08-02T16:40:01.575Z",
+          "supports": [
+            "Print-friendly concise CV structure",
+            "MIT license",
+            "Current Next.js source",
+            "No CI or tests"
+          ]
+        }
+      ]
+    }
+  ]
+}

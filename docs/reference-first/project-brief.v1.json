@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectType": "multilingual static professional portfolio",
+  "capabilities": [
+    "single-page responsive portfolio",
+    "research and project case studies with accessible progressive disclosure",
+    "English Arabic and Turkish localization with right-to-left support",
+    "dark and light themes with reduced-motion support",
+    "structured content with evidence and public-disclosure status",
+    "localized academic CV and industry resume downloads",
+    "static search metadata social sharing and structured data",
+    "GitHub Pages deployment",
+    "accessibility and performance budget validation"
+  ],
+  "constraints": {
+    "stack": [
+      "static site generation",
+      "GitHub Pages",
+      "TypeScript preferred",
+      "one application shell",
+      "one router",
+      "one styling foundation",
+      "one content system",
+      "no runtime server"
+    ],
+    "architectureCandidates": [
+      "Astro",
+      "Next.js static export",
+      "other actively maintained static-first architecture"
+    ],
+    "content": [
+      "single factual source of truth",
+      "locale-specific static URLs",
+      "English default locale",
+      "complete Arabic and Turkish locales",
+      "user-reviewed translations"
+    ],
+    "hosting": [
+      "public source repository",
+      "GitHub Actions deployment",
+      "future custom domain support"
+    ],
+    "excluded": [
+      "CMS",
+      "blog",
+      "analytics",
+      "contact form",
+      "user accounts",
+      "database",
+      "third-party runtime tracking"
+    ],
+    "quality": [
+      "WCAG 2.2 AA target",
+      "keyboard and visible-focus support",
+      "prefers-reduced-motion support",
+      "LCP below 2.5 seconds",
+      "CLS below 0.1",
+      "INP below 200 milliseconds",
+      "initial JavaScript below 120 KB compressed"
+    ]
+  },
+  "riskProfile": "professional-standard",
+  "riskElevations": [],
+  "licensePolicy": "permissive-default",
+  "explicitRepositoryHints": [],
+  "sensitiveTerms": [],
+  "sanitizedSearchTerms": "premium multilingual static research portfolio accessible case studies RTL dark light theme GitHub Pages Astro Next.js TypeScript"
+}
