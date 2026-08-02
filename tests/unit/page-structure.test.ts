@@ -32,6 +32,11 @@ describe('portfolio page structure', () => {
     expect(source).toContain('<footer');
     expect(source).not.toContain('OpticField');
     expect(source).not.toContain('brand-mark');
+    expect(source).toContain("id: 'academic'");
+    expect(source).toContain("id: 'personal'");
+    expect(source).toContain('project-group--${group.id}');
+    expect(source).toContain('<h2>{labels.story}</h2>');
+    expect(source).not.toContain('<h2>{content.about.title}</h2>');
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
   });
 });

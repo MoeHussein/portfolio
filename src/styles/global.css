@@ -303,66 +303,138 @@
     margin-inline: auto;
   }
   .work-content h2 {
-    margin-block-end: 2.3rem;
+    margin-block-end: 3.5rem;
     font-size: clamp(2rem, 3vw, 3.25rem);
     font-weight: 500;
     letter-spacing: -0.045em;
   }
-  .project-index {
-    width: min(43rem, 48%);
-    border-block-start: 1px solid rgba(255, 255, 255, 0.16);
+  .project-groups {
+    display: grid;
+    width: min(70rem, 82%);
+    gap: clamp(4rem, 7vw, 7rem);
   }
-  .project-row {
+  .project-group-heading {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 1.25rem;
+    margin-block-end: 1.25rem;
+  }
+  .project-group-heading h3 {
+    color: #c5c8c8;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .project-group-heading span {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.16);
+  }
+  .project-cards {
+    display: grid;
+    gap: 1rem;
+  }
+  .project-group--academic .project-cards {
+    grid-template-columns: 1.25fr 1fr 1fr;
+  }
+  .project-group--personal .project-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .project-card {
+    position: relative;
     display: grid;
     width: 100%;
-    grid-template-columns: 3.7rem 1fr auto;
-    align-items: center;
-    gap: 1rem;
-    min-height: 6.4rem;
-    border: 0;
-    border-block-end: 1px solid rgba(255, 255, 255, 0.16);
-    background: transparent;
+    min-height: 16rem;
+    grid-template-rows: auto 1fr auto;
+    gap: 1.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 1.4rem;
+    background: rgba(8, 10, 11, 0.78);
     color: #f2f1ed;
-    padding: 1rem 0;
+    padding: 1.4rem;
     text-align: start;
     cursor: pointer;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.18);
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.75, 0.25, 1),
+      border-color 220ms ease,
+      background-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+  .project-card::before {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 1.4rem;
+    height: 1px;
+    background: var(--accent);
+    content: '';
+    opacity: 0;
+    transform: scaleX(0.25);
+    transform-origin: center;
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease;
+  }
+  .project-card:hover,
+  .project-card:focus-visible {
+    border-color: rgba(98, 230, 220, 0.46);
+    background: rgba(10, 13, 14, 0.92);
+    box-shadow: 0 1.8rem 4.5rem rgba(0, 0, 0, 0.3);
+    transform: translateY(-0.35rem);
+  }
+  .project-card:hover::before,
+  .project-card:focus-visible::before {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  .project-card-meta,
+  .project-card-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
   }
   .project-number {
-    align-self: start;
-    padding-block-start: 0.25rem;
     color: var(--accent);
-    font-size: 0.79rem;
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .project-status {
+    max-width: 65%;
+    color: #8b9091;
+    font-size: 0.62rem;
+    line-height: 1.35;
+    text-align: end;
   }
   .project-title {
+    align-self: end;
     display: grid;
-    gap: 0.32rem;
+    gap: 0.7rem;
   }
   .project-title strong {
-    font-size: clamp(1.2rem, 2vw, 2rem);
+    max-width: 16ch;
+    font-size: clamp(1.35rem, 2vw, 2rem);
     font-weight: 450;
     letter-spacing: -0.035em;
     line-height: 1.12;
   }
   .project-title small {
-    color: #858a8b;
-    font-size: 0.68rem;
-    line-height: 1.35;
+    max-width: 38ch;
+    color: #a0a4a5;
+    font-size: 0.74rem;
+    line-height: 1.5;
+  }
+  .project-card-footer {
+    align-items: end;
+    color: #8b9091;
+    font-size: 0.64rem;
   }
   .project-view {
-    align-self: start;
-    padding-block-start: 0.25rem;
-    color: #8b9091;
-    font-size: 0.7rem;
-    opacity: 0;
-    transform: translateX(-0.5rem);
-    transition:
-      opacity 160ms ease,
-      transform 160ms ease;
-  }
-  .project-row:hover .project-view,
-  .project-row:focus-visible .project-view {
-    opacity: 1;
-    transform: translateX(0);
+    color: #d8dbdb;
+    font-weight: 600;
+    letter-spacing: 0.04em;
   }
 
   .profile-section {
@@ -633,8 +705,14 @@
     .hero-content h1 {
       max-width: 12ch;
     }
-    .project-index {
-      width: min(38rem, 66%);
+    .project-groups {
+      width: min(54rem, 82%);
+    }
+    .project-group--academic .project-cards {
+      grid-template-columns: 1fr 1fr;
+    }
+    .project-group--academic .project-card:first-child {
+      grid-column: 1 / -1;
     }
     .profile-heading,
     .profile-group {
@@ -691,7 +769,7 @@
       font-size: 0.82rem;
     }
     .work-section {
-      min-height: 78rem;
+      min-height: auto;
       padding-block: 7rem;
     }
     .work-art {
@@ -706,21 +784,24 @@
       margin-block-end: 2rem;
       font-size: 2.2rem;
     }
-    .project-index {
+    .project-groups {
       width: 100%;
+      gap: 4rem;
     }
-    .project-row {
-      grid-template-columns: 2.5rem 1fr;
-      min-height: 5.8rem;
+    .project-group--academic .project-cards,
+    .project-group--personal .project-cards {
+      grid-template-columns: 1fr;
+    }
+    .project-group--academic .project-card:first-child {
+      grid-column: auto;
+    }
+    .project-card {
+      min-height: 13.5rem;
+      border-radius: 1.2rem;
+      padding: 1.2rem;
     }
     .project-title strong {
-      font-size: 1.28rem;
-    }
-    .project-title small {
-      color: #9ca0a1;
-    }
-    .project-view {
-      display: none;
+      font-size: 1.45rem;
     }
     .profile-section {
       padding-block: 6rem;

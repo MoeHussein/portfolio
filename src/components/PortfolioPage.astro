@@ -31,6 +31,8 @@ const labels = {
     artwork: 'Decorative computational imaging artwork',
     polarizationArtwork: 'Decorative polarization imaging artwork',
     independent: 'Independent study through public materials, not completed certifications.',
+    academic: 'Academic Work',
+    personal: 'Personal & Product Work',
   },
   ar: {
     work: 'أعمال مختارة',
@@ -46,6 +48,8 @@ const labels = {
     artwork: 'عمل بصري زخرفي مستوحى من التصوير الحاسوبي',
     polarizationArtwork: 'عمل بصري زخرفي مستوحى من التصوير بالاستقطاب',
     independent: 'دراسة مستقلة من مواد عامة وليست شهادات مكتملة.',
+    academic: 'العمل الأكاديمي',
+    personal: 'العمل الشخصي والمنتجات',
   },
   tr: {
     work: 'Seçili Çalışmalar',
@@ -61,8 +65,28 @@ const labels = {
     artwork: 'Hesaplamalı görüntülemeden esinlenen dekoratif görsel',
     polarizationArtwork: 'Polarizasyon görüntülemeden esinlenen dekoratif görsel',
     independent: 'Açık materyallerle bağımsız çalışma, tamamlanmış sertifikalar değildir.',
+    academic: 'Akademik Çalışmalar',
+    personal: 'Kişisel ve Ürün Çalışmaları',
   },
 }[locale];
+
+const academicProjectIds = new Set([
+  'dual-shot-pdhm',
+  'reference-free-phase-bias',
+  'patient-specific-knee',
+]);
+const projectGroups = [
+  {
+    id: 'academic',
+    title: labels.academic,
+    projects: content.projects.filter((project) => academicProjectIds.has(project.id)),
+  },
+  {
+    id: 'personal',
+    title: labels.personal,
+    projects: content.projects.filter((project) => !academicProjectIds.has(project.id)),
+  },
+];
 ---
 
 <BaseLayout
@@ -129,21 +153,40 @@ const labels = {
       </picture>
       <div class="work-content">
         <h2>{labels.work}</h2>
-        <div class="project-index">
+        <div class="project-groups">
           {
-            content.projects.map((project, index) => (
-              <button
-                type="button"
-                class="project-row"
-                data-dialog-open={`project-${project.id}`}
-                aria-label={`${labels.view}: ${project.title}`}
-              >
-                <span class="project-number">{String(index + 1).padStart(2, '0')}</span>
-                <span class="project-title">
-                  <strong>{project.title}</strong>
-                </span>
-                <span class="project-view">{labels.view}</span>
-              </button>
+            projectGroups.map((group) => (
+              <section class:list={['project-group', `project-group--${group.id}`]}>
+                <div class="project-group-heading">
+                  <h3>{group.title}</h3>
+                  <span aria-hidden="true" />
+                </div>
+                <div class="project-cards">
+                  {group.projects.map((project) => (
+                    <button
+                      type="button"
+                      class="project-card"
+                      data-dialog-open={`project-${project.id}`}
+                      aria-label={`${labels.view}: ${project.title}`}
+                    >
+                      <span class="project-card-meta">
+                        <span class="project-number">
+                          {String(content.projects.indexOf(project) + 1).padStart(2, '0')}
+                        </span>
+                        <span class="project-status">{project.status}</span>
+                      </span>
+                      <span class="project-title">
+                        <strong>{project.title}</strong>
+                        <small>{project.summary}</small>
+                      </span>
+                      <span class="project-card-footer">
+                        <span>{project.technologies.slice(0, 2).join(' · ')}</span>
+                        <span class="project-view">{labels.view}</span>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </section>
             ))
           }
         </div>
@@ -153,7 +196,7 @@ const labels = {
     <section class="profile-section" id="profile">
       <header class="profile-heading">
         <p>{labels.profile}</p>
-        <h2>{content.about.title}</h2>
+        <h2>{labels.story}</h2>
       </header>
 
       <div class="story">

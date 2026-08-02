@@ -16,6 +16,9 @@
 - Mobile work: `tmp/portfolio-cinematic-mobile-work.png`
 - Mobile project dialog: `tmp/portfolio-cinematic-dialog-mobile.png`
 - Side-by-side comparison: `tmp/design-qa-comparison.png`
+- Updated card layout, desktop academic group: `tmp/portfolio-cards-desktop.png` (1280 x 720 px)
+- Updated card layout, desktop personal/product group: `tmp/portfolio-cards-personal.png` (1280 x 720 px)
+- Updated card layout, mobile: `tmp/portfolio-cards-mobile.png` (390 x 844 px)
 
 The full comparison places the approved hero and work frames in the left column and the corresponding implementation captures in the right column. Focused mobile captures are included because responsive composition and project-dialog behavior cannot be judged from the desktop reference alone.
 
@@ -26,7 +29,7 @@ The full comparison places the approved hero and work frames in the left column 
 - P2 visible mismatches: none
 - P3 intentional differences:
   - The implementation retains language and theme controls required by the approved functional scope.
-  - The selected-work index contains all seven factual projects instead of showing only the first three reference rows.
+  - At the user's request, Selected Work now uses CSS-styled cards and separates three academic projects from four personal/product projects instead of the original single project index.
   - The artwork uses the separately generated production assets from the approved direction, with responsive crops rather than the exact mockup crop.
 
 ## Comparison history
@@ -36,11 +39,14 @@ The full comparison places the approved hero and work frames in the left column 
 - Removed visible project-status labels from the desktop index.
 - Reduced desktop hero height to improve continuity into the second image.
 - Preserved a full-height mobile hero for legibility and image impact.
+- Removed the "Curiosity became a direction" heading and replaced it with the direct label "About."
+- Replaced the flat project rows with responsive, keyboard-accessible CSS cards.
+- Added explicit Academic Work and Personal & Product Work groups without changing factual project content.
 
 ## Interaction and accessibility checks
 
 - Header navigation scrolls to Selected Work, Profile, and Contact.
-- Project rows open factual detail dialogs and the Close control dismisses them.
+- Project cards open factual detail dialogs and the Close control dismisses them.
 - Dark/light theme toggle works and defaults to dark on a fresh visit.
 - English, Arabic, and Turkish routes build successfully.
 - Keyboard focus styles and reduced-motion behavior are implemented.
