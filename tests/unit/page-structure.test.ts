@@ -21,15 +21,17 @@ describe('portfolio page structure', () => {
     expect(source).toContain(`locale="${locale}"`);
   });
 
-  it('contains every approved single-page section in the shared page', () => {
+  it('contains the compact approved single-page sections in the shared page', () => {
     const path = join(root, 'src/components/PortfolioPage.astro');
     const source = existsSync(path) ? readFileSync(path, 'utf8') : '';
 
-    for (const id of ['about', 'research', 'projects', 'experience', 'skills', 'contact']) {
+    for (const id of ['top', 'work', 'profile', 'contact']) {
       expect(source).toContain(`id="${id}"`);
     }
     expect(source).toContain('<main');
     expect(source).toContain('<footer');
+    expect(source).not.toContain('OpticField');
+    expect(source).not.toContain('brand-mark');
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
   });
 });
