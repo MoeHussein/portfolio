@@ -1,0 +1,42 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PUBLIC_SITE_URL: https://moehussein.github.io
+      PUBLIC_BASE_PATH: /portfolio
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - name: Install, validate, build, and upload
+        uses: withastro/action@e84f40bd8d2caa9e768ec82ad30dd81f0b280853
+        with:
+          node-version: 24.11.1
+          package-manager: pnpm@11.9.0
+          build-cmd: pnpm run test && pnpm run lint && pnpm run build && pnpm run validate:html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128
