@@ -128,7 +128,14 @@ const projectGroups = [
           <p class="hero-verse-translation" lang="en">
             And rely upon Allah; and sufficient is Allah as Disposer of affairs.
           </p>
-          <footer>Surah Al-Ahzab · 33:3</footer>
+          <div class="hero-verse-reference">
+            <span
+              class="hero-verse-mark"
+              role="img"
+              aria-label="Alhamdulillah"
+              style={`--mark-url: url("${base}alhamdulillah.svg")`}></span>
+            <footer>Surah Al-Ahzab · 33:3</footer>
+          </div>
         </blockquote>
         <div class="hero-actions">
           <a href={`mailto:${content.contact.email}`}>{ui.contact}</a>

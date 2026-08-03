@@ -49,6 +49,8 @@ describe('portfolio page structure', () => {
     expect(source).toContain('class="hero-verse"');
     expect(source).toContain('وَتَوَكَّلْ');
     expect(source).toContain('Surah Al-Ahzab · 33:3');
+    expect(source).toContain('class="hero-verse-mark"');
+    expect(existsSync(join(root, 'public/alhamdulillah.svg'))).toBe(true);
     expect(source).not.toContain('ui.contactTitle');
     expect(source).not.toContain('ui.copyright');
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
