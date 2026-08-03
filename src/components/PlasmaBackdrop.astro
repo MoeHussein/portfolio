@@ -76,7 +76,8 @@
       mainImage(outputColor, gl_FragCoord.xy);
       vec3 plasma = sanitize(outputColor.rgb);
       float intensity = (plasma.r + plasma.g + plasma.b) / 3.0;
-      fragColor = vec4(intensity * uCustomColor, clamp(length(plasma) * uOpacity, 0.0, 1.0));
+      float presence = clamp(intensity * 1.65, 0.0, 1.0);
+      fragColor = vec4(presence * uCustomColor, clamp(length(plasma) * uOpacity * 1.25, 0.0, 1.0));
     }
   `;
 
@@ -121,7 +122,7 @@
           uCustomColor: { value: hexToVec3('#ff7a2f') },
           uSpeed: { value: 0.22 },
           uScale: { value: 1.18 },
-          uOpacity: { value: 0.38 },
+          uOpacity: { value: 0.34 },
           uQuality: { value: quality },
           uStepScale: { value: 60 / quality },
         },
@@ -131,7 +132,7 @@
       const applyTheme = () => {
         const isLight = document.documentElement.dataset.theme === 'light';
         program.uniforms.uCustomColor.value = hexToVec3(isLight ? '#20262b' : '#ff7a2f');
-        program.uniforms.uOpacity.value = isLight ? 0.22 : 0.38;
+        program.uniforms.uOpacity.value = isLight ? 0.3 : 0.34;
       };
 
       const resize = () => {
