@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroAtmosphere from './HeroAtmosphere.astro';
 
 interface Props {
   locale: 'en' | 'tr';
@@ -117,6 +118,7 @@ const projectGroups = [
 
   <main id="main-content">
     <section class="hero" id="top">
+      <HeroAtmosphere />
       <div class="hero-content">
         <h1>{content.name}</h1>
         <p class="headline">{content.headline}</p>

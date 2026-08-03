@@ -47,6 +47,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain('theme-icon--moon');
     expect(source).not.toContain('data-theme-label');
     expect(source).toContain('class="hero-verse"');
+    expect(source).toContain('<HeroAtmosphere />');
     expect(source).toContain('وَتَوَكَّلْ');
     expect(source).toContain('Surah Al-Ahzab · 33:3');
     expect(source).toContain('class="contact-calligraphy"');
@@ -54,6 +55,18 @@ describe('portfolio page structure', () => {
     expect(source).not.toContain('ui.contactTitle');
     expect(source).not.toContain('ui.copyright');
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
+  });
+
+  it('keeps the hero atmosphere decorative and free of pointer interaction', () => {
+    const path = join(root, 'src/components/HeroAtmosphere.astro');
+    const source = existsSync(path) ? readFileSync(path, 'utf8') : '';
+
+    expect(source).toContain('data-side-rays');
+    expect(source).toContain('data-soft-aurora');
+    expect(source).toContain('aria-hidden="true"');
+    expect(source).toContain("matchMedia('(prefers-reduced-motion: reduce)')");
+    expect(source).toContain('IntersectionObserver');
+    expect(source).not.toMatch(/mouse|pointermove/i);
   });
 
   it('self-hosts a dedicated Quranic typeface for the Arabic verse', () => {

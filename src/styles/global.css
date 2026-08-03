@@ -273,6 +273,8 @@
     content: '';
   }
   .hero-content {
+    position: relative;
+    z-index: 1;
     display: grid;
     width: var(--page);
     grid-template-areas:
