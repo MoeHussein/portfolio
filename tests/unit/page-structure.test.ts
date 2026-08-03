@@ -32,6 +32,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain('<footer');
     expect(source).not.toContain('OpticField');
     expect(source).not.toContain('brand-mark');
+    expect(source).not.toContain('class="brand"');
     expect(source).toContain("id: 'academic'");
     expect(source).toContain("id: 'personal'");
     expect(source).toContain('project-group--${group.id}');
