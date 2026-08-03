@@ -178,7 +178,36 @@
     cursor: pointer;
   }
   .theme-toggle {
-    padding: 0.35rem 0;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    padding: 0;
+    border-radius: 50%;
+    transition:
+      background-color 140ms ease,
+      color 140ms ease;
+  }
+  .theme-toggle:hover {
+    background: var(--surface);
+  }
+  .theme-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .theme-icon--moon {
+    display: none;
+  }
+  :root[data-theme='light'] .theme-icon--sun {
+    display: none;
+  }
+  :root[data-theme='light'] .theme-icon--moon {
+    display: block;
   }
   .language-switcher {
     position: relative;

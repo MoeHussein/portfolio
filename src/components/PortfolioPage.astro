@@ -92,7 +92,25 @@ const projectGroups = [
         </div>
       </details>
       <button class="theme-toggle" type="button" aria-label={ui.theme} data-theme-toggle>
-        <span data-theme-label>{labels.light}</span>
+        <svg
+          class="theme-icon theme-icon--sun"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="12" cy="12" r="3.5"></circle>
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"
+          ></path>
+        </svg>
+        <svg
+          class="theme-icon theme-icon--moon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M20.25 15.35A8.5 8.5 0 0 1 8.65 3.75 8.5 8.5 0 1 0 20.25 15.35Z"></path>
+        </svg>
       </button>
     </div>
   </header>
@@ -342,17 +360,10 @@ const projectGroups = [
     ))
   }
 
-  <script define:vars={{ lightLabel: labels.light, darkLabel: labels.dark }}>
+  <script is:inline>
     const root = document.documentElement;
     const header = document.querySelector('[data-header]');
     const themeToggle = document.querySelector('[data-theme-toggle]');
-    const themeLabel = document.querySelector('[data-theme-label]');
-
-    const updateThemeLabel = () => {
-      if (themeLabel)
-        themeLabel.textContent = root.dataset.theme === 'light' ? darkLabel : lightLabel;
-    };
-    updateThemeLabel();
 
     themeToggle?.addEventListener('click', () => {
       const nextTheme = root.dataset.theme === 'light' ? 'dark' : 'light';
@@ -361,7 +372,6 @@ const projectGroups = [
       document
         .querySelector('[data-theme-color]')
         ?.setAttribute('content', nextTheme === 'light' ? '#f5f5f2' : '#0b0f12');
-      updateThemeLabel();
     });
 
     document

@@ -41,6 +41,9 @@ describe('portfolio page structure', () => {
     expect(source).not.toContain('<picture');
     expect(source).not.toContain('data-hero-art');
     expect(source).not.toContain('data-work-art');
+    expect(source).toContain('theme-icon--sun');
+    expect(source).toContain('theme-icon--moon');
+    expect(source).not.toContain('data-theme-label');
     expect(source).not.toContain('ui.contactTitle');
     expect(source).not.toContain('ui.copyright');
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
