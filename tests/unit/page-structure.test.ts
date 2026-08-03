@@ -79,6 +79,8 @@ describe('portfolio page structure', () => {
     expect(source).toContain("color2: '#000000'");
     expect(source).toContain("program.uniforms.iDarkRays.value = theme === 'light' ? 1 : 0");
     expect(source).toContain('color.rgb = vec3(0.0)');
+    expect(source).toContain("theme === 'dark' && container.clientWidth >= 900");
+    expect(source).toContain('softenDesktopDarkRays ? 0.42 : 1');
     expect(source).toContain('new MutationObserver(applyTheme)');
     expect(source).toContain(
       'color.rgb = clamp(mix(vec3(gray), color.rgb, iSaturation), 0.0, 1.0)',

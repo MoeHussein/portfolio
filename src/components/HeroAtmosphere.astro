@@ -205,7 +205,8 @@
           program.uniforms.iSaturation.value = settings.saturation;
           program.uniforms.iBlend.value = settings.blend;
           program.uniforms.iFalloff.value = settings.falloff;
-          program.uniforms.iOpacity.value = settings.opacity;
+          const softenDesktopDarkRays = theme === 'dark' && container.clientWidth >= 900;
+          program.uniforms.iOpacity.value = settings.opacity * (softenDesktopDarkRays ? 0.42 : 1);
           program.uniforms.iDarkRays.value = theme === 'light' ? 1 : 0;
           render(performance.now());
         };
@@ -265,6 +266,7 @@
         );
         const resizeObserver = new ResizeObserver(() => {
           resize();
+          applyTheme();
           render(0);
         });
         const themeObserver = new MutationObserver(applyTheme);
