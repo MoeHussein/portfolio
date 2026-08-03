@@ -46,6 +46,9 @@
     --line-strong: rgba(242, 245, 244, 0.22);
     --accent: #62e6dc;
     --accent-soft: rgba(98, 230, 220, 0.12);
+    --verse-text: #fffaf0;
+    --verse-accent: #ff9d45;
+    --verse-muted: #c6c0b7;
     --header: rgba(11, 15, 18, 0.86);
     --shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.2);
     --page: min(1120px, calc(100vw - 64px));
@@ -65,6 +68,9 @@
     --line-strong: rgba(16, 19, 20, 0.22);
     --accent: #087f79;
     --accent-soft: rgba(8, 127, 121, 0.1);
+    --verse-text: #17120f;
+    --verse-accent: #ad4d10;
+    --verse-muted: #625b55;
     --header: rgba(245, 245, 242, 0.88);
     --shadow: 0 1.25rem 3rem rgba(16, 19, 20, 0.08);
   }
@@ -263,11 +269,21 @@
     content: '';
   }
   .hero-content {
+    display: grid;
     width: var(--page);
+    grid-template-areas:
+      'name verse'
+      'headline verse'
+      'statement verse'
+      'actions verse';
+    grid-template-columns: minmax(0, 1.15fr) minmax(19rem, 0.85fr);
+    column-gap: clamp(3rem, 8vw, 7rem);
+    align-items: start;
     margin-inline: auto;
     padding-block: 8rem 4.5rem;
   }
   .hero-content h1 {
+    grid-area: name;
     max-width: 17ch;
     font-size: clamp(3rem, 4.4vw, 4.25rem);
     font-weight: 500;
@@ -275,6 +291,7 @@
     line-height: 0.98;
   }
   .headline {
+    grid-area: headline;
     max-width: 45rem;
     margin-block-start: 2rem;
     color: var(--accent);
@@ -283,12 +300,56 @@
     line-height: 1.45;
   }
   .hero-statement {
+    grid-area: statement;
     max-width: 36rem;
     margin-block-start: 1.35rem;
     color: var(--muted);
     font-size: clamp(0.92rem, 1.05vw, 1.02rem);
   }
+  .hero-verse {
+    grid-area: verse;
+    align-self: end;
+    margin: 0;
+    color: var(--verse-text);
+    text-align: end;
+  }
+  .hero-verse::before {
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    margin-block-end: 1rem;
+    margin-inline-start: auto;
+    background: var(--verse-accent);
+    content: '';
+  }
+  .hero-verse-arabic {
+    font-family: 'Noto Naskh Arabic', 'Traditional Arabic', 'Times New Roman', serif;
+    font-size: clamp(1.55rem, 2.25vw, 2rem);
+    font-weight: 400;
+    line-height: 1.75;
+  }
+  .hero-verse-arabic strong {
+    color: var(--verse-accent);
+    font-weight: 700;
+  }
+  .hero-verse-translation {
+    max-width: 33rem;
+    margin-block-start: 0.75rem;
+    margin-inline-start: auto;
+    color: var(--verse-muted);
+    font-size: clamp(0.78rem, 0.9vw, 0.86rem);
+    line-height: 1.6;
+  }
+  .hero-verse footer {
+    margin-block-start: 0.55rem;
+    color: var(--verse-accent);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
   .hero-actions {
+    grid-area: actions;
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
@@ -814,6 +875,13 @@
       align-items: center;
     }
     .hero-content {
+      grid-template-areas:
+        'name'
+        'headline'
+        'statement'
+        'verse'
+        'actions';
+      grid-template-columns: 1fr;
       padding-block: 8.5rem 3.75rem;
     }
     .hero-content h1 {
@@ -829,9 +897,19 @@
       margin-block-start: 1.2rem;
       font-size: 0.87rem;
     }
+    .hero-verse {
+      max-width: 32rem;
+      margin-block-start: 2.25rem;
+    }
+    .hero-verse-arabic {
+      font-size: clamp(1.45rem, 7vw, 1.8rem);
+    }
+    .hero-verse-translation {
+      font-size: 0.78rem;
+    }
     .hero-actions {
       gap: 0.65rem;
-      margin-block-start: 2rem;
+      margin-block-start: 1.75rem;
     }
     .hero-actions a {
       min-width: 0;

@@ -46,6 +46,9 @@ describe('portfolio page structure', () => {
     expect(source).toContain('theme-icon--sun');
     expect(source).toContain('theme-icon--moon');
     expect(source).not.toContain('data-theme-label');
+    expect(source).toContain('class="hero-verse"');
+    expect(source).toContain('وَتَوَكَّلْ');
+    expect(source).toContain('Surah Al-Ahzab · 33:3');
     expect(source).not.toContain('ui.contactTitle');
     expect(source).not.toContain('ui.copyright');
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
