@@ -37,6 +37,8 @@ describe('portfolio page structure', () => {
     expect(source).toContain("id: 'personal'");
     expect(source).toContain('project-group--${group.id}');
     expect(source).toContain('<h2>{labels.story}</h2>');
+    expect(source).toContain('content.about.paragraphs[0]');
+    expect(source).not.toContain('content.about.paragraphs[1]');
     expect(source).not.toContain('<h2>{content.about.title}</h2>');
     expect(source).not.toContain('<picture');
     expect(source).not.toContain('data-hero-art');

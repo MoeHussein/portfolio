@@ -500,15 +500,13 @@
     line-height: 1;
   }
   .story {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 5vw, 5rem);
     margin-inline-start: 0;
     padding-block: 2.25rem 3rem;
     border-block-start: 1px solid var(--line);
     color: var(--muted);
   }
   .story p:first-child {
+    max-width: 76ch;
     color: var(--text);
     font-size: clamp(1rem, 1.25vw, 1.15rem);
     line-height: 1.65;
@@ -871,8 +869,7 @@
       padding-block: 4rem;
     }
     .profile-heading,
-    .profile-group,
-    .story {
+    .profile-group {
       grid-template-columns: 1fr;
       gap: 1.4rem;
     }
