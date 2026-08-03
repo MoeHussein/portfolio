@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "verifiedAt": "2026-08-03T14:10:07.991Z",
+  "verifiedAt": "2026-08-03T14:43:54.965Z",
   "valid": true,
   "issues": [],
   "checks": [
@@ -20,7 +20,7 @@
       "environment": "preview",
       "command": "node tmp/capture-atmosphere.mjs",
       "result": "passed",
-      "evidence": "Desktop dark, desktop light, and 390 by 844 mobile dark views each initialized one SideRays canvas and one SoftAurora canvas, retained opacity 1 for rays, and had no horizontal overflow or WebGL failure."
+      "evidence": "Desktop dark, desktop light, and 390 by 844 mobile dark views each initialized one SideRays canvas and one SoftAurora canvas, retained CSS opacity 1 for rays, and had no horizontal overflow or WebGL failure. The extended source was visible across the upper hero, while live theme switching applied orange and blue light-theme uniforms without the former black output."
     },
     {
       "environment": "physical-device",

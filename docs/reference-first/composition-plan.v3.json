@@ -20,13 +20,13 @@
       "commit": "d26ed7a476148f1253cca3f5bc9f679fda53e1f5",
       "license": "LicenseRef-MIT-Commons-Clause-1.0",
       "licenseObligations": "Retain the 2026 David Haz copyright, permission notice, Commons Clause restriction, and warranty disclaimer. Do not sell or redistribute the adapted components alone, bundled, or as a ported component library.",
-      "modificationSummary": "Port the supplied React shaders into two framework-native Astro components, retain OGL only, use the requested SideRays defaults, use orange and blue SoftAurora colors, remove all mouse interaction, and add reduced-motion, visibility, resize, and WebGL cleanup handling.",
+      "modificationSummary": "Port the supplied React shaders into two framework-native Astro components, retain OGL only, extend the SideRays source into the hero, add theme-specific orange and blue ray colors with clamped shader output, use orange and blue SoftAurora colors, remove all mouse interaction, and add reduced-motion, visibility, resize, theme, and WebGL cleanup handling.",
       "contributionBoundary": "Decorative SideRays behind the hero and SoftAurora at the Work-to-Profile transition only. No React runtime, component API, router, content system, or styling foundation is adopted.",
       "intakeMode": "copy-source"
     }
   ],
   "requiredApprovals": [
-    "Use the user-supplied SideRays defaults at full opacity in the hero.",
+    "Use the user-supplied SideRays character in the hero, with an extended source and theme-specific color correction for visibility in dark and light modes.",
     "Move the original SoftAurora effect to immediately before Profile without mouse interaction."
   ],
   "approvalStatus": "approved",

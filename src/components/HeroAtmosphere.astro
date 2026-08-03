@@ -57,7 +57,7 @@
       if (iFlipY > 0.5) fragCoord.y = iResolution.y - fragCoord.y;
 
       vec2 coord = vec2(fragCoord.x, iResolution.y - fragCoord.y);
-      vec2 rayPosition = vec2(iResolution.x * 1.1, -0.5 * iResolution.y);
+      vec2 rayPosition = vec2(iResolution.x * 1.02, -0.22 * iResolution.y);
       float tiltRadians = iTilt * 3.14159265 / 180.0;
       float cosineTilt = cos(tiltRadians);
       float sineTilt = sin(tiltRadians);
@@ -102,8 +102,8 @@
       color.rgb *= brightness;
 
       float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
-      color.rgb = mix(vec3(gray), color.rgb, iSaturation);
-      color.a = max(color.r, max(color.g, color.b)) * iOpacity;
+      color.rgb = clamp(mix(vec3(gray), color.rgb, iSaturation), 0.0, 1.0);
+      color.a = clamp(max(color.r, max(color.g, color.b)) * iOpacity, 0.0, 1.0);
       gl_FragColor = color;
     }
   `;
@@ -160,6 +160,40 @@
         });
         const mesh = new Mesh(gl, { geometry: new Triangle(gl), program });
 
+        const rayThemes = {
+          dark: {
+            color1: '#EAB308',
+            color2: '#96c8ff',
+            intensity: 2,
+            saturation: 1.5,
+            blend: 0.75,
+            falloff: 1.6,
+            opacity: 1,
+          },
+          light: {
+            color1: '#f07b24',
+            color2: '#458fe0',
+            intensity: 1.5,
+            saturation: 1.65,
+            blend: 0.58,
+            falloff: 1.45,
+            opacity: 0.9,
+          },
+        } as const;
+
+        const applyTheme = () => {
+          const theme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+          const settings = rayThemes[theme];
+          program.uniforms.iRayColor1.value = hexToVec3(settings.color1);
+          program.uniforms.iRayColor2.value = hexToVec3(settings.color2);
+          program.uniforms.iIntensity.value = settings.intensity;
+          program.uniforms.iSaturation.value = settings.saturation;
+          program.uniforms.iBlend.value = settings.blend;
+          program.uniforms.iFalloff.value = settings.falloff;
+          program.uniforms.iOpacity.value = settings.opacity;
+          render(performance.now());
+        };
+
         const resize = () => {
           renderer.setSize(Math.max(container.clientWidth, 1), Math.max(container.clientHeight, 1));
           program.uniforms.iResolution.value = [gl.canvas.width, gl.canvas.height];
@@ -213,11 +247,17 @@
           resize();
           render(0);
         });
+        const themeObserver = new MutationObserver(applyTheme);
 
         resize();
+        applyTheme();
         render(0);
         visibilityObserver.observe(root);
         resizeObserver.observe(root);
+        themeObserver.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme'],
+        });
         document.addEventListener('visibilitychange', handleVisibility);
         reducedMotion.addEventListener('change', handleMotionPreference);
         start();
@@ -228,6 +268,7 @@
             stop();
             visibilityObserver.disconnect();
             resizeObserver.disconnect();
+            themeObserver.disconnect();
             document.removeEventListener('visibilitychange', handleVisibility);
             reducedMotion.removeEventListener('change', handleMotionPreference);
             gl.getExtension('WEBGL_lose_context')?.loseContext();

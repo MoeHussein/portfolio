@@ -71,6 +71,14 @@ describe('portfolio page structure', () => {
     expect(source).not.toMatch(/mouse|pointermove/i);
     expect(source).toContain('iIntensity: { value: 2 }');
     expect(source).toContain('iOpacity: { value: 1 }');
+    expect(source).toContain('iResolution.x * 1.02');
+    expect(source).toContain('-0.22 * iResolution.y');
+    expect(source).toContain("color1: '#f07b24'");
+    expect(source).toContain("color2: '#458fe0'");
+    expect(source).toContain('new MutationObserver(applyTheme)');
+    expect(source).toContain(
+      'color.rgb = clamp(mix(vec3(gray), color.rgb, iSaturation), 0.0, 1.0)',
+    );
     expect(source).toMatch(/\.hero-atmosphere__rays\s*\{[\s\S]*?opacity:\s*1/);
     expect(aurora).toContain('data-soft-aurora');
     expect(aurora).toContain('aria-hidden="true"');
