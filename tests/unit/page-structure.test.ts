@@ -72,6 +72,9 @@ describe('portfolio page structure', () => {
     expect(source).toContain('window.innerWidth < 700 ? 30 : 38');
     expect(source).toContain('window.innerWidth < 700 ? 0.42 : 0.48');
     expect(source).toContain("isLight ? '#20262b' : '#ff7a2f'");
+    expect(source).toContain('isLight ? 0.22 : 0.38');
+    expect(source).toContain('mix-blend-mode: screen');
+    expect(source).toContain('mix-blend-mode: multiply');
     expect(source).toContain('new MutationObserver');
     expect(source).toMatch(/\.plasma-backdrop\s*\{[\s\S]*?position:\s*fixed/);
     expect(source).toMatch(/\.plasma-backdrop\s*\{[\s\S]*?pointer-events:\s*none/);

@@ -121,7 +121,7 @@
           uCustomColor: { value: hexToVec3('#ff7a2f') },
           uSpeed: { value: 0.22 },
           uScale: { value: 1.18 },
-          uOpacity: { value: 0.14 },
+          uOpacity: { value: 0.38 },
           uQuality: { value: quality },
           uStepScale: { value: 60 / quality },
         },
@@ -131,7 +131,7 @@
       const applyTheme = () => {
         const isLight = document.documentElement.dataset.theme === 'light';
         program.uniforms.uCustomColor.value = hexToVec3(isLight ? '#20262b' : '#ff7a2f');
-        program.uniforms.uOpacity.value = isLight ? 0.075 : 0.14;
+        program.uniforms.uOpacity.value = isLight ? 0.22 : 0.38;
       };
 
       const resize = () => {
@@ -233,6 +233,11 @@
     z-index: 0;
     inset: 0;
     overflow: hidden;
+    mix-blend-mode: screen;
     pointer-events: none;
+  }
+
+  :global(:root[data-theme='light']) .plasma-backdrop {
+    mix-blend-mode: multiply;
   }
 </style>
