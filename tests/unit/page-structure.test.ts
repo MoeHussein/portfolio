@@ -48,7 +48,7 @@ describe('portfolio page structure', () => {
     expect(source).not.toContain('data-theme-label');
     expect(source).toContain('class="hero-verse"');
     expect(source).toContain('<HeroAtmosphere />');
-    expect(source).toContain('<ProfileAurora />');
+    expect(source).not.toContain('ProfileAurora');
     expect(source).toContain('وَتَوَكَّلْ');
     expect(source).toContain('Surah Al-Ahzab · 33:3');
     expect(source).toContain('class="contact-calligraphy"');
@@ -60,9 +60,7 @@ describe('portfolio page structure', () => {
 
   it('keeps the hero atmosphere decorative and free of pointer interaction', () => {
     const heroPath = join(root, 'src/components/HeroAtmosphere.astro');
-    const auroraPath = join(root, 'src/components/ProfileAurora.astro');
     const source = existsSync(heroPath) ? readFileSync(heroPath, 'utf8') : '';
-    const aurora = existsSync(auroraPath) ? readFileSync(auroraPath, 'utf8') : '';
 
     expect(source).toContain('data-side-rays');
     expect(source).toContain('aria-hidden="true"');
@@ -71,22 +69,21 @@ describe('portfolio page structure', () => {
     expect(source).not.toMatch(/mouse|pointermove/i);
     expect(source).toContain('iIntensity: { value: 2 }');
     expect(source).toContain('iOpacity: { value: 1 }');
-    expect(source).toContain('iResolution.x * 1.02');
-    expect(source).toContain('-0.22 * iResolution.y');
-    expect(source).toContain("color1: '#f07b24'");
-    expect(source).toContain("color2: '#458fe0'");
+    expect(source).toContain('iResolution.x * iSourceX');
+    expect(source).toContain('iSourceY * iResolution.y');
+    expect(source).toContain('iSpread: { value: 2.2 }');
+    expect(source).toContain('program.uniforms.iSourceX.value = isDesktop ? 1.12 : 1.02');
+    expect(source).toContain('program.uniforms.iSourceY.value = isDesktop ? -0.58 : -0.22');
+    expect(source).toContain('program.uniforms.iSpread.value = isDesktop ? 2.35 : 2');
+    expect(source).toContain("color1: '#000000'");
+    expect(source).toContain("color2: '#000000'");
+    expect(source).toContain("program.uniforms.iDarkRays.value = theme === 'light' ? 1 : 0");
     expect(source).toContain('new MutationObserver(applyTheme)');
     expect(source).toContain(
       'color.rgb = clamp(mix(vec3(gray), color.rgb, iSaturation), 0.0, 1.0)',
     );
     expect(source).toMatch(/\.hero-atmosphere__rays\s*\{[\s\S]*?opacity:\s*1/);
-    expect(aurora).toContain('data-soft-aurora');
-    expect(aurora).toContain('aria-hidden="true"');
-    expect(aurora).toContain("matchMedia('(prefers-reduced-motion: reduce)')");
-    expect(aurora).toContain('IntersectionObserver');
-    expect(aurora).not.toMatch(/mouse|pointermove/i);
-    expect(aurora).toContain('uBrightness: { value: 1 }');
-    expect(aurora).not.toMatch(/opacity:\s*0\./);
+    expect(existsSync(join(root, 'src/components/ProfileAurora.astro'))).toBe(false);
   });
 
   it('self-hosts a dedicated Quranic typeface for the Arabic verse', () => {

@@ -2,7 +2,6 @@
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroAtmosphere from './HeroAtmosphere.astro';
-import ProfileAurora from './ProfileAurora.astro';
 
 interface Props {
   locale: 'en' | 'tr';
@@ -191,7 +190,6 @@ const projectGroups = [
     </section>
 
     <section class="profile-section" id="profile">
-      <ProfileAurora />
       <header class="profile-heading">
         <p>{labels.profile}</p>
       </header>

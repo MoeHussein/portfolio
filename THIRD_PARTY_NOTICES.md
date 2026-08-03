@@ -1,8 +1,8 @@
 # Third-party notices
 
-## React Bits: SideRays and SoftAurora
+## React Bits: SideRays
 
-The `SideRays` and `SoftAurora` shader implementations in this portfolio are adapted from [React Bits](https://github.com/DavidHDev/react-bits) at commit `d26ed7a476148f1253cca3f5bc9f679fda53e1f5`.
+The `SideRays` shader implementation in this portfolio is adapted from [React Bits](https://github.com/DavidHDev/react-bits) at commit `d26ed7a476148f1253cca3f5bc9f679fda53e1f5`.
 
 MIT + Commons Clause License Condition v1.0
 
