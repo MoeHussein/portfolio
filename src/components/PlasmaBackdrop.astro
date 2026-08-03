@@ -82,8 +82,8 @@
       vec3 animatedColor = mix(uCustomColor, uSecondaryColor, colorPhase);
       float darkAlpha = clamp(length(plasma) * uOpacity, 0.0, 1.0);
       float lightAlpha = clamp(intensity * uOpacity * 1.4, 0.0, 1.0);
-      vec3 outputColor = mix(intensity * animatedColor, animatedColor, uLightMode);
-      fragColor = vec4(outputColor, mix(darkAlpha, lightAlpha, uLightMode));
+      vec3 tintedOutput = mix(intensity * animatedColor, animatedColor, uLightMode);
+      fragColor = vec4(tintedOutput, mix(darkAlpha, lightAlpha, uLightMode));
     }
   `;
 
