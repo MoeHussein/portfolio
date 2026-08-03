@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "1.0.0",
+  "items": [
+    {
+      "id": "github:RyanFitzgerald/devportfolio",
+      "commit": "852d650fb0a8cf0c98f874af5a56a0a9b7d7d4b7",
+      "license": "MIT",
+      "securityEvidence": "partial",
+      "signals": {
+        "functionalFit": 94,
+        "architectureCompatibility": 76,
+        "maintenanceHealth": 78,
+        "quality": 55,
+        "security": 42,
+        "licenseClarity": 100,
+        "integrationEffort": 92
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/RyanFitzgerald/devportfolio/tree/852d650fb0a8cf0c98f874af5a56a0a9b7d7d4b7",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "Single-page portfolio organized around hero projects experience and education",
+            "Current repository popularity of 4947 stars within the portfolio-template class",
+            "Recent repository activity in May 2026",
+            "No test suite or continuous-integration workflow detected"
+          ]
+        },
+        {
+          "source": "https://ryanfitzgerald.github.io/devportfolio/",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "Coherent desktop layout at a 1440 by 900 viewport",
+            "Clear hero hierarchy and section spacing",
+            "Solid bordered project-card treatment"
+          ]
+        },
+        {
+          "source": "https://raw.githubusercontent.com/RyanFitzgerald/devportfolio/852d650fb0a8cf0c98f874af5a56a0a9b7d7d4b7/LICENSE.md",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "MIT license text"
+          ]
+        },
+        {
+          "source": "https://raw.githubusercontent.com/RyanFitzgerald/devportfolio/852d650fb0a8cf0c98f874af5a56a0a9b7d7d4b7/package.json",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "Astro and Tailwind foundations must not be adopted because they would compete with the pinned local foundations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "github:satnaing/astro-paper",
+      "commit": "4fe3aca0e09ed8404ec2e716ac4f3b57ccc252eb",
+      "license": "MIT",
+      "securityEvidence": "partial",
+      "signals": {
+        "functionalFit": 54,
+        "architectureCompatibility": 74,
+        "maintenanceHealth": 98,
+        "quality": 80,
+        "security": 82,
+        "licenseClarity": 100,
+        "integrationEffort": 58
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/satnaing/astro-paper/tree/4fe3aca0e09ed8404ec2e716ac4f3b57ccc252eb",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "Actively maintained Astro 7 source",
+            "Light and dark themes responsive behavior accessibility and internationalization",
+            "Continuous integration workflow",
+            "4914 stars within the Astro-theme class"
+          ]
+        },
+        {
+          "source": "https://github.com/satnaing/astro-paper/releases/tag/v6.1.0",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "Current versioned release published in June 2026"
+          ]
+        },
+        {
+          "source": "https://raw.githubusercontent.com/satnaing/astro-paper/4fe3aca0e09ed8404ec2e716ac4f3b57ccc252eb/LICENSE",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "MIT license text"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "github:ncdai/chanhdai.com",
+      "commit": "d5e2186d77ad2285c4564c00a63f5faad5855ae6",
+      "license": "MIT",
+      "securityEvidence": "partial",
+      "signals": {
+        "functionalFit": 72,
+        "architectureCompatibility": 32,
+        "maintenanceHealth": 100,
+        "quality": 95,
+        "security": 75,
+        "licenseClarity": 100,
+        "integrationEffort": 28
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/ncdai/chanhdai.com/tree/d5e2186d77ad2285c4564c00a63f5faad5855ae6",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "Highly polished current portfolio with light and dark modes",
+            "Automated workflows and tests",
+            "2160 stars within the live-personal-site class",
+            "Large Next.js React Tailwind and component-registry architecture conflicts with the approved local foundations"
+          ]
+        },
+        {
+          "source": "https://chanhdai.com/",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "Compact visual rhythm and precise theme treatment",
+            "Feature and content density exceeds the approved portfolio scope"
+          ]
+        },
+        {
+          "source": "https://raw.githubusercontent.com/ncdai/chanhdai.com/d5e2186d77ad2285c4564c00a63f5faad5855ae6/LICENSE",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "MIT license text"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "github:BartoszJarocki/cv",
+      "commit": "b9c9c2bacf539d6bbab13714fa1c39a1afd0ad08",
+      "license": "MIT",
+      "securityEvidence": "partial",
+      "signals": {
+        "functionalFit": 69,
+        "architectureCompatibility": 36,
+        "maintenanceHealth": 88,
+        "quality": 60,
+        "security": 70,
+        "licenseClarity": 100,
+        "integrationEffort": 72
+      },
+      "evidence": [
+        {
+          "source": "https://github.com/BartoszJarocki/cv/tree/b9c9c2bacf539d6bbab13714fa1c39a1afd0ad08",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "Compact scan-friendly professional hierarchy",
+            "9675 stars within the CV-page class",
+            "Current Next.js source but no detected CI or tests",
+            "CV-first structure does not provide portfolio project presentation"
+          ]
+        },
+        {
+          "source": "https://raw.githubusercontent.com/BartoszJarocki/cv/b9c9c2bacf539d6bbab13714fa1c39a1afd0ad08/LICENSE",
+          "retrievedAt": "2026-08-03T01:40:27.640Z",
+          "supports": [
+            "MIT license text"
+          ]
+        }
+      ]
+    }
+  ]
+}

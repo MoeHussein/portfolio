@@ -1,0 +1,264 @@
+{
+  "schemaVersion": "1.0.0",
+  "fetchedAt": "2026-08-03T01:40:27.640Z",
+  "dryRun": false,
+  "partial": true,
+  "queries": {
+    "base": "responsive single-page professional portfolio refinement single-page responsive portfolio mobile tablet 1440 by 900 laptop viewports separate academic personal",
+    "github": [
+      "responsive single-page professional portfolio refinement single-page in:name,description,readme archived:false stars:>=25",
+      "responsive single-page professional portfolio refinement single-page starter template in:name,description,readme archived:false stars:>=10",
+      "responsive single-page professional portfolio refinement single-page responsive portfolio mobile tablet 1440 by 900 laptop viewports in:name,description archived:false stars:>=100"
+    ],
+    "npm": [
+      "single-page responsive portfolio mobile tablet 1440 by 900 laptop viewports",
+      "separate academic personal project collections accessible case-study dialogs",
+      "coherent light dark themes across every page section overlay",
+      "concise factual profile experience education skills recognition contact content"
+    ],
+    "repositoryHints": [
+      "RyanFitzgerald/devportfolio",
+      "satnaing/astro-paper",
+      "ncdai/chanhdai.com",
+      "BartoszJarocki/cv"
+    ]
+  },
+  "items": [
+    {
+      "id": "github:BartoszJarocki/cv",
+      "sourceType": "github",
+      "name": "BartoszJarocki/cv",
+      "description": "Print-friendly, minimalist CV page",
+      "url": "https://github.com/BartoszJarocki/cv",
+      "stars": 9675,
+      "archived": false,
+      "fork": false,
+      "pushedAt": "2026-03-03T22:25:51Z",
+      "updatedAt": "2026-08-02T16:22:35Z",
+      "fetchedAt": "2026-08-03T01:40:27.640Z",
+      "license": "MIT",
+      "defaultBranch": "main",
+      "topics": [
+        "nextjs",
+        "react",
+        "shadcn-ui",
+        "tailwindcss"
+      ],
+      "language": "TypeScript",
+      "deprecated": false,
+      "requestedRepository": "BartoszJarocki/cv",
+      "renamedFrom": null,
+      "securityEvidence": "partial",
+      "discoverySource": "explicit-hint",
+      "discoveryRelevance": 1,
+      "commit": "b9c9c2bacf539d6bbab13714fa1c39a1afd0ad08",
+      "licenseConflict": false,
+      "languages": {
+        "TypeScript": 57571,
+        "JavaScript": 3761,
+        "CSS": 1954,
+        "Dockerfile": 905
+      },
+      "release": null,
+      "releasePublishedAt": null,
+      "hasRelease": false,
+      "hasDocs": true,
+      "hasCI": false,
+      "hasTests": false,
+      "hasSecurityPolicy": false,
+      "typed": true,
+      "publishedSecurityAdvisories": {
+        "critical": 0,
+        "high": 0,
+        "total": 0
+      },
+      "inspectionWarnings": [
+        "latest release unavailable: Command failed: gh api -X GET repos/BartoszJarocki/cv/releases/latest\ngh: Not Found (HTTP 404)\n"
+      ]
+    },
+    {
+      "id": "github:RyanFitzgerald/devportfolio",
+      "sourceType": "github",
+      "name": "RyanFitzgerald/devportfolio",
+      "description": "A modern, minimalist portfolio template built with Astro and Tailwind CSS. Perfect for developers looking to showcase their skills, experience, and projects in a clean, professional way.",
+      "url": "https://github.com/RyanFitzgerald/devportfolio",
+      "stars": 4947,
+      "archived": false,
+      "fork": false,
+      "pushedAt": "2026-05-14T23:17:23Z",
+      "updatedAt": "2026-08-02T04:21:34Z",
+      "fetchedAt": "2026-08-03T01:40:27.640Z",
+      "license": "MIT",
+      "defaultBranch": "master",
+      "topics": [
+        "javascript",
+        "portfolio",
+        "portfolio-template",
+        "portfolio-website",
+        "sass",
+        "skills",
+        "template",
+        "timeline"
+      ],
+      "language": "Astro",
+      "deprecated": false,
+      "requestedRepository": "RyanFitzgerald/devportfolio",
+      "renamedFrom": null,
+      "securityEvidence": "partial",
+      "discoverySource": "explicit-hint",
+      "discoveryRelevance": 1,
+      "commit": "852d650fb0a8cf0c98f874af5a56a0a9b7d7d4b7",
+      "licenseConflict": false,
+      "languages": {
+        "Astro": 29556,
+        "TypeScript": 3536,
+        "JavaScript": 213,
+        "CSS": 76
+      },
+      "release": null,
+      "releasePublishedAt": null,
+      "hasRelease": false,
+      "hasDocs": true,
+      "hasCI": false,
+      "hasTests": false,
+      "hasSecurityPolicy": false,
+      "typed": true,
+      "publishedSecurityAdvisories": {
+        "critical": 0,
+        "high": 0,
+        "total": 0
+      },
+      "inspectionWarnings": [
+        "latest release unavailable: Command failed: gh api -X GET repos/RyanFitzgerald/devportfolio/releases/latest\ngh: Not Found (HTTP 404)\n"
+      ]
+    },
+    {
+      "id": "github:ncdai/chanhdai.com",
+      "sourceType": "github",
+      "name": "ncdai/chanhdai.com",
+      "description": "A pixel-perfect dev portfolio and shadcn registry.",
+      "url": "https://github.com/ncdai/chanhdai.com",
+      "stars": 2160,
+      "archived": false,
+      "fork": false,
+      "pushedAt": "2026-08-01T09:45:44Z",
+      "updatedAt": "2026-08-02T18:36:27Z",
+      "fetchedAt": "2026-08-03T01:40:27.640Z",
+      "license": "MIT",
+      "defaultBranch": "main",
+      "topics": [
+        "base-ui",
+        "components",
+        "dev-portfolio",
+        "motion",
+        "nextjs",
+        "portfolio",
+        "radix-ui",
+        "react",
+        "shadcn",
+        "shadcn-components",
+        "shadcn-registry",
+        "shadcn-ui",
+        "tailwindcss",
+        "ui"
+      ],
+      "language": "TypeScript",
+      "deprecated": false,
+      "requestedRepository": "ncdai/chanhdai.com",
+      "renamedFrom": null,
+      "securityEvidence": "partial",
+      "discoverySource": "explicit-hint",
+      "discoveryRelevance": 1,
+      "commit": "d5e2186d77ad2285c4564c00a63f5faad5855ae6",
+      "licenseConflict": false,
+      "languages": {
+        "TypeScript": 1859571,
+        "MDX": 119222,
+        "CSS": 33490,
+        "JavaScript": 4215
+      },
+      "release": null,
+      "releasePublishedAt": null,
+      "hasRelease": false,
+      "hasDocs": true,
+      "hasCI": true,
+      "hasTests": true,
+      "hasSecurityPolicy": false,
+      "typed": true,
+      "publishedSecurityAdvisories": {
+        "critical": 0,
+        "high": 0,
+        "total": 0
+      },
+      "inspectionWarnings": [
+        "latest release unavailable: Command failed: gh api -X GET repos/ncdai/chanhdai.com/releases/latest\ngh: Not Found (HTTP 404)\n"
+      ]
+    },
+    {
+      "id": "github:satnaing/astro-paper",
+      "sourceType": "github",
+      "name": "satnaing/astro-paper",
+      "description": "A minimal, accessible and SEO-friendly Astro blog theme.",
+      "url": "https://github.com/satnaing/astro-paper",
+      "stars": 4914,
+      "archived": false,
+      "fork": false,
+      "pushedAt": "2026-08-02T05:13:11Z",
+      "updatedAt": "2026-08-03T00:28:15Z",
+      "fetchedAt": "2026-08-03T01:40:27.640Z",
+      "license": "MIT",
+      "defaultBranch": "main",
+      "topics": [
+        "a11y",
+        "accessibility",
+        "astro",
+        "astro-theme",
+        "astro-themes",
+        "blog",
+        "jamstack",
+        "markdown",
+        "ssg",
+        "static-site",
+        "static-site-generator",
+        "tailwindcss",
+        "template",
+        "theme",
+        "typescript"
+      ],
+      "language": "Astro",
+      "deprecated": false,
+      "requestedRepository": "satnaing/astro-paper",
+      "renamedFrom": null,
+      "securityEvidence": "partial",
+      "discoverySource": "explicit-hint",
+      "discoveryRelevance": 0,
+      "commit": "4fe3aca0e09ed8404ec2e716ac4f3b57ccc252eb",
+      "licenseConflict": false,
+      "languages": {
+        "Astro": 66608,
+        "TypeScript": 37824,
+        "MDX": 35923,
+        "CSS": 4371,
+        "JavaScript": 2703,
+        "Dockerfile": 405
+      },
+      "release": "v6.1.0",
+      "releasePublishedAt": "2026-06-06T09:04:14Z",
+      "hasRelease": true,
+      "hasDocs": true,
+      "hasCI": true,
+      "hasTests": false,
+      "hasSecurityPolicy": false,
+      "typed": true,
+      "publishedSecurityAdvisories": {
+        "critical": 0,
+        "high": 0,
+        "total": 0
+      },
+      "inspectionWarnings": []
+    }
+  ],
+  "warnings": [
+    "npm discovery failed: registry.npmjs.org returned HTTP 400"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectType": "responsive single-page professional portfolio refinement",
+  "capabilities": [
+    "single-page responsive portfolio for mobile tablet and 1440 by 900 laptop viewports",
+    "separate academic and personal project collections with accessible case-study dialogs",
+    "coherent light and dark themes across every page section and overlay",
+    "concise factual profile experience education skills recognition and contact content",
+    "English and Turkish static routes",
+    "downloadable localized CV files",
+    "static metadata sitemap robots structured data and social sharing",
+    "GitHub Pages deployment",
+    "accessibility reduced-motion and performance validation"
+  ],
+  "constraints": {
+    "stack": [
+      "retain Astro 7.1.6 as the sole application framework and file router",
+      "retain Astro content collections as the sole content system",
+      "retain project-owned vanilla CSS as the sole styling foundation",
+      "retain static GitHub Pages deployment",
+      "do not add React Tailwind a second router a second content system or a server runtime"
+    ],
+    "design": [
+      "minimal solid and precise visual language",
+      "no decorative hero artwork or background images",
+      "restrained teal accent",
+      "compact vertical rhythm",
+      "full theme-token coverage for hero work cards and dialogs",
+      "visible usable navigation tabs on mobile",
+      "one bounded external visual reference with no dependency adoption"
+    ],
+    "content": [
+      "preserve the current verified portfolio source of truth",
+      "do not invent claims outcomes clients statistics credentials or testimonials",
+      "English remains the default locale",
+      "Arabic remains excluded until reviewed",
+      "Turkish remains available for later user review"
+    ],
+    "excluded": [
+      "new application scaffold",
+      "CMS",
+      "blog",
+      "analytics",
+      "contact form",
+      "user accounts",
+      "database",
+      "third-party runtime tracking",
+      "decorative photography or scientific artwork"
+    ],
+    "quality": [
+      "WCAG 2.2 AA target",
+      "keyboard and visible-focus support",
+      "prefers-reduced-motion support",
+      "usable at 320 390 768 1280 and 1440 pixel widths",
+      "LCP below 2.5 seconds",
+      "CLS below 0.1",
+      "INP below 200 milliseconds",
+      "initial JavaScript below 120 KB compressed"
+    ]
+  },
+  "riskProfile": "professional-standard",
+  "riskElevations": [],
+  "licensePolicy": "permissive-default",
+  "explicitRepositoryHints": [
+    "RyanFitzgerald/devportfolio",
+    "satnaing/astro-paper",
+    "ncdai/chanhdai.com",
+    "BartoszJarocki/cv"
+  ],
+  "sensitiveTerms": [],
+  "sanitizedSearchTerms": "maintained minimal responsive single page portfolio Astro light dark theme accessible project cards mobile navigation"
+}

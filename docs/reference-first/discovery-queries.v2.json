@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "fetchedAt": "2026-08-03T01:40:06.548Z",
+  "dryRun": true,
+  "queries": {
+    "base": "responsive single-page professional portfolio refinement single-page responsive portfolio mobile tablet 1440 by 900 laptop viewports separate academic personal",
+    "github": [
+      "responsive single-page professional portfolio refinement single-page in:name,description,readme archived:false stars:>=25",
+      "responsive single-page professional portfolio refinement single-page starter template in:name,description,readme archived:false stars:>=10",
+      "responsive single-page professional portfolio refinement single-page responsive portfolio mobile tablet 1440 by 900 laptop viewports in:name,description archived:false stars:>=100"
+    ],
+    "npm": [
+      "single-page responsive portfolio mobile tablet 1440 by 900 laptop viewports",
+      "separate academic personal project collections accessible case-study dialogs",
+      "coherent light dark themes across every page section overlay",
+      "concise factual profile experience education skills recognition contact content"
+    ],
+    "repositoryHints": [
+      "RyanFitzgerald/devportfolio",
+      "satnaing/astro-paper",
+      "ncdai/chanhdai.com",
+      "BartoszJarocki/cv"
+    ]
+  },
+  "items": [],
+  "warnings": []
+}

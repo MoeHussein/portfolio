@@ -1,0 +1,10 @@
+{
+  "github:withastro/astro-minimal": {
+    "commit": "9865d1c03af6d1a1f15c9811858778cc952ca4e4",
+    "license": "MIT"
+  },
+  "github:satnaing/astro-paper": {
+    "commit": "4fe3aca0e09ed8404ec2e716ac4f3b57ccc252eb",
+    "license": "MIT"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0.0",
+  "createdAt": "2026-08-03T01:45:00.000Z",
+  "primary": {
+    "id": "github:withastro/astro-minimal",
+    "name": "Official Astro minimal starter",
+    "url": "https://github.com/withastro/astro/tree/astro%407.1.6/examples/minimal",
+    "commit": "9865d1c03af6d1a1f15c9811858778cc952ca4e4",
+    "license": "MIT",
+    "licenseObligations": "Preserve the Astro MIT copyright and license notice in third-party notices.",
+    "modificationSummary": "Retain the already-approved and implemented Astro application shell without replacement.",
+    "contributionBoundary": "The sole application framework, file router, content-collection foundation, and static build model.",
+    "intakeMode": "copy-source"
+  },
+  "secondary": [
+    {
+      "id": "github:satnaing/astro-paper",
+      "name": "AstroPaper",
+      "url": "https://github.com/satnaing/astro-paper/tree/4fe3aca0e09ed8404ec2e716ac4f3b57ccc252eb",
+      "commit": "4fe3aca0e09ed8404ec2e716ac4f3b57ccc252eb",
+      "license": "MIT",
+      "licenseObligations": "No source is copied. Preserve this record as provenance for the conceptual reference.",
+      "modificationSummary": "Reference its complete theme-token coverage, restrained responsive shell, accessible navigation behavior, and compact spacing cadence without copying source or adopting dependencies.",
+      "contributionBoundary": "Conceptual reference for full-site dark and light theming, laptop-width rhythm, and mobile header behavior only.",
+      "intakeMode": "concept"
+    }
+  ],
+  "requiredApprovals": [
+    "Retain the previously approved official Astro minimal scaffold and exact package architecture.",
+    "Use AstroPaper only as a conceptual visual-system reference with no copied source and no added dependency."
+  ],
+  "approvalStatus": "approved",
+  "conflicts": [
+    "No Tailwind foundation, blog, MDX content, search, RSS, React runtime, second router, second content system, analytics, or deployment model will be introduced.",
+    "No external repository may replace the existing Astro application shell or factual content model.",
+    "No decorative artwork or background imagery will be reintroduced."
+  ],
+  "remainingUncertainty": [
+    "Turkish copy still requires user review.",
+    "Headshot and optional project media remain deferred.",
+    "Physical-device review remains necessary after deployment."
+  ],
+  "rejectedFinalists": [
+    {
+      "id": "github:RyanFitzgerald/devportfolio",
+      "score": 78.65,
+      "reason": "Rejected by the evaluation hard gate despite its stars and strong single-page fit: it has no release, CI, or tests, its mobile navigation is hidden, it has no dark theme, and adopting its Astro 5 and Tailwind foundations would conflict with the approved architecture."
+    },
+    {
+      "id": "github:ncdai/chanhdai.com",
+      "score": 75.13,
+      "reason": "Rejected because its large Next.js, React, Tailwind, motion, and component-registry architecture is disproportionate to this static single-page portfolio and conflicts with the approved foundations."
+    },
+    {
+      "id": "github:BartoszJarocki/cv",
+      "score": 70.45,
+      "reason": "Rejected for the website refinement because it is a compact CV page rather than a project-led portfolio; it remains covered by the earlier print-only conceptual boundary."
+    }
+  ]
+}

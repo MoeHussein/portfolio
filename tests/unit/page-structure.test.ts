@@ -45,4 +45,27 @@ describe('portfolio page structure', () => {
     expect(source).not.toContain('ui.copyright');
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
   });
+
+  it('keeps the complete page on one theme-token system', () => {
+    const path = join(root, 'src/styles/global.css');
+    const source = existsSync(path) ? readFileSync(path, 'utf8') : '';
+
+    expect(source).not.toContain('#030405');
+    expect(source).toMatch(/\.hero\s*\{[\s\S]*?background:\s*var\(--page-bg\)/);
+    expect(source).toMatch(/\.work-section\s*\{[\s\S]*?background:\s*var\(--section-bg\)/);
+    expect(source).toMatch(/\.project-card\s*\{[\s\S]*?background:\s*var\(--surface\)/);
+    expect(source).toMatch(/\.case-study-dialog\s*\{[\s\S]*?background:\s*var\(--surface-raised\)/);
+  });
+
+  it('retains visible mobile navigation and compact horizontal project rows', () => {
+    const path = join(root, 'src/styles/global.css');
+    const source = existsSync(path) ? readFileSync(path, 'utf8') : '';
+
+    expect(source).toMatch(
+      /@media \(max-width: 640px\)[\s\S]*?\.desktop-nav\s*\{[\s\S]*?display:\s*grid/,
+    );
+    expect(source).toMatch(
+      /@media \(max-width: 900px\)[\s\S]*?\.project-cards\s*\{[\s\S]*?overflow-x:\s*auto/,
+    );
+  });
 });
