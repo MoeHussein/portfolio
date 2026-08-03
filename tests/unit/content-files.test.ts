@@ -84,4 +84,11 @@ describe('localized portfolio content', () => {
       { language: 'Japanese', level: 'Beginner' },
     ]);
   });
+
+  it('uses the approved concise class rank wording', () => {
+    const englishSource = readFileSync(join(contentDirectory, 'en.json'), 'utf8');
+
+    expect(englishSource).toContain('Ranked 3rd in my class');
+    expect(englishSource).not.toContain('according to university records');
+  });
 });

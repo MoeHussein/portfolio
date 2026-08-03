@@ -28,8 +28,6 @@ const labels = {
     learning: 'Currently learning',
     light: 'Light',
     dark: 'Dark',
-    artwork: 'Decorative computational imaging artwork',
-    polarizationArtwork: 'Decorative polarization imaging artwork',
     independent: 'Independent study through public materials, not completed certifications.',
     academic: 'Academic Work',
     personal: 'Personal & Product Work',
@@ -45,8 +43,6 @@ const labels = {
     learning: 'Şu anda öğreniyorum',
     light: 'Açık',
     dark: 'Koyu',
-    artwork: 'Hesaplamalı görüntülemeden esinlenen dekoratif görsel',
-    polarizationArtwork: 'Polarizasyon görüntülemeden esinlenen dekoratif görsel',
     independent: 'Açık materyallerle bağımsız çalışma, tamamlanmış sertifikalar değildir.',
     academic: 'Akademik Çalışmalar',
     personal: 'Kişisel ve Ürün Çalışmaları',
@@ -102,16 +98,7 @@ const projectGroups = [
   </header>
 
   <main id="main-content">
-    <section class="hero" id="top" data-hero>
-      <picture class="hero-art" data-hero-art>
-        <img
-          src={`${base}images/cellular-imaging-art.webp`}
-          alt={labels.artwork}
-          width="1536"
-          height="1024"
-          fetchpriority="high"
-        />
-      </picture>
+    <section class="hero" id="top">
       <div class="hero-content">
         <h1>{content.name}</h1>
         <p class="headline">{content.headline}</p>
@@ -123,16 +110,7 @@ const projectGroups = [
       </div>
     </section>
 
-    <section class="work-section" id="work" data-work>
-      <picture class="work-art" data-work-art>
-        <img
-          src={`${base}images/polarization-imaging-art.webp`}
-          alt={labels.polarizationArtwork}
-          width="1536"
-          height="1024"
-          loading="lazy"
-        />
-      </picture>
+    <section class="work-section" id="work">
       <div class="work-content">
         <h2>{labels.work}</h2>
         <div class="project-groups">
@@ -369,11 +347,6 @@ const projectGroups = [
     const header = document.querySelector('[data-header]');
     const themeToggle = document.querySelector('[data-theme-toggle]');
     const themeLabel = document.querySelector('[data-theme-label]');
-    const hero = document.querySelector('[data-hero]');
-    const heroArt = document.querySelector('[data-hero-art]');
-    const work = document.querySelector('[data-work]');
-    const workArt = document.querySelector('[data-work-art]');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const updateThemeLabel = () => {
       if (themeLabel)
@@ -414,23 +387,6 @@ const projectGroups = [
       scheduled = false;
       const y = window.scrollY;
       header?.classList.toggle('is-scrolled', y > 40);
-      if (reduceMotion.matches) return;
-
-      if (hero && heroArt) {
-        const rect = hero.getBoundingClientRect();
-        const progress = Math.min(1, Math.max(0, -rect.top / Math.max(1, rect.height * 0.72)));
-        heroArt.style.opacity = String(1 - progress * 0.76);
-        heroArt.style.transform = `translate3d(0, ${progress * 1.5}%, 0) scale(${1 - progress * 0.015})`;
-      }
-      if (work && workArt) {
-        const rect = work.getBoundingClientRect();
-        const progress = Math.min(
-          1,
-          Math.max(0, (window.innerHeight - rect.top) / Math.max(1, window.innerHeight * 0.72)),
-        );
-        workArt.style.opacity = String(progress);
-        workArt.style.transform = `translate3d(0, ${(1 - progress) * 2}%, 0) scale(${0.985 + progress * 0.015})`;
-      }
     };
     const requestScrollUpdate = () => {
       if (scheduled) return;

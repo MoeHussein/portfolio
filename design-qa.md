@@ -20,6 +20,7 @@
 - Updated card layout, desktop personal/product group: `tmp/portfolio-cards-personal.png` (1280 x 720 px)
 - Updated card layout, mobile: `tmp/portfolio-cards-mobile.png` (390 x 844 px)
 - Latest responsive review: desktop 1280 x 720 CSS px and mobile 390 x 844 CSS px in the in-app browser
+- Content-only review: desktop 1280 x 720 CSS px and mobile 390 x 844 CSS px with zero rendered images
 
 The full comparison places the approved hero and work frames in the left column and the corresponding implementation captures in the right column. Focused mobile captures are included because responsive composition and project-dialog behavior cannot be judged from the desktop reference alone.
 
@@ -33,6 +34,7 @@ The full comparison places the approved hero and work frames in the left column 
   - At the user's request, Selected Work now uses CSS-styled cards and separates three academic projects from four personal/product projects instead of the original single project index.
   - The artwork uses the separately generated production assets from the approved direction, with responsive crops rather than the exact mockup crop.
   - Arabic is intentionally removed from the current public release until its translation is ready.
+  - The two approved artwork images are intentionally hidden for the current content-review phase at the user's request; the source assets remain available for a later visual pass.
 
 ## Comparison history
 
@@ -57,6 +59,8 @@ The full comparison places the approved hero and work frames in the left column 
 - At 390 x 844, all three navigation tabs are visible, the page has no horizontal overflow and the hero name is 48.75 px.
 - At both reviewed breakpoints, the hero and work artwork transforms have zero horizontal translation.
 - The VitroMech dialog uses a 21.6 px outer radius and 13.6 px inner-card radius on mobile.
+- The BSc education detail now ends with the concise wording “Ranked 3rd in my class.”
+- The content-only hero and work sections render without images, horizontal overflow or missing navigation at both reviewed breakpoints.
 - Keyboard focus styles and reduced-motion behavior are implemented.
 - Browser console errors during the tested journey: 0.
 
