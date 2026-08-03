@@ -379,7 +379,7 @@
     min-width: 0;
     min-height: 15rem;
     flex: 1 1 0;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 2rem 1fr auto;
     gap: 1.5rem;
     overflow: hidden;
     border: 1px solid var(--line);
@@ -441,7 +441,7 @@
     text-align: end;
   }
   .project-title {
-    align-self: end;
+    align-self: start;
     display: grid;
     gap: 0.7rem;
   }

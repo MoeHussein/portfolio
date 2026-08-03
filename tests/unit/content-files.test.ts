@@ -118,6 +118,13 @@ describe('localized portfolio content', () => {
     expect(englishSource).not.toContain('according to university records');
   });
 
+  it('uses a concise title for the client website collection', () => {
+    const english = readProfiles().find(({ locale }) => locale === 'en');
+    const clientWork = english?.projects.find(({ id }) => id === 'client-web-design');
+
+    expect(clientWork?.title).toBe('Client Websites');
+  });
+
   it('does not keep removed decorative contact or footer copy', () => {
     for (const profile of readProfiles()) {
       const ui = (profile as Profile & { ui: Record<string, string> }).ui;
