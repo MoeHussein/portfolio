@@ -56,6 +56,14 @@ describe('portfolio page structure', () => {
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
   });
 
+  it('self-hosts a dedicated Quranic typeface for the Arabic verse', () => {
+    const layout = readFileSync(join(root, 'src/layouts/BaseLayout.astro'), 'utf8');
+    const styles = readFileSync(join(root, 'src/styles/global.css'), 'utf8');
+
+    expect(layout).toContain('@fontsource/amiri-quran/arabic-400.css');
+    expect(styles).toMatch(/\.hero-verse-arabic\s*\{[\s\S]*?font-family:\s*'Amiri Quran'/);
+  });
+
   it('keeps the complete page on one theme-token system', () => {
     const path = join(root, 'src/styles/global.css');
     const source = existsSync(path) ? readFileSync(path, 'utf8') : '';
