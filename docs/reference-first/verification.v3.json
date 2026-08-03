@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "verifiedAt": "2026-08-03T14:10:07.991Z",
+  "valid": true,
+  "issues": [],
+  "checks": [
+    {
+      "environment": "local",
+      "command": "pnpm test && pnpm lint && pnpm format:check && pnpm build && pnpm validate:html",
+      "result": "passed",
+      "evidence": "17 tests passed; lint and formatting passed; Astro reported 0 errors; static build and HTML validation passed."
+    },
+    {
+      "environment": "local",
+      "command": "pnpm audit --prod --audit-level high",
+      "result": "passed",
+      "evidence": "No known production dependency vulnerabilities found."
+    },
+    {
+      "environment": "preview",
+      "command": "node tmp/capture-atmosphere.mjs",
+      "result": "passed",
+      "evidence": "Desktop dark, desktop light, and 390 by 844 mobile dark views each initialized one SideRays canvas and one SoftAurora canvas, retained opacity 1 for rays, and had no horizontal overflow or WebGL failure."
+    },
+    {
+      "environment": "physical-device",
+      "command": "User review after GitHub Pages deployment",
+      "result": "not-run",
+      "evidence": "Requires the user's phone."
+    }
+  ]
+}

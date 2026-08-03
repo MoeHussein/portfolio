@@ -48,6 +48,7 @@ describe('portfolio page structure', () => {
     expect(source).not.toContain('data-theme-label');
     expect(source).toContain('class="hero-verse"');
     expect(source).toContain('<HeroAtmosphere />');
+    expect(source).toContain('<ProfileAurora />');
     expect(source).toContain('وَتَوَكَّلْ');
     expect(source).toContain('Surah Al-Ahzab · 33:3');
     expect(source).toContain('class="contact-calligraphy"');
@@ -58,15 +59,26 @@ describe('portfolio page structure', () => {
   });
 
   it('keeps the hero atmosphere decorative and free of pointer interaction', () => {
-    const path = join(root, 'src/components/HeroAtmosphere.astro');
-    const source = existsSync(path) ? readFileSync(path, 'utf8') : '';
+    const heroPath = join(root, 'src/components/HeroAtmosphere.astro');
+    const auroraPath = join(root, 'src/components/ProfileAurora.astro');
+    const source = existsSync(heroPath) ? readFileSync(heroPath, 'utf8') : '';
+    const aurora = existsSync(auroraPath) ? readFileSync(auroraPath, 'utf8') : '';
 
     expect(source).toContain('data-side-rays');
-    expect(source).toContain('data-soft-aurora');
     expect(source).toContain('aria-hidden="true"');
     expect(source).toContain("matchMedia('(prefers-reduced-motion: reduce)')");
     expect(source).toContain('IntersectionObserver');
     expect(source).not.toMatch(/mouse|pointermove/i);
+    expect(source).toContain('iIntensity: { value: 2 }');
+    expect(source).toContain('iOpacity: { value: 1 }');
+    expect(source).toMatch(/\.hero-atmosphere__rays\s*\{[\s\S]*?opacity:\s*1/);
+    expect(aurora).toContain('data-soft-aurora');
+    expect(aurora).toContain('aria-hidden="true"');
+    expect(aurora).toContain("matchMedia('(prefers-reduced-motion: reduce)')");
+    expect(aurora).toContain('IntersectionObserver');
+    expect(aurora).not.toMatch(/mouse|pointermove/i);
+    expect(aurora).toContain('uBrightness: { value: 1 }');
+    expect(aurora).not.toMatch(/opacity:\s*0\./);
   });
 
   it('self-hosts a dedicated Quranic typeface for the Arabic verse', () => {

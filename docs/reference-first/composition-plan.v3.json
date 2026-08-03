@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "createdAt": "2026-08-03T14:10:07.991Z",
+  "primary": {
+    "id": "github:withastro/astro-minimal",
+    "name": "Official Astro minimal starter",
+    "url": "https://github.com/withastro/astro/tree/astro%407.1.6/examples/minimal",
+    "commit": "9865d1c03af6d1a1f15c9811858778cc952ca4e4",
+    "license": "MIT",
+    "licenseObligations": "Preserve the Astro MIT copyright and license notice in third-party notices.",
+    "modificationSummary": "Retain the approved Astro application shell without replacement.",
+    "contributionBoundary": "The sole application framework, router, content foundation, and static build model.",
+    "intakeMode": "copy-source"
+  },
+  "secondary": [
+    {
+      "id": "github:DavidHDev/react-bits",
+      "name": "React Bits SideRays and SoftAurora",
+      "url": "https://github.com/DavidHDev/react-bits/tree/d26ed7a476148f1253cca3f5bc9f679fda53e1f5/src/content/Backgrounds",
+      "commit": "d26ed7a476148f1253cca3f5bc9f679fda53e1f5",
+      "license": "LicenseRef-MIT-Commons-Clause-1.0",
+      "licenseObligations": "Retain the 2026 David Haz copyright, permission notice, Commons Clause restriction, and warranty disclaimer. Do not sell or redistribute the adapted components alone, bundled, or as a ported component library.",
+      "modificationSummary": "Port the supplied React shaders into two framework-native Astro components, retain OGL only, use the requested SideRays defaults, use orange and blue SoftAurora colors, remove all mouse interaction, and add reduced-motion, visibility, resize, and WebGL cleanup handling.",
+      "contributionBoundary": "Decorative SideRays behind the hero and SoftAurora at the Work-to-Profile transition only. No React runtime, component API, router, content system, or styling foundation is adopted.",
+      "intakeMode": "copy-source"
+    }
+  ],
+  "requiredApprovals": [
+    "Use the user-supplied SideRays defaults at full opacity in the hero.",
+    "Move the original SoftAurora effect to immediately before Profile without mouse interaction."
+  ],
+  "approvalStatus": "approved",
+  "conflicts": [
+    "React is not introduced; both effects remain Astro-native OGL components.",
+    "The two effects do not overlap, add page height, intercept pointer input, or replace existing theme and content foundations.",
+    "The adapted components remain inseparable parts of this portfolio application and are not offered as a standalone component product."
+  ],
+  "remainingUncertainty": [
+    "Physical-device GPU rendering remains subject to the user's final phone review."
+  ],
+  "rejectedFinalists": []
+}

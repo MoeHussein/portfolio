@@ -1,161 +1,110 @@
 <div class="hero-atmosphere" aria-hidden="true" data-hero-atmosphere>
-  <div class="hero-atmosphere__aurora" data-soft-aurora></div>
   <div class="hero-atmosphere__rays" data-side-rays></div>
 </div>
 
 <script>
   import { Mesh, Program, Renderer, Triangle } from 'ogl';
 
-  const sideRaysVertex = `
+  // Adapted from React Bits SideRays at commit d26ed7a476148f1253cca3f5bc9f679fda53e1f5.
+  // See THIRD_PARTY_NOTICES.md for the license and contribution boundary.
+
+  const vertexShader = `
     attribute vec2 position;
     void main() {
       gl_Position = vec4(position, 0.0, 1.0);
     }
   `;
 
-  const sideRaysFragment = `
+  const fragmentShader = `
     precision highp float;
 
     uniform float iTime;
     uniform vec2 iResolution;
+    uniform float iSpeed;
     uniform vec3 iRayColor1;
     uniform vec3 iRayColor2;
+    uniform float iIntensity;
+    uniform float iSpread;
+    uniform float iFlipX;
+    uniform float iFlipY;
+    uniform float iTilt;
+    uniform float iSaturation;
+    uniform float iBlend;
+    uniform float iFalloff;
+    uniform float iOpacity;
 
-    float rayStrength(vec2 source, vec2 direction, vec2 coord, float seedA, float seedB, float speed) {
-      vec2 sourceToCoord = coord - source;
-      float cosine = dot(normalize(sourceToCoord), direction);
-      float movement =
+    float rayStrength(
+      vec2 raySource,
+      vec2 rayReferenceDirection,
+      vec2 coord,
+      float seedA,
+      float seedB,
+      float speed
+    ) {
+      vec2 sourceToCoord = coord - raySource;
+      float cosine = dot(normalize(sourceToCoord), rayReferenceDirection);
+      return clamp(
         (0.45 + 0.15 * sin(cosine * seedA + iTime * speed)) +
-        (0.3 + 0.2 * cos(-cosine * seedB + iTime * speed));
-      float distanceFade = clamp((iResolution.x - length(sourceToCoord)) / iResolution.x, 0.35, 1.0);
-      return clamp(movement, 0.0, 1.0) * distanceFade;
+        (0.3 + 0.2 * cos(-cosine * seedB + iTime * speed)),
+        0.0,
+        1.0
+      ) * clamp((iResolution.x - length(sourceToCoord)) / iResolution.x, 0.5, 1.0);
     }
 
     void main() {
       vec2 fragCoord = gl_FragCoord.xy;
+      if (iFlipX > 0.5) fragCoord.x = iResolution.x - fragCoord.x;
+      if (iFlipY > 0.5) fragCoord.y = iResolution.y - fragCoord.y;
+
       vec2 coord = vec2(fragCoord.x, iResolution.y - fragCoord.y);
-      vec2 source = vec2(iResolution.x * 0.96, -0.06 * iResolution.y);
-      float halfSpread = 0.48;
-      vec2 direction1 = normalize(vec2(cos(0.785398 + halfSpread), sin(0.785398 + halfSpread)));
-      vec2 direction2 = normalize(vec2(cos(0.785398 - halfSpread), sin(0.785398 - halfSpread)));
+      vec2 rayPosition = vec2(iResolution.x * 1.1, -0.5 * iResolution.y);
+      float tiltRadians = iTilt * 3.14159265 / 180.0;
+      float cosineTilt = cos(tiltRadians);
+      float sineTilt = sin(tiltRadians);
+      vec2 relativeCoord = coord - rayPosition;
+      vec2 tiltedCoord = vec2(
+        relativeCoord.x * cosineTilt - relativeCoord.y * sineTilt,
+        relativeCoord.x * sineTilt + relativeCoord.y * cosineTilt
+      ) + rayPosition;
 
-      vec4 orangeRay = vec4(iRayColor1, 1.0) * rayStrength(source, direction1, coord, 36.2214, 21.11349, 0.42);
-      vec4 blueRay = vec4(iRayColor2, 1.0) * rayStrength(source, direction2, coord, 22.3991, 18.0234, 0.18);
-      float rayAngle = atan(coord.y - source.y, coord.x - source.x);
-      float colorBalance = 0.5 + 0.32 * sin(rayAngle * 8.0 + iTime * 0.08);
-      vec4 color = mix(orangeRay, blueRay, colorBalance);
+      float halfSpread = iSpread * 0.275;
+      vec2 direction1 = normalize(vec2(
+        cos(0.785398 + halfSpread),
+        sin(0.785398 + halfSpread)
+      ));
+      vec2 direction2 = normalize(vec2(
+        cos(0.785398 - halfSpread),
+        sin(0.785398 - halfSpread)
+      ));
 
-      float distanceToLight = length(fragCoord - vec2(source.x, iResolution.y - source.y)) / iResolution.y;
-      float brightness = 0.72 / pow(max(distanceToLight, 0.001), 1.58);
-      color.rgb *= brightness;
-      color.a = max(color.r, max(color.g, color.b)) * 0.95;
-      gl_FragColor = color;
-    }
-  `;
-
-  const auroraVertex = `
-    attribute vec2 uv;
-    attribute vec2 position;
-    varying vec2 vUv;
-    void main() {
-      vUv = uv;
-      gl_Position = vec4(position, 0.0, 1.0);
-    }
-  `;
-
-  const auroraFragment = `
-    precision highp float;
-
-    uniform float uTime;
-    uniform vec2 uResolution;
-    uniform vec3 uColor1;
-    uniform vec3 uColor2;
-    varying vec2 vUv;
-
-    #define TAU 6.28318
-
-    vec3 gradientHash(vec3 p) {
-      p = vec3(
-        dot(p, vec3(127.1, 311.7, 234.6)),
-        dot(p, vec3(269.5, 183.3, 198.3)),
-        dot(p, vec3(169.5, 283.3, 156.9))
+      vec4 rays1 = vec4(iRayColor1, 1.0) * rayStrength(
+        rayPosition,
+        direction1,
+        tiltedCoord,
+        36.2214,
+        21.11349,
+        iSpeed
       );
-      vec3 hash = fract(sin(p) * 43758.5453123);
-      float phi = acos(2.0 * hash.x - 1.0);
-      float theta = TAU * hash.y;
-      return vec3(cos(theta) * sin(phi), sin(theta) * cos(phi), cos(phi));
-    }
+      vec4 rays2 = vec4(iRayColor2, 1.0) * rayStrength(
+        rayPosition,
+        direction2,
+        tiltedCoord,
+        22.3991,
+        18.0234,
+        iSpeed * 0.2
+      );
 
-    float quinticSmooth(float t) {
-      float t2 = t * t;
-      float t3 = t * t2;
-      return 6.0 * t3 * t2 - 15.0 * t2 * t2 + 10.0 * t3;
-    }
+      vec4 color = rays1 * (1.0 - iBlend) * 0.9 + rays2 * iBlend * 0.9;
+      float distanceToLight = length(
+        fragCoord - vec2(rayPosition.x, iResolution.y - rayPosition.y)
+      ) / iResolution.y;
+      float brightness = iIntensity * 0.4 / pow(max(distanceToLight, 0.001), iFalloff);
+      color.rgb *= brightness;
 
-    float perlin3D(float amplitude, float frequency, float px, float py, float pz) {
-      float x = px * frequency;
-      float y = py * frequency;
-      float floorX = floor(x);
-      float floorY = floor(y);
-      float floorZ = floor(pz);
-      float ceilX = ceil(x);
-      float ceilY = ceil(y);
-      float ceilZ = ceil(pz);
-
-      vec3 g000 = gradientHash(vec3(floorX, floorY, floorZ));
-      vec3 g100 = gradientHash(vec3(ceilX, floorY, floorZ));
-      vec3 g010 = gradientHash(vec3(floorX, ceilY, floorZ));
-      vec3 g110 = gradientHash(vec3(ceilX, ceilY, floorZ));
-      vec3 g001 = gradientHash(vec3(floorX, floorY, ceilZ));
-      vec3 g101 = gradientHash(vec3(ceilX, floorY, ceilZ));
-      vec3 g011 = gradientHash(vec3(floorX, ceilY, ceilZ));
-      vec3 g111 = gradientHash(vec3(ceilX, ceilY, ceilZ));
-
-      float d000 = dot(g000, vec3(x - floorX, y - floorY, pz - floorZ));
-      float d100 = dot(g100, vec3(x - ceilX, y - floorY, pz - floorZ));
-      float d010 = dot(g010, vec3(x - floorX, y - ceilY, pz - floorZ));
-      float d110 = dot(g110, vec3(x - ceilX, y - ceilY, pz - floorZ));
-      float d001 = dot(g001, vec3(x - floorX, y - floorY, pz - ceilZ));
-      float d101 = dot(g101, vec3(x - ceilX, y - floorY, pz - ceilZ));
-      float d011 = dot(g011, vec3(x - floorX, y - ceilY, pz - ceilZ));
-      float d111 = dot(g111, vec3(x - ceilX, y - ceilY, pz - ceilZ));
-
-      float smoothX = quinticSmooth(x - floorX);
-      float smoothY = quinticSmooth(y - floorY);
-      float smoothZ = quinticSmooth(pz - floorZ);
-      float x00 = mix(d000, d100, smoothX);
-      float x10 = mix(d010, d110, smoothX);
-      float x01 = mix(d001, d101, smoothX);
-      float x11 = mix(d011, d111, smoothX);
-      return amplitude * mix(mix(x00, x10, smoothY), mix(x01, x11, smoothY), smoothZ);
-    }
-
-    float auroraGlow(float time, float verticalOffset) {
-      vec2 uv = gl_FragCoord.xy / uResolution.y;
-      vec2 samplePosition = uv * 1.35;
-      float noiseValue = 0.0;
-      float frequency = 1.85;
-      float amplitude = 0.68;
-
-      for (float octave = 0.0; octave < 3.0; octave += 1.0) {
-        noiseValue += perlin3D(amplitude, frequency, samplePosition.x, samplePosition.y, time);
-        amplitude *= 0.22;
-        frequency *= 2.0;
-      }
-
-      float band = uv.y * 10.0 - 6.2 + verticalOffset;
-      return 0.38 * max(exp(0.82 * (1.0 - 1.12 * abs(noiseValue + band))), 0.0);
-    }
-
-    void main() {
-      float time = uTime * 0.08;
-      float orange = auroraGlow(time, 0.0);
-      float blue = auroraGlow(time + 0.7, 0.48);
-      float horizontalShift = 0.82 + 0.18 * sin((vUv.x + uTime * 0.012) * TAU);
-      vec3 color = orange * uColor1 + blue * uColor2 * horizontalShift;
-      color *= 1.15;
-      float alpha = clamp(length(color) * 1.2, 0.0, 0.85);
-      gl_FragColor = vec4(color, alpha);
+      float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
+      color.rgb = mix(vec3(gray), color.rgb, iSaturation);
+      color.a = max(color.r, max(color.g, color.b)) * iOpacity;
+      gl_FragColor = color;
     }
   `;
 
@@ -172,87 +121,53 @@
 
   if (root && root.dataset.initialized !== 'true') {
     root.dataset.initialized = 'true';
-    const rayContainer = root.querySelector<HTMLElement>('[data-side-rays]');
-    const auroraContainer = root.querySelector<HTMLElement>('[data-soft-aurora]');
+    const container = root.querySelector<HTMLElement>('[data-side-rays]');
 
-    if (rayContainer && auroraContainer) {
+    if (container) {
       try {
-        const pixelRatio = Math.min(
-          window.devicePixelRatio || 1,
-          window.innerWidth < 700 ? 1 : 1.35,
-        );
-
-        const rayRenderer = new Renderer({
+        const renderer = new Renderer({
           alpha: true,
-          dpr: pixelRatio,
+          dpr: Math.min(window.devicePixelRatio || 1, window.innerWidth < 700 ? 1 : 1.5),
           premultipliedAlpha: false,
           powerPreference: 'low-power',
         });
-        const rayGl = rayRenderer.gl;
-        rayGl.clearColor(0, 0, 0, 0);
-        rayGl.canvas.style.width = '100%';
-        rayGl.canvas.style.height = '100%';
-        rayContainer.appendChild(rayGl.canvas);
-        const rayProgram = new Program(rayGl, {
-          vertex: sideRaysVertex,
-          fragment: sideRaysFragment,
+        const gl = renderer.gl;
+        gl.clearColor(0, 0, 0, 0);
+        gl.canvas.style.width = '100%';
+        gl.canvas.style.height = '100%';
+        container.appendChild(gl.canvas);
+
+        const program = new Program(gl, {
+          vertex: vertexShader,
+          fragment: fragmentShader,
           transparent: true,
           uniforms: {
             iTime: { value: 0 },
             iResolution: { value: [1, 1] },
-            iRayColor1: { value: hexToVec3('#ff9d45') },
-            iRayColor2: { value: hexToVec3('#70aaff') },
+            iSpeed: { value: 2.5 },
+            iRayColor1: { value: hexToVec3('#EAB308') },
+            iRayColor2: { value: hexToVec3('#96c8ff') },
+            iIntensity: { value: 2 },
+            iSpread: { value: 2 },
+            iFlipX: { value: 0 },
+            iFlipY: { value: 0 },
+            iTilt: { value: 0 },
+            iSaturation: { value: 1.5 },
+            iBlend: { value: 0.75 },
+            iFalloff: { value: 1.6 },
+            iOpacity: { value: 1 },
           },
         });
-        const rayMesh = new Mesh(rayGl, { geometry: new Triangle(rayGl), program: rayProgram });
-
-        const auroraRenderer = new Renderer({
-          alpha: true,
-          dpr: pixelRatio,
-          premultipliedAlpha: false,
-          powerPreference: 'low-power',
-        });
-        const auroraGl = auroraRenderer.gl;
-        auroraGl.clearColor(0, 0, 0, 0);
-        auroraGl.canvas.style.width = '100%';
-        auroraGl.canvas.style.height = '100%';
-        auroraContainer.appendChild(auroraGl.canvas);
-        const auroraProgram = new Program(auroraGl, {
-          vertex: auroraVertex,
-          fragment: auroraFragment,
-          transparent: true,
-          uniforms: {
-            uTime: { value: 0 },
-            uResolution: { value: [1, 1] },
-            uColor1: { value: hexToVec3('#ff9d45') },
-            uColor2: { value: hexToVec3('#4ba6bd') },
-          },
-        });
-        const auroraMesh = new Mesh(auroraGl, {
-          geometry: new Triangle(auroraGl),
-          program: auroraProgram,
-        });
+        const mesh = new Mesh(gl, { geometry: new Triangle(gl), program });
 
         const resize = () => {
-          const rayWidth = Math.max(rayContainer.clientWidth, 1);
-          const rayHeight = Math.max(rayContainer.clientHeight, 1);
-          rayRenderer.setSize(rayWidth, rayHeight);
-          rayProgram.uniforms.iResolution.value = [rayGl.canvas.width, rayGl.canvas.height];
-
-          const auroraWidth = Math.max(auroraContainer.clientWidth, 1);
-          const auroraHeight = Math.max(auroraContainer.clientHeight, 1);
-          auroraRenderer.setSize(auroraWidth, auroraHeight);
-          auroraProgram.uniforms.uResolution.value = [
-            auroraGl.canvas.width,
-            auroraGl.canvas.height,
-          ];
+          renderer.setSize(Math.max(container.clientWidth, 1), Math.max(container.clientHeight, 1));
+          program.uniforms.iResolution.value = [gl.canvas.width, gl.canvas.height];
         };
 
         const render = (time: number) => {
-          rayProgram.uniforms.iTime.value = time * 0.001;
-          auroraProgram.uniforms.uTime.value = time * 0.001;
-          rayRenderer.render({ scene: rayMesh });
-          auroraRenderer.render({ scene: auroraMesh });
+          program.uniforms.iTime.value = time * 0.001;
+          renderer.render({ scene: mesh });
         };
 
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -315,8 +230,7 @@
             resizeObserver.disconnect();
             document.removeEventListener('visibilitychange', handleVisibility);
             reducedMotion.removeEventListener('change', handleMotionPreference);
-            rayGl.getExtension('WEBGL_lose_context')?.loseContext();
-            auroraGl.getExtension('WEBGL_lose_context')?.loseContext();
+            gl.getExtension('WEBGL_lose_context')?.loseContext();
           },
           { once: true },
         );
@@ -328,75 +242,19 @@
 </script>
 
 <style>
-  .hero-atmosphere {
+  .hero-atmosphere,
+  .hero-atmosphere__rays {
     position: absolute;
-    z-index: 0;
     overflow: hidden;
     pointer-events: none;
     inset: 0;
   }
 
-  .hero-atmosphere__rays,
-  .hero-atmosphere__aurora {
-    position: absolute;
-    overflow: hidden;
-    pointer-events: none;
-    mix-blend-mode: screen;
+  .hero-atmosphere {
+    z-index: 0;
   }
 
   .hero-atmosphere__rays {
-    inset: -4% -4% auto 14%;
-    height: 78%;
-    opacity: 0.25;
-    filter: saturate(1.15);
-    mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.78) 50%, transparent 94%);
-  }
-
-  .hero-atmosphere__aurora {
-    inset: -24% -14% auto -14%;
-    height: 82%;
-    opacity: 0.18;
-    filter: blur(0.35rem) saturate(0.88);
-    mask-image: radial-gradient(
-      ellipse 75% 68% at 52% 14%,
-      #000 0%,
-      rgba(0, 0, 0, 0.72) 54%,
-      transparent 100%
-    );
-  }
-
-  :global(:root[data-theme='light']) .hero-atmosphere__rays,
-  :global(:root[data-theme='light']) .hero-atmosphere__aurora {
-    mix-blend-mode: multiply;
-  }
-
-  :global(:root[data-theme='light']) .hero-atmosphere__rays {
-    opacity: 0.1;
-  }
-
-  :global(:root[data-theme='light']) .hero-atmosphere__aurora {
-    opacity: 0.06;
-  }
-
-  @media (max-width: 640px) {
-    .hero-atmosphere__rays {
-      inset: -2% -8% auto 18%;
-      height: 56%;
-      opacity: 0.22;
-    }
-
-    .hero-atmosphere__aurora {
-      inset: -14% -30% auto -30%;
-      height: 58%;
-      opacity: 0.17;
-    }
-
-    :global(:root[data-theme='light']) .hero-atmosphere__rays {
-      opacity: 0.075;
-    }
-
-    :global(:root[data-theme='light']) .hero-atmosphere__aurora {
-      opacity: 0.045;
-    }
+    opacity: 1;
   }
 </style>

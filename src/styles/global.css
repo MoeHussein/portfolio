@@ -533,9 +533,17 @@
   }
 
   .profile-section {
+    position: relative;
+    isolation: isolate;
     width: var(--page);
     margin-inline: auto;
     padding-block: clamp(4rem, 6vw, 6rem);
+  }
+  .profile-heading,
+  .story,
+  .profile-groups {
+    position: relative;
+    z-index: 1;
   }
   .profile-heading {
     padding-block-end: 1.15rem;
