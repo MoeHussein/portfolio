@@ -77,7 +77,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain("isLight ? '#20262b' : '#F97316'");
     expect(source).toContain('program.uniforms.uOpacity.value = 0.8');
     expect(source).toContain('intensity * uCustomColor');
-    expect(source).toContain('uScale: { value: 0.92 }');
+    expect(source).toContain('uScale: { value: 0.75 }');
     expect(source).toContain('uOpacity: { value: 0.8 }');
     expect(source).toContain('mask-image: linear-gradient');
     expect(source).toContain('@media (max-width: 699px)');
