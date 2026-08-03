@@ -36,7 +36,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain("id: 'academic'");
     expect(source).toContain("id: 'personal'");
     expect(source).toContain('project-group--${group.id}');
-    expect(source).toContain('<h2>{labels.story}</h2>');
+    expect(source).not.toContain('<h2>{labels.story}</h2>');
     expect(source).toContain('content.about.paragraphs[0]');
     expect(source).not.toContain('content.about.paragraphs[1]');
     expect(source).not.toContain('<h2>{content.about.title}</h2>');
@@ -49,7 +49,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain('class="hero-verse"');
     expect(source).toContain('وَتَوَكَّلْ');
     expect(source).toContain('Surah Al-Ahzab · 33:3');
-    expect(source).toContain('class="hero-verse-mark"');
+    expect(source).toContain('class="contact-calligraphy"');
     expect(existsSync(join(root, 'public/alhamdulillah.svg'))).toBe(true);
     expect(source).not.toContain('ui.contactTitle');
     expect(source).not.toContain('ui.copyright');
