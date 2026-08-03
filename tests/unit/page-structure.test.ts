@@ -79,12 +79,16 @@ describe('portfolio page structure', () => {
     expect(source).not.toContain("isLight ? '#AD4D10'");
     expect(source).not.toContain("isLight ? '#087F79'");
     expect(source).toContain('uSecondaryColor');
+    expect(source).toContain('uLightMode');
+    expect(source).toContain('intensity * uOpacity * 1.4');
+    expect(source).toContain('isLight ? 1 : 0');
     expect(source).toContain('sin(iTime * 1.2566 - 1.5708)');
     expect(source).toContain('program.uniforms.uOpacity.value = 0.8');
     expect(source).toContain('intensity * animatedColor');
     expect(source).toContain('uScale: { value: 0.5 }');
     expect(source).toContain('uOpacity: { value: 0.8 }');
     expect(source).toContain('mask-image: linear-gradient');
+    expect(source).toContain('transform: translateX(18%)');
     expect(source).toContain('@media (max-width: 699px)');
     expect(source).not.toContain('mix-blend-mode');
     expect(source).toContain('new MutationObserver');
