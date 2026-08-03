@@ -448,13 +448,13 @@
   .profile-section {
     width: var(--page);
     margin-inline: auto;
-    padding-block: clamp(5.5rem, 8vw, 8rem);
+    padding-block: clamp(4rem, 6vw, 6rem);
   }
   .profile-heading {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 3rem;
-    padding-block-end: 3.25rem;
+    padding-block-end: 1.75rem;
   }
   .profile-heading > p {
     color: var(--accent);
@@ -465,7 +465,7 @@
   }
   .profile-heading h2 {
     max-width: 14ch;
-    font-size: clamp(2.5rem, 4.4vw, 4.5rem);
+    font-size: clamp(2.35rem, 3.5vw, 3.5rem);
     font-weight: 500;
     letter-spacing: -0.055em;
     line-height: 1;
@@ -473,16 +473,16 @@
   .story {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 7vw, 7rem);
-    margin-inline-start: 33.333%;
-    padding-block: 3rem 4.5rem;
+    gap: clamp(2rem, 5vw, 5rem);
+    margin-inline-start: 0;
+    padding-block: 2.25rem 3rem;
     border-block-start: 1px solid var(--line);
     color: var(--muted);
   }
   .story p:first-child {
     color: var(--text);
-    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-    line-height: 1.5;
+    font-size: clamp(1rem, 1.25vw, 1.15rem);
+    line-height: 1.65;
   }
   .profile-groups {
     border-block-start: 1px solid var(--line);
@@ -736,9 +736,6 @@
     .profile-group {
       grid-template-columns: 0.65fr 1.35fr;
     }
-    .story {
-      margin-inline-start: 32.5%;
-    }
   }
 
   @media (max-width: 640px) {
@@ -842,7 +839,7 @@
       font-size: 1.16rem;
     }
     .profile-section {
-      padding-block: 5rem;
+      padding-block: 4rem;
     }
     .profile-heading,
     .profile-group,
@@ -851,17 +848,17 @@
       gap: 1.4rem;
     }
     .profile-heading {
-      padding-block-end: 3rem;
+      padding-block-end: 2rem;
     }
     .profile-heading h2 {
-      font-size: clamp(2.6rem, 12vw, 3.8rem);
+      font-size: clamp(2.35rem, 11vw, 3.2rem);
     }
     .story {
       margin-inline-start: 0;
-      padding-block: 2.5rem 4rem;
+      padding-block: 2rem 3rem;
     }
     .story p:first-child {
-      font-size: 1.18rem;
+      font-size: 1.05rem;
     }
     .profile-group {
       padding-block: 2.5rem;
