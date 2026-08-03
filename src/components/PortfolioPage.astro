@@ -183,13 +183,14 @@ const projectGroups = [
                     <>
                       <strong>{item.title}</strong>
                       <small>{item.organization}</small>
+                      <small>{item.description}</small>
                     </>
                   </span>
                 </article>
               ))
             }
             {
-              content.education.map((item) => (
+              content.education.slice(1).map((item) => (
                 <article class="profile-row">
                   <time>{item.period}</time>
                   <span>

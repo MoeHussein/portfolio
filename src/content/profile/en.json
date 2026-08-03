@@ -187,16 +187,10 @@
   ],
   "timeline": [
     {
-      "period": "2023 — Present",
-      "title": "Graduate Researcher · Optical Imaging & Polarization Analysis",
-      "organization": "Istanbul Medipol University",
-      "description": "Developing polarization-sensitive holography systems and Python workflows for Jones matrix reconstruction, phase processing, retardance, orientation and scientific visualization."
-    },
-    {
-      "period": "15 Jan 2024 — Present",
-      "title": "Master’s Scholarship Researcher · Project 123N774",
-      "organization": "TÜBİTAK 2530 Türkiye–Moldova Bilateral Cooperation",
-      "description": "Contributing to polarization-sensitive DHM with singular structured illumination for biomedical applications."
+      "period": "15 Sep 2023 — Present",
+      "title": "MSc Student & Graduate Researcher · Optical Imaging & Polarization Analysis",
+      "organization": "Istanbul Medipol University · TÜBİTAK 2530 Türkiye–Moldova Bilateral Cooperation · Project 123N774",
+      "description": "Biomedical Engineering and Bioinformatics · Ongoing · Thesis defense scheduled for 13 Aug 2026 · Focus: polarization-sensitive digital holographic microscopy · TÜBİTAK scholarship since 15 Jan 2024"
     }
   ],
   "education": [

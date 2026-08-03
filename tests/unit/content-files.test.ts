@@ -23,6 +23,7 @@ type Profile = {
     researchExperience: { title: string; bullets: string[] };
   };
   research: { doi: string };
+  timeline: { period: string; title: string; organization: string; description: string }[];
   projects: Project[];
   languages: { language: string; level: string }[];
   contact: { email: string; github: string; orcid: string };
@@ -97,6 +98,17 @@ describe('localized portfolio content', () => {
       expect(profile.cv.publicationTier).toContain('Q1');
       expect(profile.research.doi).toBe('https://doi.org/10.1364/BOE.585564');
     }
+  });
+
+  it('presents the MSc study, graduate research, and TÜBİTAK project as one current entry', () => {
+    for (const profile of readProfiles()) {
+      expect(profile.timeline).toHaveLength(1);
+      expect(profile.timeline[0]?.organization).toContain('123N774');
+    }
+
+    const english = readProfiles().find(({ locale }) => locale === 'en');
+    expect(english?.timeline[0]?.title).toContain('MSc Student & Graduate Researcher');
+    expect(english?.timeline[0]?.description).toContain('TÜBİTAK scholarship since 15 Jan 2024');
   });
 
   it('uses the approved concise class rank wording', () => {
