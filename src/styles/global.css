@@ -48,6 +48,8 @@
     --accent-soft: rgba(98, 230, 220, 0.12);
     --verse-text: #fffaf0;
     --verse-accent: #ff9d45;
+    --calligraphy-glow: #ffc47d;
+    --calligraphy-shine: #fff8e8;
     --verse-muted: #c6c0b7;
     --header: rgba(11, 15, 18, 0.86);
     --shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.2);
@@ -70,6 +72,8 @@
     --accent-soft: rgba(8, 127, 121, 0.1);
     --verse-text: #17120f;
     --verse-accent: #ad4d10;
+    --calligraphy-glow: #db7b30;
+    --calligraphy-shine: #6f2808;
     --verse-muted: #625b55;
     --header: rgba(245, 245, 242, 0.88);
     --shadow: 0 1.25rem 3rem rgba(16, 19, 20, 0.08);
@@ -656,9 +660,32 @@
     width: min(22rem, 100%);
     aspect-ratio: 2335.771 / 1674.35;
     justify-self: end;
-    background: var(--verse-accent);
+    background-image: linear-gradient(
+      112deg,
+      var(--verse-accent) 0%,
+      var(--verse-accent) 34%,
+      var(--calligraphy-glow) 44%,
+      var(--calligraphy-shine) 50%,
+      var(--calligraphy-glow) 56%,
+      var(--verse-accent) 66%,
+      var(--verse-accent) 100%
+    );
+    background-position: 140% 50%;
+    background-size: 260% 100%;
     -webkit-mask: var(--mark-url) center / contain no-repeat;
     mask: var(--mark-url) center / contain no-repeat;
+    animation: calligraphy-shimmer 6.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--verse-accent) 18%, transparent));
+  }
+  @keyframes calligraphy-shimmer {
+    0%,
+    14% {
+      background-position: 140% 50%;
+    }
+    58%,
+    100% {
+      background-position: -40% 50%;
+    }
   }
   .contact-section h2 {
     max-width: 13ch;

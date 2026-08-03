@@ -65,6 +65,9 @@ describe('portfolio page structure', () => {
     expect(source).toMatch(/\.work-section\s*\{[\s\S]*?background:\s*var\(--section-bg\)/);
     expect(source).toMatch(/\.project-card\s*\{[\s\S]*?background:\s*var\(--surface\)/);
     expect(source).toMatch(/\.case-study-dialog\s*\{[\s\S]*?background:\s*var\(--surface-raised\)/);
+    expect(source).toContain('animation: calligraphy-shimmer');
+    expect(source).toContain('@keyframes calligraphy-shimmer');
+    expect(source).toContain('@media (prefers-reduced-motion: reduce)');
   });
 
   it('retains visible mobile navigation and compact horizontal project rows', () => {
