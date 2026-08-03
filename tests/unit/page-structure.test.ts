@@ -83,7 +83,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain('intensity * uOpacity * 1.4');
     expect(source).toContain('vec3 tintedOutput');
     expect(source).toContain('isLight ? 1 : 0');
-    expect(source).toContain('sin(iTime * 1.2566 - 1.5708)');
+    expect(source).toContain('sin(iTime * 0.6283 - 1.5708)');
     expect(source).toContain('program.uniforms.uOpacity.value = 0.8');
     expect(source).toContain('intensity * animatedColor');
     expect(source).toContain('uScale: { value: 0.5 }');

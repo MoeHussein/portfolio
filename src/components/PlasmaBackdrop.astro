@@ -78,7 +78,7 @@
       mainImage(outputColor, gl_FragCoord.xy);
       vec3 plasma = sanitize(outputColor.rgb);
       float intensity = (plasma.r + plasma.g + plasma.b) / 3.0;
-      float colorPhase = 0.5 + 0.5 * sin(iTime * 1.2566 - 1.5708);
+      float colorPhase = 0.5 + 0.5 * sin(iTime * 0.6283 - 1.5708);
       vec3 animatedColor = mix(uCustomColor, uSecondaryColor, colorPhase);
       float darkAlpha = clamp(length(plasma) * uOpacity, 0.0, 1.0);
       float lightAlpha = clamp(intensity * uOpacity * 1.4, 0.0, 1.0);
