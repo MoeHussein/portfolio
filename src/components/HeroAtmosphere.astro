@@ -111,8 +111,8 @@
       color.rgb = clamp(mix(vec3(gray), color.rgb, iSaturation), 0.0, 1.0);
       if (iDarkRays > 0.5) {
         float rayMask = rayStrength1 * (1.0 - iBlend) + rayStrength2 * iBlend;
-        color.rgb = vec3(0.025, 0.03, 0.035);
-        color.a = clamp(rayMask * brightness * iOpacity * 0.3, 0.0, 0.28);
+        color.rgb = vec3(0.0);
+        color.a = clamp(rayMask * brightness * iOpacity * 0.58, 0.0, 0.42);
       } else {
         color.a = clamp(max(color.r, max(color.g, color.b)) * iOpacity, 0.0, 1.0);
       }
@@ -160,7 +160,7 @@
             iRayColor1: { value: hexToVec3('#EAB308') },
             iRayColor2: { value: hexToVec3('#96c8ff') },
             iIntensity: { value: 2 },
-            iSpread: { value: 2.2 },
+            iSpread: { value: 2 },
             iFlipX: { value: 0 },
             iFlipY: { value: 0 },
             iTilt: { value: 0 },
@@ -169,8 +169,8 @@
             iFalloff: { value: 1.6 },
             iOpacity: { value: 1 },
             iDarkRays: { value: 0 },
-            iSourceX: { value: 1.12 },
-            iSourceY: { value: -0.58 },
+            iSourceX: { value: 1.02 },
+            iSourceY: { value: -0.22 },
           },
         });
         const mesh = new Mesh(gl, { geometry: new Triangle(gl), program });
@@ -188,7 +188,7 @@
           light: {
             color1: '#000000',
             color2: '#000000',
-            intensity: 2.2,
+            intensity: 1.8,
             saturation: 0,
             blend: 0.62,
             falloff: 1.25,
@@ -214,9 +214,9 @@
           renderer.setSize(Math.max(container.clientWidth, 1), Math.max(container.clientHeight, 1));
           program.uniforms.iResolution.value = [gl.canvas.width, gl.canvas.height];
           const isDesktop = container.clientWidth >= 900;
-          program.uniforms.iSourceX.value = isDesktop ? 1.12 : 1.02;
-          program.uniforms.iSourceY.value = isDesktop ? -0.58 : -0.22;
-          program.uniforms.iSpread.value = isDesktop ? 2.35 : 2;
+          program.uniforms.iSourceX.value = isDesktop ? 0.99 : 1.02;
+          program.uniforms.iSourceY.value = isDesktop ? -0.18 : -0.22;
+          program.uniforms.iSpread.value = 2;
         };
 
         const render = (time: number) => {

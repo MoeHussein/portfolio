@@ -71,13 +71,14 @@ describe('portfolio page structure', () => {
     expect(source).toContain('iOpacity: { value: 1 }');
     expect(source).toContain('iResolution.x * iSourceX');
     expect(source).toContain('iSourceY * iResolution.y');
-    expect(source).toContain('iSpread: { value: 2.2 }');
-    expect(source).toContain('program.uniforms.iSourceX.value = isDesktop ? 1.12 : 1.02');
-    expect(source).toContain('program.uniforms.iSourceY.value = isDesktop ? -0.58 : -0.22');
-    expect(source).toContain('program.uniforms.iSpread.value = isDesktop ? 2.35 : 2');
+    expect(source).toContain('iSpread: { value: 2 }');
+    expect(source).toContain('program.uniforms.iSourceX.value = isDesktop ? 0.99 : 1.02');
+    expect(source).toContain('program.uniforms.iSourceY.value = isDesktop ? -0.18 : -0.22');
+    expect(source).toContain('program.uniforms.iSpread.value = 2');
     expect(source).toContain("color1: '#000000'");
     expect(source).toContain("color2: '#000000'");
     expect(source).toContain("program.uniforms.iDarkRays.value = theme === 'light' ? 1 : 0");
+    expect(source).toContain('color.rgb = vec3(0.0)');
     expect(source).toContain('new MutationObserver(applyTheme)');
     expect(source).toContain(
       'color.rgb = clamp(mix(vec3(gray), color.rgb, iSaturation), 0.0, 1.0)',
