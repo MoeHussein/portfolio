@@ -19,7 +19,7 @@ const project = z.object({
 const profile = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/profile' }),
   schema: z.object({
-    locale: z.enum(['en', 'ar', 'tr']),
+    locale: z.enum(['en', 'tr']),
     direction: z.enum(['ltr', 'rtl']),
     name: z.string(),
     headline: z.string(),
@@ -54,6 +54,7 @@ const profile = defineCollection({
       }),
     ),
     skillGroups: z.array(z.object({ title: z.string(), items: z.array(z.string()) })),
+    languages: z.array(z.object({ language: z.string(), level: z.string() })),
     achievements: z.array(z.object({ date: z.string(), title: z.string(), detail: z.string() })),
     learning: z.array(link),
     collaboration: z.array(z.object({ title: z.string(), detail: z.string() })),

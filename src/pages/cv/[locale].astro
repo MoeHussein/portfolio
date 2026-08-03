@@ -2,10 +2,10 @@
 import { getEntry } from 'astro:content';
 
 export function getStaticPaths() {
-  return ['en', 'ar', 'tr'].map((locale) => ({ params: { locale } }));
+  return ['en', 'tr'].map((locale) => ({ params: { locale } }));
 }
 
-const locale = Astro.params.locale as 'en' | 'ar' | 'tr';
+const locale = Astro.params.locale as 'en' | 'tr';
 const entry = await getEntry('profile', locale);
 if (!entry) throw new Error(`Missing CV content for locale: ${locale}`);
 const content = entry.data;
@@ -18,15 +18,7 @@ const labels = {
     recognition: 'Selected Recognition',
     projects: 'Selected Projects',
     learning: 'Independent Learning',
-  },
-  ar: {
-    profile: 'نبذة',
-    experience: 'الخبرة البحثية',
-    education: 'التعليم',
-    skills: 'المهارات',
-    recognition: 'إنجازات مختارة',
-    projects: 'مشاريع مختارة',
-    learning: 'التعلم المستقل',
+    languages: 'Languages',
   },
   tr: {
     profile: 'Profil',
@@ -36,6 +28,7 @@ const labels = {
     recognition: 'Seçilmiş Başarılar',
     projects: 'Seçilmiş Projeler',
     learning: 'Bağımsız Öğrenme',
+    languages: 'Diller',
   },
 }[locale];
 ---
@@ -145,6 +138,19 @@ const labels = {
           <section>
             <h2>{labels.learning}</h2>
             <ul>{content.learning.map((item) => <li>{item.label}</li>)}</ul>
+          </section>
+
+          <section>
+            <h2>{labels.languages}</h2>
+            <ul class="language-list">
+              {
+                content.languages.map((item) => (
+                  <li>
+                    <strong>{item.language}</strong> - {item.level}
+                  </li>
+                ))
+              }
+            </ul>
           </section>
         </aside>
       </div>
@@ -287,6 +293,9 @@ const labels = {
   .skill-group p {
     margin: 0;
     color: #40545c;
+  }
+  .language-list strong {
+    font-weight: 700;
   }
   aside section {
     margin-block-end: 6mm;

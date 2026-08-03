@@ -3,7 +3,7 @@ import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 interface Props {
-  locale: 'en' | 'ar' | 'tr';
+  locale: 'en' | 'tr';
 }
 
 const { locale } = Astro.props;
@@ -12,7 +12,7 @@ if (!entry) throw new Error(`Missing portfolio content for locale: ${locale}`);
 const content = entry.data;
 const { ui } = content;
 const base = import.meta.env.BASE_URL;
-const localeUrl = (value: 'en' | 'ar' | 'tr') => (value === 'en' ? base : `${base}${value}/`);
+const localeUrl = (value: 'en' | 'tr') => (value === 'en' ? base : `${base}${value}/`);
 const cvPath = `${base}downloads/mohammad-hussein-cv-${locale}.pdf`;
 const heroLine = `${content.hero.statement.split('. ')[0]}.`;
 
@@ -33,23 +33,6 @@ const labels = {
     independent: 'Independent study through public materials, not completed certifications.',
     academic: 'Academic Work',
     personal: 'Personal & Product Work',
-  },
-  ar: {
-    work: 'أعمال مختارة',
-    profile: 'الملف',
-    view: 'عرض',
-    story: 'نبذة',
-    experience: 'الخبرة والتعليم',
-    capabilities: 'القدرات',
-    recognition: 'التقدير',
-    learning: 'أتعلم حالياً',
-    light: 'فاتح',
-    dark: 'داكن',
-    artwork: 'عمل بصري زخرفي مستوحى من التصوير الحاسوبي',
-    polarizationArtwork: 'عمل بصري زخرفي مستوحى من التصوير بالاستقطاب',
-    independent: 'دراسة مستقلة من مواد عامة وليست شهادات مكتملة.',
-    academic: 'العمل الأكاديمي',
-    personal: 'العمل الشخصي والمنتجات',
   },
   tr: {
     work: 'Seçili Çalışmalar',
@@ -98,6 +81,7 @@ const projectGroups = [
   headline={content.headline}
 >
   <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label={content.name}>{content.name}</a>
     <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="#work">{labels.work}</a>
       <a href="#profile">{labels.profile}</a>
@@ -108,7 +92,6 @@ const projectGroups = [
         <summary aria-label={ui.language}>{locale.toUpperCase()}</summary>
         <div class="language-menu">
           <a href={localeUrl('en')} lang="en" data-locale-link="en">English</a>
-          <a href={localeUrl('ar')} lang="ar" dir="rtl" data-locale-link="ar">العربية</a>
           <a href={localeUrl('tr')} lang="tr" data-locale-link="tr">Türkçe</a>
         </div>
       </details>
@@ -164,7 +147,10 @@ const projectGroups = [
                   {group.projects.map((project) => (
                     <button
                       type="button"
-                      class="project-card"
+                      class:list={[
+                        'project-card',
+                        { 'project-card--publication': project.id === 'dual-shot-pdhm' },
+                      ]}
                       data-dialog-open={`project-${project.id}`}
                       aria-label={`${labels.view}: ${project.title}`}
                     >
@@ -175,7 +161,11 @@ const projectGroups = [
                         <span class="project-status">{project.status}</span>
                       </span>
                       <span class="project-title">
-                        <strong>{project.title}</strong>
+                        <strong>
+                          {project.id === 'dual-shot-pdhm'
+                            ? content.research.paperTitle
+                            : project.title}
+                        </strong>
                         <small>{project.summary}</small>
                       </span>
                       <span class="project-card-footer">
@@ -430,7 +420,7 @@ const projectGroups = [
         const rect = hero.getBoundingClientRect();
         const progress = Math.min(1, Math.max(0, -rect.top / Math.max(1, rect.height * 0.72)));
         heroArt.style.opacity = String(1 - progress * 0.76);
-        heroArt.style.transform = `translate3d(${-progress * 6}%, ${progress * 3}%, 0) scale(${1 - progress * 0.035})`;
+        heroArt.style.transform = `translate3d(0, ${progress * 1.5}%, 0) scale(${1 - progress * 0.015})`;
       }
       if (work && workArt) {
         const rect = work.getBoundingClientRect();
@@ -439,7 +429,7 @@ const projectGroups = [
           Math.max(0, (window.innerHeight - rect.top) / Math.max(1, window.innerHeight * 0.72)),
         );
         workArt.style.opacity = String(progress);
-        workArt.style.transform = `translate3d(${(1 - progress) * 8}%, ${(1 - progress) * 4}%, 0) scale(${0.97 + progress * 0.03})`;
+        workArt.style.transform = `translate3d(0, ${(1 - progress) * 2}%, 0) scale(${0.985 + progress * 0.015})`;
       }
     };
     const requestScrollUpdate = () => {

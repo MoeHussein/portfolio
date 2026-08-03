@@ -6,7 +6,6 @@ const root = process.cwd();
 
 const routeFiles = [
   ['en', 'src/pages/index.astro'],
-  ['ar', 'src/pages/ar/index.astro'],
   ['tr', 'src/pages/tr/index.astro'],
 ] as const;
 
@@ -32,7 +31,8 @@ describe('portfolio page structure', () => {
     expect(source).toContain('<footer');
     expect(source).not.toContain('OpticField');
     expect(source).not.toContain('brand-mark');
-    expect(source).not.toContain('class="brand"');
+    expect(source).toContain('class="brand"');
+    expect(source).toContain('{content.name}</a>');
     expect(source).toContain("id: 'academic'");
     expect(source).toContain("id: 'personal'");
     expect(source).toContain('project-group--${group.id}');

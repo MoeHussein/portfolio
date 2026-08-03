@@ -245,6 +245,12 @@
       "items": ["Web design", "Brand identity", "Product prototyping", "Research communication"]
     }
   ],
+  "languages": [
+    { "language": "English", "level": "Academic level" },
+    { "language": "Arabic", "level": "Native" },
+    { "language": "Turkish", "level": "Upper-intermediate" },
+    { "language": "Japanese", "level": "Beginner" }
+  ],
   "achievements": [
     {
       "date": "2026",

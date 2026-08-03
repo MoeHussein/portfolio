@@ -14,11 +14,12 @@ type Project = {
 };
 
 type Profile = {
-  locale: 'en' | 'ar' | 'tr';
+  locale: 'en' | 'tr';
   direction: 'ltr' | 'rtl';
   name: string;
   headline: string;
   projects: Project[];
+  languages: { language: string; level: string }[];
   contact: { email: string; github: string; orcid: string };
 };
 
@@ -38,11 +39,10 @@ function readdirSafe(path: string): string[] {
 }
 
 describe('localized portfolio content', () => {
-  it('provides complete English, Arabic, and Turkish profile records', () => {
+  it('provides complete English and Turkish profile records', () => {
     const profiles = readProfiles();
 
-    expect(profiles.map(({ locale }) => locale).sort()).toEqual(['ar', 'en', 'tr']);
-    expect(profiles.find(({ locale }) => locale === 'ar')?.direction).toBe('rtl');
+    expect(profiles.map(({ locale }) => locale).sort()).toEqual(['en', 'tr']);
     expect(profiles.filter(({ direction }) => direction === 'ltr')).toHaveLength(2);
   });
 
@@ -72,5 +72,16 @@ describe('localized portfolio content', () => {
         expect(project.outcome.trim()).not.toBe('');
       }
     }
+  });
+
+  it('includes the approved language proficiency levels in the CV source', () => {
+    const english = readProfiles().find(({ locale }) => locale === 'en');
+
+    expect(english?.languages).toEqual([
+      { language: 'English', level: 'Academic level' },
+      { language: 'Arabic', level: 'Native' },
+      { language: 'Turkish', level: 'Upper-intermediate' },
+      { language: 'Japanese', level: 'Beginner' },
+    ]);
   });
 });

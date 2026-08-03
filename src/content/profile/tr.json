@@ -240,6 +240,12 @@
       "items": ["Web tasarımı", "Marka kimliği", "Ürün prototipleme", "Araştırma iletişimi"]
     }
   ],
+  "languages": [
+    { "language": "İngilizce", "level": "Akademik düzey" },
+    { "language": "Arapça", "level": "Ana dil" },
+    { "language": "Türkçe", "level": "Üst-orta düzey" },
+    { "language": "Japonca", "level": "Başlangıç" }
+  ],
   "achievements": [
     {
       "date": "2026",
