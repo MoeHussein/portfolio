@@ -316,8 +316,18 @@
     color: var(--muted);
     font-size: clamp(0.92rem, 1.05vw, 1.02rem);
   }
-  .hero-verse {
+  .hero-verse-stage {
     grid-area: verse;
+    position: relative;
+    display: flex;
+    min-height: 18rem;
+    align-items: flex-end;
+    isolation: isolate;
+  }
+  .hero-verse {
+    position: relative;
+    z-index: 1;
+    width: 100%;
     align-self: end;
     margin: 0;
     color: var(--verse-text);
@@ -948,8 +958,9 @@
       margin-block-start: 1.2rem;
       font-size: 0.87rem;
     }
-    .hero-verse {
+    .hero-verse-stage {
       max-width: 32rem;
+      min-height: 13rem;
       margin-block-start: 2.25rem;
     }
     .hero-verse-arabic {

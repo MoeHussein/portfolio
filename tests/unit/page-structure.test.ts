@@ -47,6 +47,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain('theme-icon--moon');
     expect(source).not.toContain('data-theme-label');
     expect(source).toContain('class="hero-verse"');
+    expect(source).toContain('class="hero-verse-stage"');
     expect(source).toContain('<PlasmaBackdrop />');
     expect(source).not.toContain('HeroAtmosphere');
     expect(source).not.toContain('ProfileAurora');
@@ -59,7 +60,7 @@ describe('portfolio page structure', () => {
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
   });
 
-  it('keeps one performant full-page plasma backdrop without pointer interaction', () => {
+  it('keeps one performant hero verse plasma backdrop without pointer interaction', () => {
     const plasmaPath = join(root, 'src/components/PlasmaBackdrop.astro');
     const source = existsSync(plasmaPath) ? readFileSync(plasmaPath, 'utf8') : '';
 
@@ -77,7 +78,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain('mix-blend-mode: screen');
     expect(source).toContain('mix-blend-mode: multiply');
     expect(source).toContain('new MutationObserver');
-    expect(source).toMatch(/\.plasma-backdrop\s*\{[\s\S]*?position:\s*fixed/);
+    expect(source).toMatch(/\.plasma-backdrop\s*\{[\s\S]*?position:\s*absolute/);
     expect(source).toMatch(/\.plasma-backdrop\s*\{[\s\S]*?pointer-events:\s*none/);
     expect(existsSync(join(root, 'src/components/HeroAtmosphere.astro'))).toBe(false);
     expect(existsSync(join(root, 'src/components/ProfileAurora.astro'))).toBe(false);
