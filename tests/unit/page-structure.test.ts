@@ -82,7 +82,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain('sin(iTime * 1.2566 - 1.5708)');
     expect(source).toContain('program.uniforms.uOpacity.value = 0.8');
     expect(source).toContain('intensity * animatedColor');
-    expect(source).toContain('uScale: { value: 0.7 }');
+    expect(source).toContain('uScale: { value: 0.5 }');
     expect(source).toContain('uOpacity: { value: 0.8 }');
     expect(source).toContain('mask-image: linear-gradient');
     expect(source).toContain('@media (max-width: 699px)');
