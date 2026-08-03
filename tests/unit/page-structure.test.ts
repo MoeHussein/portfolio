@@ -74,10 +74,12 @@ describe('portfolio page structure', () => {
     expect(source).toContain('const targetFrameInterval = 1000 / 30');
     expect(source).toContain('window.innerWidth < 700 ? 48 : 60');
     expect(source).toContain('window.innerWidth < 700 ? 0.48 : 0.55');
-    expect(source).toContain("isLight ? '#AD4D10' : '#F97316'");
-    expect(source).toContain("isLight ? '#087F79' : '#62E6DC'");
+    expect(source).toContain("program.uniforms.uCustomColor.value = hexToVec3('#F97316')");
+    expect(source).toContain("program.uniforms.uSecondaryColor.value = hexToVec3('#62E6DC')");
+    expect(source).not.toContain("isLight ? '#AD4D10'");
+    expect(source).not.toContain("isLight ? '#087F79'");
     expect(source).toContain('uSecondaryColor');
-    expect(source).toContain('sin(iTime * 0.32 - 1.5708)');
+    expect(source).toContain('sin(iTime * 1.2566 - 1.5708)');
     expect(source).toContain('program.uniforms.uOpacity.value = 0.8');
     expect(source).toContain('intensity * animatedColor');
     expect(source).toContain('uScale: { value: 0.7 }');
