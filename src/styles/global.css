@@ -390,6 +390,10 @@
     color: var(--text);
     transform: translateY(-1px);
   }
+  :root[data-theme='light'] .hero-actions a:first-child,
+  :root[data-theme='light'] .hero-actions a:first-child:hover {
+    color: #fff;
+  }
 
   main,
   body > footer {

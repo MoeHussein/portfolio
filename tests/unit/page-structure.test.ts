@@ -109,6 +109,9 @@ describe('portfolio page structure', () => {
     expect(source).toMatch(/\.work-section\s*\{[\s\S]*?background:\s*var\(--section-layer\)/);
     expect(source).toMatch(/\.project-card\s*\{[\s\S]*?background:\s*var\(--surface\)/);
     expect(source).toMatch(/\.case-study-dialog\s*\{[\s\S]*?background:\s*var\(--surface-raised\)/);
+    expect(source).toMatch(
+      /:root\[data-theme='light'\] \.hero-actions a:first-child,[\s\S]*?color:\s*#fff/,
+    );
     expect(source).toContain('animation: calligraphy-shimmer');
     expect(source).toContain('@keyframes calligraphy-shimmer');
     expect(source).toContain('@media (prefers-reduced-motion: reduce)');
