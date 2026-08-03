@@ -68,4 +68,14 @@ describe('portfolio page structure', () => {
       /@media \(max-width: 900px\)[\s\S]*?\.project-cards\s*\{[\s\S]*?overflow-x:\s*auto/,
     );
   });
+
+  it('renders the CV from one consolidated research role with a visible DOI', () => {
+    const path = join(root, 'src/pages/cv/[locale].astro');
+    const source = existsSync(path) ? readFileSync(path, 'utf8') : '';
+
+    expect(source).toContain('content.cv.researchExperience');
+    expect(source).not.toContain('content.timeline.map');
+    expect(source).toContain('href={content.research.doi}');
+    expect(source).toContain('doi.org/10.1364/BOE.585564');
+  });
 });

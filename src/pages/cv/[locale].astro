@@ -9,28 +9,45 @@ const locale = Astro.params.locale as 'en' | 'tr';
 const entry = await getEntry('profile', locale);
 if (!entry) throw new Error(`Missing CV content for locale: ${locale}`);
 const content = entry.data;
+
 const labels = {
   en: {
-    profile: 'Profile',
+    document: 'Curriculum Vitae',
+    summary: 'Professional Summary',
+    publication: 'Selected Publication',
+    publicationDoi: 'DOI',
     experience: 'Research Experience',
     education: 'Education',
-    skills: 'Skills',
-    recognition: 'Selected Recognition',
-    projects: 'Selected Projects',
-    learning: 'Independent Learning',
+    skills: 'Technical Skills',
+    recognition: 'Recognition & Presentations',
+    projects: 'Selected Engineering & Product Projects',
+    learning: 'Ongoing Independent Learning',
     languages: 'Languages',
+    continued: 'Curriculum Vitae - continued',
   },
   tr: {
-    profile: 'Profil',
+    document: 'Özgeçmiş',
+    summary: 'Profesyonel Özet',
+    publication: 'Seçili Yayın',
+    publicationDoi: 'DOI',
     experience: 'Araştırma Deneyimi',
     education: 'Eğitim',
-    skills: 'Beceriler',
-    recognition: 'Seçilmiş Başarılar',
-    projects: 'Seçilmiş Projeler',
-    learning: 'Bağımsız Öğrenme',
+    skills: 'Teknik Beceriler',
+    recognition: 'Başarılar ve Sunumlar',
+    projects: 'Seçili Mühendislik ve Ürün Projeleri',
+    learning: 'Devam Eden Bağımsız Öğrenme',
     languages: 'Diller',
+    continued: 'Özgeçmiş - devam',
   },
 }[locale];
+
+const cvText = (value: string) => value.replace(/[–—]/g, '-').replace(/\s*·\s*/g, ' | ');
+const selectedProjects = content.projects
+  .filter((project) => project.id !== 'dual-shot-pdhm')
+  .slice(0, 5);
+const selectedRecognition = content.achievements.filter(
+  (item) => !item.title.toLowerCase().includes('biomedical optics express'),
+);
 ---
 
 <!doctype html>
@@ -38,122 +55,161 @@ const labels = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{content.name} · CV</title>
+    <title>{content.name} - CV</title>
   </head>
   <body>
     <main>
-      <header>
-        <div>
-          <p class="eyebrow">Curriculum Vitae</p>
-          <h1>{content.name}</h1>
-          <p class="headline">{content.headline}</p>
-        </div>
-        <address>
-          <span>{content.contact.location}</span>
-          <a href={`mailto:${content.contact.email}`}>{content.contact.email}</a>
-          <a href={content.contact.github}>github.com/MoeHussein</a>
-          <a href={content.contact.orcid}>ORCID 0009-0009-7211-0974</a>
-        </address>
-      </header>
+      <article class="sheet">
+        <header class="identity">
+          <div>
+            <p class="eyebrow">{labels.document}</p>
+            <h1>{content.name}</h1>
+            <p class="headline">{cvText(content.headline)}</p>
+          </div>
+          <address>
+            <span>{content.contact.location}</span>
+            <a href={`mailto:${content.contact.email}`}>{content.contact.email}</a>
+            <a href={content.contact.github}>github.com/MoeHussein</a>
+            <a href={content.contact.orcid}>ORCID 0009-0009-7211-0974</a>
+          </address>
+        </header>
 
-      <section class="profile">
-        <h2>{labels.profile}</h2>
-        <p>{content.about.paragraphs.join(' ')}</p>
-      </section>
+        <section class="summary">
+          <h2>{labels.summary}</h2>
+          <p>{cvText(content.cv.summary)}</p>
+        </section>
 
-      <div class="columns">
-        <div class="primary">
-          <section>
-            <h2>{labels.experience}</h2>
-            {
-              content.timeline.map((item) => (
-                <article>
-                  <p class="date">{item.period}</p>
-                  <h3>{item.title}</h3>
-                  <p class="organization">{item.organization}</p>
-                  <p>{item.description}</p>
-                </article>
-              ))
-            }
-          </section>
+        <div class="columns">
+          <div class="primary">
+            <section>
+              <h2>{labels.experience}</h2>
+              <article class="entry research-entry">
+                <p class="date">{cvText(content.cv.researchExperience.period)}</p>
+                <h3>{cvText(content.cv.researchExperience.title)}</h3>
+                <p class="organization">{content.cv.researchExperience.organization}</p>
+                <p class="project-line">{cvText(content.cv.researchExperience.project)}</p>
+                <ul>
+                  {content.cv.researchExperience.bullets.map((bullet) => <li>{cvText(bullet)}</li>)}
+                </ul>
+              </article>
+            </section>
 
-          <section>
-            <h2>{labels.education}</h2>
-            {
-              content.education.map((item) => (
-                <article>
-                  <p class="date">{item.period}</p>
-                  <h3>{item.degree}</h3>
-                  <p class="organization">{item.institution}</p>
-                  <ul>
-                    {item.details.map((detail) => (
-                      <li>{detail}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))
-            }
-          </section>
+            <section>
+              <h2>{labels.publication}</h2>
+              <article class="entry publication-entry">
+                <p class="date">{cvText(content.cv.publicationTier)}</p>
+                <h3>
+                  <a href={content.research.doi}>{cvText(content.research.paperTitle)}</a>
+                </h3>
+                <p class="citation">{cvText(content.research.citation)}</p>
+                <a class="doi" href={content.research.doi}>
+                  <strong>{labels.publicationDoi}:</strong> doi.org/10.1364/BOE.585564
+                </a>
+              </article>
+            </section>
 
-          <section>
-            <h2>{labels.projects}</h2>
-            {
-              content.projects.slice(0, 5).map((project) => (
-                <article class="compact">
-                  <h3>{project.title}</h3>
-                  <p>{project.summary}</p>
-                  <p class="tech">{project.technologies.join(' · ')}</p>
-                </article>
-              ))
-            }
-          </section>
-        </div>
-
-        <aside>
-          <section>
-            <h2>{labels.skills}</h2>
-            {
-              content.skillGroups.map((group) => (
-                <div class="skill-group">
-                  <h3>{group.title}</h3>
-                  <p>{group.items.join(' · ')}</p>
-                </div>
-              ))
-            }
-          </section>
-
-          <section>
-            <h2>{labels.recognition}</h2>
-            {
-              content.achievements.map((item) => (
-                <article class="compact">
-                  <p class="date">{item.date}</p>
-                  <h3>{item.title}</h3>
-                  <p>{item.detail}</p>
-                </article>
-              ))
-            }
-          </section>
-
-          <section>
-            <h2>{labels.learning}</h2>
-            <ul>{content.learning.map((item) => <li>{item.label}</li>)}</ul>
-          </section>
-
-          <section>
-            <h2>{labels.languages}</h2>
-            <ul class="language-list">
+            <section>
+              <h2>{labels.education}</h2>
               {
-                content.languages.map((item) => (
-                  <li>
-                    <strong>{item.language}</strong> - {item.level}
-                  </li>
+                content.education.map((item) => (
+                  <article class="entry education-entry">
+                    <p class="date">{cvText(item.period)}</p>
+                    <h3>{cvText(item.degree)}</h3>
+                    <p class="organization">{item.institution}</p>
+                    <ul>
+                      {item.details.map((detail) => (
+                        <li>{cvText(detail)}</li>
+                      ))}
+                    </ul>
+                  </article>
                 ))
               }
-            </ul>
-          </section>
-        </aside>
-      </div>
+            </section>
+          </div>
+
+          <div class="sidebar">
+            <section>
+              <h2>{labels.skills}</h2>
+              {
+                content.skillGroups.map((group) => (
+                  <div class="skill-group">
+                    <h3>{group.title}</h3>
+                    <p>{group.items.map(cvText).join(', ')}</p>
+                  </div>
+                ))
+              }
+            </section>
+
+            <section>
+              <h2>{labels.languages}</h2>
+              <ul class="language-list">
+                {
+                  content.languages.map((item) => (
+                    <li>
+                      <strong>{item.language}</strong>: {cvText(item.level)}
+                    </li>
+                  ))
+                }
+              </ul>
+            </section>
+          </div>
+        </div>
+
+        <footer><span>{content.name}</span><span>1 / 2</span></footer>
+      </article>
+
+      <article class="sheet">
+        <header class="continuation-header">
+          <div>
+            <p class="eyebrow">{labels.continued}</p>
+            <h2>{content.name}</h2>
+          </div>
+          <p>{content.contact.email}</p>
+        </header>
+
+        <div class="columns page-two-columns">
+          <div class="primary">
+            <section>
+              <h2>{labels.projects}</h2>
+              {
+                selectedProjects.map((project) => (
+                  <article class="entry project-entry">
+                    <p class="date">{cvText(project.status)}</p>
+                    <h3>{cvText(project.title)}</h3>
+                    <p>{cvText(project.summary)}</p>
+                    <p class="outcome">{cvText(project.outcome)}</p>
+                    <p class="tech">{project.technologies.map(cvText).join(', ')}</p>
+                  </article>
+                ))
+              }
+            </section>
+          </div>
+
+          <div class="sidebar">
+            <section>
+              <h2>{labels.recognition}</h2>
+              {
+                selectedRecognition.map((item) => (
+                  <article class="entry compact">
+                    <p class="date">{cvText(item.date)}</p>
+                    <h3>{cvText(item.title)}</h3>
+                    <p>{cvText(item.detail)}</p>
+                  </article>
+                ))
+              }
+            </section>
+
+            <section>
+              <h2>{labels.learning}</h2>
+              <ul class="learning-list">
+                {content.learning.map((item) => <li>{cvText(item.label)}</li>)}
+              </ul>
+            </section>
+          </div>
+        </div>
+
+        <footer><span>{content.name}</span><span>2 / 2</span></footer>
+      </article>
     </main>
   </body>
 </html>
@@ -161,149 +217,288 @@ const labels = {
 <style>
   @page {
     size: A4;
-    margin: 12mm;
+    margin: 11mm 12mm;
   }
+
   :global(*) {
     box-sizing: border-box;
   }
+
+  :global(html) {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
   :global(body) {
     margin: 0;
     color: #17202a;
     background: #fff;
-    font-family: Arial, 'Noto Sans Arabic', sans-serif;
-    font-size: 9.2pt;
-    line-height: 1.46;
+    font-family: Arial, sans-serif;
+    font-size: 8.8pt;
+    line-height: 1.42;
   }
+
   main {
-    max-width: 186mm;
-    margin: 0 auto;
+    margin: 0;
   }
-  header {
+
+  .sheet {
+    min-height: 273mm;
+    display: flex;
+    flex-direction: column;
+    break-after: page;
+  }
+
+  .sheet:last-child {
+    break-after: auto;
+  }
+
+  .identity {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 8mm;
     align-items: end;
-    padding-block-end: 6mm;
-    border-block-end: 2px solid #158e8a;
+    padding-block-end: 5mm;
+    border-block-end: 2px solid #0d8b87;
   }
+
   .eyebrow,
-  h2,
-  .date {
-    color: #158e8a;
+  .date,
+  section > h2 {
+    color: #0d8b87;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.085em;
     font-weight: 700;
   }
+
   .eyebrow {
-    margin: 0 0 1.5mm;
-    font-size: 7.5pt;
+    margin: 0 0 1.3mm;
+    font-size: 7.2pt;
   }
+
   h1 {
     margin: 0;
-    font-size: 27pt;
+    font-size: 25pt;
     line-height: 1.02;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.035em;
   }
+
   .headline {
-    max-width: 125mm;
-    margin: 2mm 0 0;
-    color: #3f5965;
+    max-width: 126mm;
+    margin: 1.7mm 0 0;
+    color: #405a66;
+    font-size: 9.4pt;
     font-weight: 700;
   }
+
   address {
     display: grid;
-    gap: 0.6mm;
+    gap: 0.65mm;
     font-style: normal;
-    font-size: 8pt;
+    font-size: 7.8pt;
     text-align: end;
   }
+
   a {
     color: inherit;
     text-decoration: none;
   }
+
+  .summary {
+    display: grid;
+    grid-template-columns: 34mm 1fr;
+    gap: 6mm;
+    margin: 4.5mm 0;
+  }
+
+  .summary h2,
+  .summary p {
+    margin: 0;
+  }
+
+  .summary p {
+    color: #334852;
+  }
+
+  section > h2 {
+    margin: 0 0 2.5mm;
+    padding-block-end: 1.2mm;
+    border-block-end: 1px solid #b6d8d6;
+    font-size: 8pt;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 9.5pt;
+    line-height: 1.25;
+  }
+
+  .publication-entry h3 a {
+    text-decoration: none;
+  }
+
+  .citation {
+    margin: 1.2mm 0 0;
+    color: #455a64;
+  }
+
+  .doi {
+    display: inline-block;
+    margin-block-start: 1.5mm;
+    color: #075f64;
+    text-decoration: underline;
+    text-underline-offset: 1.5px;
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: 1.72fr 1fr;
+    gap: 8mm;
+  }
+
+  .primary {
+    padding-inline-end: 7mm;
+    border-inline-end: 1px solid #d6e1e3;
+  }
+
   section {
     break-inside: avoid;
   }
-  .profile {
-    display: grid;
-    grid-template-columns: 35mm 1fr;
-    gap: 6mm;
-    margin: 6mm 0;
-  }
-  .profile p {
-    margin: 0;
-    color: #33434b;
-  }
-  .columns {
-    display: grid;
-    grid-template-columns: 1.65fr 1fr;
-    gap: 9mm;
-  }
-  .primary {
-    padding-inline-end: 8mm;
-    border-inline-end: 1px solid #d8e2e4;
-  }
-  h2 {
-    margin: 0 0 3mm;
-    padding-block-end: 1.4mm;
-    border-block-end: 1px solid #b9d8d7;
-    font-size: 8.3pt;
-  }
-  h3 {
-    margin: 0;
-    font-size: 10pt;
-    line-height: 1.25;
-  }
-  article {
-    margin-block-end: 4mm;
+
+  .entry {
+    margin-block-end: 3.6mm;
     break-inside: avoid;
   }
-  article p {
-    margin: 1mm 0 0;
+
+  .entry p {
+    margin: 0.8mm 0 0;
   }
+
   .date {
-    margin: 0 0 0.6mm;
-    font-size: 7pt;
+    margin: 0 0 0.55mm !important;
+    font-size: 6.9pt;
   }
+
   .organization {
-    color: #51636b;
+    color: #4e626b;
     font-weight: 700;
   }
+
+  .project-line {
+    color: #246a6c;
+    font-size: 7.7pt;
+    font-weight: 700;
+  }
+
   ul {
-    margin: 1mm 0 0;
+    margin: 1.2mm 0 0;
     padding-inline-start: 4mm;
   }
+
   li {
-    margin-block-end: 0.7mm;
+    margin-block-end: 0.65mm;
   }
-  .compact {
-    margin-block-end: 3mm;
-  }
-  .tech {
-    color: #526d74;
-    font-size: 7.7pt;
-  }
-  .skill-group {
-    margin-block-end: 3.5mm;
-    break-inside: avoid;
-  }
-  .skill-group h3 {
+
+  .research-entry li {
     margin-block-end: 1mm;
   }
+
+  .education-entry {
+    margin-block-end: 3mm;
+  }
+
+  .skill-group {
+    margin-block-end: 3.2mm;
+    break-inside: avoid;
+  }
+
+  .skill-group h3 {
+    margin-block-end: 0.8mm;
+  }
+
   .skill-group p {
     margin: 0;
-    color: #40545c;
+    color: #40545d;
   }
-  .language-list strong {
-    font-weight: 700;
+
+  .sidebar section {
+    margin-block-end: 5mm;
   }
-  aside section {
-    margin-block-end: 6mm;
+
+  .language-list,
+  .learning-list {
+    margin-block-start: 0;
   }
-  html[dir='rtl'] .primary {
-    padding-inline: 0 8mm;
+
+  .continuation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding-block-end: 4mm;
+    margin-block-end: 5mm;
+    border-block-end: 2px solid #0d8b87;
   }
-  html[dir='rtl'] address {
-    text-align: start;
+
+  .continuation-header h2 {
+    margin: 0;
+    font-size: 15pt;
+    letter-spacing: -0.02em;
+  }
+
+  .continuation-header > p {
+    margin: 0;
+    color: #4e626b;
+    font-size: 7.8pt;
+  }
+
+  .page-two-columns {
+    flex: 1;
+  }
+
+  .project-entry {
+    padding-block-end: 2.8mm;
+    border-block-end: 1px solid #e0e7e8;
+  }
+
+  .project-entry:last-child {
+    border-block-end: 0;
+  }
+
+  .outcome {
+    color: #374b54;
+  }
+
+  .tech {
+    color: #527078;
+    font-size: 7.4pt;
+  }
+
+  .compact {
+    margin-block-end: 3.5mm;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    margin-block-start: auto;
+    padding-block-start: 2.5mm;
+    border-block-start: 1px solid #d9e3e5;
+    color: #65777e;
+    font-size: 6.8pt;
+  }
+
+  @media screen {
+    :global(body) {
+      background: #e8edef;
+    }
+
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 8mm auto;
+      padding: 11mm 12mm;
+      background: #fff;
+      box-shadow: 0 8px 30px rgb(23 32 42 / 12%);
+    }
   }
 </style>

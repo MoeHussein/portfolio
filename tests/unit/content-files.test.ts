@@ -18,6 +18,11 @@ type Profile = {
   direction: 'ltr' | 'rtl';
   name: string;
   headline: string;
+  cv: {
+    publicationTier: string;
+    researchExperience: { title: string; bullets: string[] };
+  };
+  research: { doi: string };
   projects: Project[];
   languages: { language: string; level: string }[];
   contact: { email: string; github: string; orcid: string };
@@ -83,6 +88,15 @@ describe('localized portfolio content', () => {
       { language: 'Turkish', level: 'Upper-intermediate' },
       { language: 'Japanese', level: 'Beginner' },
     ]);
+  });
+
+  it('keeps one consolidated research role and the DOI-led Q1 publication highlight', () => {
+    for (const profile of readProfiles()) {
+      expect(profile.cv.researchExperience.title.trim()).not.toBe('');
+      expect(profile.cv.researchExperience.bullets).toHaveLength(3);
+      expect(profile.cv.publicationTier).toContain('Q1');
+      expect(profile.research.doi).toBe('https://doi.org/10.1364/BOE.585564');
+    }
   });
 
   it('uses the approved concise class rank wording', () => {

@@ -47,6 +47,21 @@
       "Ayrıca yeni fikirleri faydalı ürünlere ve sürdürülebilir girişimlere dönüştürmek istiyorum. Benim için bu, problemi anlamak, doğru şekilde incelemek ve amaçla üretmekle başlıyor."
     ]
   },
+  "cv": {
+    "summary": "Hesaplamalı görüntüleme ve polarizasyona duyarlı dijital holografik mikroskopiye odaklanan biyomedikal mühendisi ve yüksek lisans adayı. Optik sistem geliştirme, bilimsel Python, tam alan Jones matrisi rekonstrüksiyonu ve araştırma iletişimi deneyimine sahibim.",
+    "publicationTier": "Hakemli makale | SJR optik kategorisinde Q1",
+    "researchExperience": {
+      "period": "15 Eyl 2023 - Günümüz",
+      "title": "Lisansüstü Araştırmacı - Biyomedikal Optik ve Hesaplamalı Görüntüleme",
+      "organization": "İstanbul Medipol Üniversitesi",
+      "project": "TÜBİTAK 2530 Türkiye-Moldova İkili İş Birliği, Proje 123N774",
+      "bullets": [
+        "FFT hologram rekonstrüksiyonu, faz işleme, tam alan Jones matrisi rekonstrüksiyonu, retardans ve hızlı eksen analizi için polarizasyona duyarlı bir DHM sistemi ve Python hattı geliştirdim.",
+        "Akademik danışmanımla iş birliği içinde sistem tasarımı ve kurulumu, ekipman planlama, kamera yapılandırması, deneyler, görüntü işleme, doğrulama, görselleştirme ve makale hazırlığını kapsayan uçtan uca deneysel süreci yürüttüm.",
+        "Çift kırıcı filmle doğrulanan ve fare beyni ile insan korneası örneklerine uygulanan çift çekimli faz sapması eşitleme yöntemini yayımladım."
+      ]
+    }
+  },
   "research": {
     "title": "Öne çıkan araştırma",
     "paperTitle": "Dual-shot polarization digital holographic microscopy with phase bias equalization for full-field Jones matrix imaging",
@@ -199,7 +214,7 @@
       "period": "11 Eyl 2019 — 10 Haz 2023",
       "degree": "Lisans · Biyomedikal Mühendisliği",
       "institution": "İstanbul Medipol Üniversitesi",
-      "details": ["GNO 3.35/4.00", "Onur derecesiyle mezuniyet", "Sınıfımda 3."]
+      "details": ["GNO 3.35/4.00", "Onur derecesiyle mezuniyet", "Sınıf üçüncüsü"]
     }
   ],
   "skillGroups": [
@@ -254,7 +269,7 @@
     {
       "date": "27–29 Ağu 2025",
       "title": "Sözlü sunum · NanoTR-19",
-      "detail": "Jones Matrix Analysis via a Polarization-Sensitive Sensor in Digital Holographic Microscopy · sözlü sunum formatı şu anda kişisel kayıtlarla desteklenmektedir."
+      "detail": "Jones Matrix Analysis via a Polarization-Sensitive Sensor in Digital Holographic Microscopy."
     }
   ],
   "learning": [

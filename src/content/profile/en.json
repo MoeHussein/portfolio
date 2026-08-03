@@ -47,6 +47,21 @@
       "I also want to turn novel ideas into useful products and sustainable ventures. For me that starts with understanding the problem, studying it properly and building with purpose."
     ]
   },
+  "cv": {
+    "summary": "Biomedical engineer and MSc candidate focused on computational imaging and polarization-sensitive digital holographic microscopy. Experienced in optical system development, scientific Python, full-field Jones matrix reconstruction and research communication.",
+    "publicationTier": "Peer-reviewed article | Q1 in the SJR optics category",
+    "researchExperience": {
+      "period": "15 Sep 2023 - Present",
+      "title": "Graduate Researcher - Biomedical Optics & Computational Imaging",
+      "organization": "Istanbul Medipol University",
+      "project": "TÜBİTAK 2530 Türkiye-Moldova Bilateral Cooperation, Project 123N774",
+      "bullets": [
+        "Developed a polarization-sensitive DHM system and Python pipeline for FFT hologram reconstruction, phase processing, full-field Jones matrix reconstruction, retardance and fast-axis analysis.",
+        "Led the end-to-end experimental workflow in collaboration with my academic advisor, including system design and setup, equipment planning, camera configuration, experiments, image processing, validation, visualization and manuscript preparation.",
+        "Published a dual-shot phase-bias equalization method validated with birefringent film and applied to mouse brain and human cornea samples."
+      ]
+    }
+  },
   "research": {
     "title": "Featured research",
     "paperTitle": "Dual-shot polarization digital holographic microscopy with phase bias equalization for full-field Jones matrix imaging",
@@ -259,7 +274,7 @@
     {
       "date": "27–29 Aug 2025",
       "title": "Oral presentation · NanoTR-19",
-      "detail": "Jones Matrix Analysis via a Polarization-Sensitive Sensor in Digital Holographic Microscopy · oral format is currently supported by personal records."
+      "detail": "Jones Matrix Analysis via a Polarization-Sensitive Sensor in Digital Holographic Microscopy."
     }
   ],
   "learning": [

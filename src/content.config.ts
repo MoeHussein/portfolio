@@ -28,6 +28,17 @@ const profile = defineCollection({
     ui: z.record(z.string(), z.string()),
     hero: z.object({ statement: z.string(), availability: z.string() }),
     about: z.object({ title: z.string(), paragraphs: z.array(z.string()) }),
+    cv: z.object({
+      summary: z.string(),
+      publicationTier: z.string(),
+      researchExperience: z.object({
+        period: z.string(),
+        title: z.string(),
+        organization: z.string(),
+        project: z.string(),
+        bullets: z.array(z.string()).min(3),
+      }),
+    }),
     research: z.object({
       title: z.string(),
       paperTitle: z.string(),
