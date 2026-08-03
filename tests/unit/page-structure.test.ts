@@ -49,6 +49,8 @@ describe('portfolio page structure', () => {
     expect(source).toContain('class="hero-verse"');
     expect(source).toContain('class="hero-verse-stage"');
     expect(source).toContain('<PlasmaBackdrop />');
+    expect(source).toMatch(/<section class="hero" id="top">\s*<PlasmaBackdrop \/>/);
+    expect(source).not.toMatch(/class="hero-verse-stage">\s*<PlasmaBackdrop \/>/);
     expect(source).not.toContain('HeroAtmosphere');
     expect(source).not.toContain('ProfileAurora');
     expect(source).toContain('وَتَوَكَّلْ');

@@ -231,18 +231,20 @@
   .plasma-backdrop {
     position: absolute;
     z-index: 0;
-    inset: -9rem -10rem -7rem -6rem;
+    inset: 0 -12% 0 0;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 20%, #000 100%);
-    mask-image: linear-gradient(to right, transparent 0%, #000 20%, #000 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 32%, #000 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 32%, #000 100%);
     pointer-events: none;
-    transform: translateX(6%);
+    transform: translateX(8%);
   }
 
   @media (max-width: 699px) {
     .plasma-backdrop {
-      inset: -3rem -7rem -5rem -2.5rem;
-      transform: translateX(12%);
+      inset: 0 -35% 0 -15%;
+      -webkit-mask-image: none;
+      mask-image: none;
+      transform: translateX(8%);
     }
   }
 </style>
