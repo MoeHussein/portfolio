@@ -71,10 +71,13 @@ describe('portfolio page structure', () => {
 
   it('self-hosts a dedicated Quranic typeface for the Arabic verse', () => {
     const layout = readFileSync(join(root, 'src/layouts/BaseLayout.astro'), 'utf8');
+    const page = readFileSync(join(root, 'src/components/PortfolioPage.astro'), 'utf8');
     const styles = readFileSync(join(root, 'src/styles/global.css'), 'utf8');
 
     expect(layout).toContain('@fontsource/amiri-quran/arabic-400.css');
     expect(styles).toMatch(/\.hero-verse-arabic\s*\{[\s\S]*?font-family:\s*'Amiri Quran'/);
+    expect(page).not.toContain('ۚ');
+    expect(styles).not.toContain('.hero-verse-pause');
   });
 
   it('keeps the complete page on one theme-token system', () => {
