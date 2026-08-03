@@ -1,0 +1,20 @@
+{
+  "github:withastro/astro-minimal": {
+    "commit": "9865d1c03af6d1a1f15c9811858778cc952ca4e4",
+    "license": "MIT"
+  },
+  "github:DavidHDev/react-bits": {
+    "commit": "d26ed7a476148f1253cca3f5bc9f679fda53e1f5",
+    "sourceBlob": "abf74f018f51b12ce4ac39aecac0a7406236fb12",
+    "archived": false,
+    "disabled": false,
+    "pushedAt": "2026-08-02T07:03:12Z",
+    "license": "LicenseRef-MIT-Commons-Clause-1.0"
+  },
+  "npm:ogl": {
+    "version": "1.0.11",
+    "license": "Unlicense",
+    "integrity": "sha512-kUpC154AFfxi16pmZUK4jk3J+8zxwTWGPo03EoYA8QPbzikHoaC82n6pNTbd+oEaJonaE8aPWBlX7ad9zrqLsA==",
+    "productionAuditVulnerabilities": 0
+  }
+}

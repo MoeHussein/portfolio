@@ -47,7 +47,8 @@ describe('portfolio page structure', () => {
     expect(source).toContain('theme-icon--moon');
     expect(source).not.toContain('data-theme-label');
     expect(source).toContain('class="hero-verse"');
-    expect(source).toContain('<HeroAtmosphere />');
+    expect(source).toContain('<PlasmaBackdrop />');
+    expect(source).not.toContain('HeroAtmosphere');
     expect(source).not.toContain('ProfileAurora');
     expect(source).toContain('وَتَوَكَّلْ');
     expect(source).toContain('Surah Al-Ahzab · 33:3');
@@ -58,34 +59,23 @@ describe('portfolio page structure', () => {
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
   });
 
-  it('keeps the hero atmosphere decorative and free of pointer interaction', () => {
-    const heroPath = join(root, 'src/components/HeroAtmosphere.astro');
-    const source = existsSync(heroPath) ? readFileSync(heroPath, 'utf8') : '';
+  it('keeps one performant full-page plasma backdrop without pointer interaction', () => {
+    const plasmaPath = join(root, 'src/components/PlasmaBackdrop.astro');
+    const source = existsSync(plasmaPath) ? readFileSync(plasmaPath, 'utf8') : '';
 
-    expect(source).toContain('data-side-rays');
+    expect(source).toContain('data-plasma-backdrop');
     expect(source).toContain('aria-hidden="true"');
     expect(source).toContain("matchMedia('(prefers-reduced-motion: reduce)')");
-    expect(source).toContain('IntersectionObserver');
     expect(source).not.toMatch(/mouse|pointermove/i);
-    expect(source).toContain('iIntensity: { value: 2 }');
-    expect(source).toContain('iOpacity: { value: 1 }');
-    expect(source).toContain('iResolution.x * iSourceX');
-    expect(source).toContain('iSourceY * iResolution.y');
-    expect(source).toContain('iSpread: { value: 2 }');
-    expect(source).toContain('program.uniforms.iSourceX.value = isDesktop ? 0.99 : 1.02');
-    expect(source).toContain('program.uniforms.iSourceY.value = isDesktop ? -0.18 : -0.22');
-    expect(source).toContain('program.uniforms.iSpread.value = 2');
-    expect(source).toContain("color1: '#000000'");
-    expect(source).toContain("color2: '#000000'");
-    expect(source).toContain("program.uniforms.iDarkRays.value = theme === 'light' ? 1 : 0");
-    expect(source).toContain('color.rgb = vec3(0.0)');
-    expect(source).toContain("theme === 'dark' && container.clientWidth >= 900");
-    expect(source).toContain('softenDesktopDarkRays ? 0.42 : 1');
-    expect(source).toContain('new MutationObserver(applyTheme)');
-    expect(source).toContain(
-      'color.rgb = clamp(mix(vec3(gray), color.rgb, iSaturation), 0.0, 1.0)',
-    );
-    expect(source).toMatch(/\.hero-atmosphere__rays\s*\{[\s\S]*?opacity:\s*1/);
+    expect(source).toContain('webgl: 2');
+    expect(source).toContain('const targetFrameInterval = 1000 / 30');
+    expect(source).toContain('window.innerWidth < 700 ? 30 : 38');
+    expect(source).toContain('window.innerWidth < 700 ? 0.42 : 0.48');
+    expect(source).toContain("isLight ? '#20262b' : '#ff7a2f'");
+    expect(source).toContain('new MutationObserver');
+    expect(source).toMatch(/\.plasma-backdrop\s*\{[\s\S]*?position:\s*fixed/);
+    expect(source).toMatch(/\.plasma-backdrop\s*\{[\s\S]*?pointer-events:\s*none/);
+    expect(existsSync(join(root, 'src/components/HeroAtmosphere.astro'))).toBe(false);
     expect(existsSync(join(root, 'src/components/ProfileAurora.astro'))).toBe(false);
   });
 
@@ -105,8 +95,8 @@ describe('portfolio page structure', () => {
     const source = existsSync(path) ? readFileSync(path, 'utf8') : '';
 
     expect(source).not.toContain('#030405');
-    expect(source).toMatch(/\.hero\s*\{[\s\S]*?background:\s*var\(--page-bg\)/);
-    expect(source).toMatch(/\.work-section\s*\{[\s\S]*?background:\s*var\(--section-bg\)/);
+    expect(source).toMatch(/\.hero\s*\{[\s\S]*?background:\s*var\(--page-layer\)/);
+    expect(source).toMatch(/\.work-section\s*\{[\s\S]*?background:\s*var\(--section-layer\)/);
     expect(source).toMatch(/\.project-card\s*\{[\s\S]*?background:\s*var\(--surface\)/);
     expect(source).toMatch(/\.case-study-dialog\s*\{[\s\S]*?background:\s*var\(--surface-raised\)/);
     expect(source).toContain('animation: calligraphy-shimmer');

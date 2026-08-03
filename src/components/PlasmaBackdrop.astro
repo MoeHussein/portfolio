@@ -1,0 +1,238 @@
+<div class="plasma-backdrop" aria-hidden="true" data-plasma-backdrop></div>
+
+<script>
+  import { Mesh, Program, Renderer, Triangle } from 'ogl';
+
+  // Adapted from React Bits Plasma at commit d26ed7a476148f1253cca3f5bc9f679fda53e1f5.
+  // See THIRD_PARTY_NOTICES.md for the license and contribution boundary.
+
+  const vertexShader = `#version 300 es
+    precision highp float;
+    in vec2 position;
+    in vec2 uv;
+    out vec2 vUv;
+
+    void main() {
+      vUv = uv;
+      gl_Position = vec4(position, 0.0, 1.0);
+    }
+  `;
+
+  const fragmentShader = `#version 300 es
+    precision highp float;
+
+    uniform vec2 iResolution;
+    uniform float iTime;
+    uniform vec3 uCustomColor;
+    uniform float uSpeed;
+    uniform float uScale;
+    uniform float uOpacity;
+    uniform float uQuality;
+    uniform float uStepScale;
+    out vec4 fragColor;
+
+    void mainImage(out vec4 outputColor, vec2 coordinate) {
+      vec2 center = iResolution.xy * 0.5;
+      coordinate = (coordinate - center) / uScale + center;
+
+      float iteration = 0.0;
+      float distanceField = 0.0;
+      float depth = 0.0;
+      float time = iTime * uSpeed;
+      vec3 accumulatedColor = vec3(0.0);
+      vec3 point = vec3(0.0);
+      vec3 sourcePoint = vec3(0.0);
+
+      for (vec2 resolution = iResolution.xy, transformed; ++iteration < 60.0; accumulatedColor += outputColor.w / distanceField * outputColor.xyz) {
+        point = depth * normalize(vec3(coordinate - 0.5 * resolution, resolution.y));
+        point.z -= 4.0;
+        sourcePoint = point;
+        distanceField = point.y - time;
+
+        point.x += 0.4 * (1.0 + point.y) * sin(distanceField + point.x * 0.1) * cos(0.34 * distanceField + point.x * 0.05);
+        transformed = point.xz *= mat2(cos(point.y + vec4(0, 11, 33, 0) - time));
+        depth += distanceField = (abs(sqrt(length(transformed * transformed)) - 0.25 * (5.0 + sourcePoint.y)) / 3.0 + 8e-4) * uStepScale;
+        outputColor = 1.0 + sin(sourcePoint.y + point.z * 0.5 + sourcePoint.z - length(sourcePoint - point) + vec4(2, 1, 0, 8));
+        if (iteration >= uQuality) break;
+      }
+
+      outputColor.xyz = tanh(accumulatedColor / 1e4);
+    }
+
+    bool finiteValue(float value) {
+      return !(isnan(value) || isinf(value));
+    }
+
+    vec3 sanitize(vec3 color) {
+      return vec3(
+        finiteValue(color.r) ? color.r : 0.0,
+        finiteValue(color.g) ? color.g : 0.0,
+        finiteValue(color.b) ? color.b : 0.0
+      );
+    }
+
+    void main() {
+      vec4 outputColor = vec4(0.0);
+      mainImage(outputColor, gl_FragCoord.xy);
+      vec3 plasma = sanitize(outputColor.rgb);
+      float intensity = (plasma.r + plasma.g + plasma.b) / 3.0;
+      fragColor = vec4(intensity * uCustomColor, clamp(length(plasma) * uOpacity, 0.0, 1.0));
+    }
+  `;
+
+  const hexToVec3 = (hex: string) => {
+    const value = hex.replace('#', '');
+    return new Float32Array([
+      Number.parseInt(value.slice(0, 2), 16) / 255,
+      Number.parseInt(value.slice(2, 4), 16) / 255,
+      Number.parseInt(value.slice(4, 6), 16) / 255,
+    ]);
+  };
+
+  const root = document.querySelector<HTMLElement>('[data-plasma-backdrop]');
+
+  if (root && root.dataset.initialized !== 'true') {
+    root.dataset.initialized = 'true';
+
+    try {
+      const renderer = new Renderer({
+        webgl: 2,
+        alpha: true,
+        antialias: false,
+        dpr: Math.min(window.devicePixelRatio || 1, 1.25),
+        premultipliedAlpha: false,
+        powerPreference: 'low-power',
+      });
+      const gl = renderer.gl;
+      gl.clearColor(0, 0, 0, 0);
+      const canvas = gl.canvas;
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      root.appendChild(canvas);
+
+      const quality = window.innerWidth < 700 ? 30 : 38;
+      const program = new Program(gl, {
+        vertex: vertexShader,
+        fragment: fragmentShader,
+        transparent: true,
+        uniforms: {
+          iResolution: { value: new Float32Array([1, 1]) },
+          iTime: { value: 0 },
+          uCustomColor: { value: hexToVec3('#ff7a2f') },
+          uSpeed: { value: 0.22 },
+          uScale: { value: 1.18 },
+          uOpacity: { value: 0.14 },
+          uQuality: { value: quality },
+          uStepScale: { value: 60 / quality },
+        },
+      });
+      const mesh = new Mesh(gl, { geometry: new Triangle(gl), program });
+
+      const applyTheme = () => {
+        const isLight = document.documentElement.dataset.theme === 'light';
+        program.uniforms.uCustomColor.value = hexToVec3(isLight ? '#20262b' : '#ff7a2f');
+        program.uniforms.uOpacity.value = isLight ? 0.075 : 0.14;
+      };
+
+      const resize = () => {
+        const renderScale = window.innerWidth < 700 ? 0.42 : 0.48;
+        const width = Math.max(1, Math.floor(root.clientWidth * renderScale));
+        const height = Math.max(1, Math.floor(root.clientHeight * renderScale));
+        renderer.setSize(width, height);
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        const resolution = program.uniforms.iResolution.value as Float32Array;
+        resolution[0] = gl.drawingBufferWidth;
+        resolution[1] = gl.drawingBufferHeight;
+      };
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const targetFrameInterval = 1000 / 30;
+      let frameId = 0;
+      let lastFrameTime = 0;
+      let startedAt = performance.now();
+
+      const render = (time: number) => {
+        program.uniforms.iTime.value = reducedMotion.matches ? 0 : (time - startedAt) * 0.001;
+        renderer.render({ scene: mesh });
+      };
+
+      const stop = () => {
+        if (frameId) window.cancelAnimationFrame(frameId);
+        frameId = 0;
+      };
+
+      const loop = (time: number) => {
+        if (time - lastFrameTime >= targetFrameInterval) {
+          lastFrameTime = time;
+          render(time);
+        }
+        frameId = window.requestAnimationFrame(loop);
+      };
+
+      const start = () => {
+        if (!frameId && !document.hidden && !reducedMotion.matches) {
+          startedAt = performance.now() - program.uniforms.iTime.value * 1000;
+          frameId = window.requestAnimationFrame(loop);
+        }
+      };
+
+      const handleVisibility = () => {
+        if (document.hidden) stop();
+        else start();
+      };
+
+      const handleMotionPreference = () => {
+        stop();
+        render(0);
+        start();
+      };
+
+      const resizeObserver = new ResizeObserver(() => {
+        resize();
+        render(performance.now());
+      });
+      const themeObserver = new MutationObserver(() => {
+        applyTheme();
+        render(performance.now());
+      });
+
+      resize();
+      applyTheme();
+      render(0);
+      resizeObserver.observe(root);
+      themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme'],
+      });
+      document.addEventListener('visibilitychange', handleVisibility);
+      reducedMotion.addEventListener('change', handleMotionPreference);
+      start();
+
+      window.addEventListener(
+        'pagehide',
+        () => {
+          stop();
+          resizeObserver.disconnect();
+          themeObserver.disconnect();
+          document.removeEventListener('visibilitychange', handleVisibility);
+          reducedMotion.removeEventListener('change', handleMotionPreference);
+          gl.getExtension('WEBGL_lose_context')?.loseContext();
+        },
+        { once: true },
+      );
+    } catch {
+      root.dataset.webglUnavailable = 'true';
+    }
+  }
+</script>
+
+<style>
+  .plasma-backdrop {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+</style>

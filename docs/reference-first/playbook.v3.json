@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "1.0.0",
+  "playbookId": "pt-f7d1c5aeb8c3",
+  "createdAt": "2026-08-03T15:47:17.265Z",
+  "objective": "Deliver full-page decorative background replacement for an existing static portfolio: replace the hero-only SideRays effect with one continuous Plasma backdrop, keep the effect visible while scrolling through the whole portfolio, support dark and light themes, respect reduced-motion preferences and page visibility, retain responsive mobile and desktop presentation",
+  "riskProfile": "professional-standard",
+  "deliveryProfile": {
+    "schemaVersion": "1.0.0",
+    "mode": "mvp-first",
+    "complexity": "low",
+    "riskProfile": "professional-standard",
+    "firstRunnableSlice": "A local responsive page with real positioning, one representative project, navigation, and contact path; placeholders are allowed for non-blocking content gaps",
+    "intake": {
+      "maxTurns": 1,
+      "maxBlockingQuestions": 5,
+      "batchQuestions": true,
+      "assumeNonBlockingDefaults": true
+    },
+    "preMvp": {
+      "maxApprovalGates": 1,
+      "maxNarrativeDocuments": 0,
+      "maxFullValidationRuns": 1,
+      "showRunnableBeforePolish": true
+    },
+    "research": {
+      "maxQueries": 2,
+      "maxNpmQueries": 1,
+      "githubResultsPerQuery": 5,
+      "maxNpmPackages": 2,
+      "maxCandidates": 4,
+      "maxDeepInspections": 2,
+      "earlyStopScore": 80,
+      "preferOfficialOrExistingStack": true
+    },
+    "context": {
+      "writeCompactState": true,
+      "restateAnswersInChat": false,
+      "readTargetedFilesOnly": true,
+      "targetedChecksBeforeFullSuite": true
+    },
+    "escalationReasons": []
+  },
+  "acceptanceCriteria": [
+    {
+      "id": "replace-the-hero-only-siderays-effect-with-one-c-1",
+      "statement": "Deliver and verify replace the hero-only SideRays effect with one continuous Plasma backdrop",
+      "stage": "mvp",
+      "required": true,
+      "evidenceKinds": [
+        "deterministic"
+      ]
+    },
+    {
+      "id": "keep-the-effect-visible-while-scrolling-through--2",
+      "statement": "Deliver and verify keep the effect visible while scrolling through the whole portfolio",
+      "stage": "mvp",
+      "required": true,
+      "evidenceKinds": [
+        "deterministic"
+      ]
+    },
+    {
+      "id": "support-dark-and-light-themes-3",
+      "statement": "Deliver and verify support dark and light themes",
+      "stage": "mvp",
+      "required": true,
+      "evidenceKinds": [
+        "deterministic"
+      ]
+    },
+    {
+      "id": "respect-reduced-motion-preferences-and-page-visi-4",
+      "statement": "Deliver and verify respect reduced-motion preferences and page visibility",
+      "stage": "mvp",
+      "required": true,
+      "evidenceKinds": [
+        "deterministic"
+      ]
+    },
+    {
+      "id": "retain-responsive-mobile-and-desktop-presentatio-5",
+      "statement": "Deliver and verify retain responsive mobile and desktop presentation",
+      "stage": "mvp",
+      "required": true,
+      "evidenceKinds": [
+        "deterministic"
+      ]
+    }
+  ],
+  "phases": [
+    {
+      "id": "intake",
+      "purpose": "Confirm only blocking scope, constraints, risk, and approval boundaries within the batched intake budget",
+      "exitEvidence": "A validated ProjectBrief, measurable acceptance criteria, and explicit assumptions for non-blocking gaps"
+    },
+    {
+      "id": "baseline",
+      "purpose": "Measure current behavior before changing it",
+      "exitEvidence": "Baseline checks, scores, or artifacts are recorded"
+    },
+    {
+      "id": "plan",
+      "purpose": "Choose the smallest reversible route to the objective",
+      "exitEvidence": "A sequenced plan with explicit verification and rollback points"
+    },
+    {
+      "id": "implement",
+      "purpose": "Deliver the first runnable vertical slice, then make one bounded improvement at a time",
+      "exitEvidence": "The primary outcome runs locally before optional polish or exhaustive expansion"
+    },
+    {
+      "id": "verify",
+      "purpose": "Test behavior and inspect relevant artifacts in the correct environments",
+      "exitEvidence": "Each required criterion has current evidence"
+    },
+    {
+      "id": "recover",
+      "purpose": "Classify failures and try one focused repair within the retry budget",
+      "exitEvidence": "The failure is resolved, replanned, or escalated"
+    },
+    {
+      "id": "closeout",
+      "purpose": "Record results, provenance, uncertainty, and candidate lessons",
+      "exitEvidence": "Run assessment and learning evidence are committed"
+    }
+  ],
+  "operatingRules": [
+    "Establish a baseline before implementation when an existing behavior or artifact is available",
+    "Protect time-to-value: show a verified runnable slice before optional polish, exhaustive content collection, or secondary capabilities",
+    "Batch blocking questions and treat non-blocking gaps as recorded assumptions or placeholders",
+    "Make at most one focused change per evaluation iteration",
+    "Prefer deterministic checks, then supplement with artifact, live, or human evidence when needed",
+    "Never weaken tests, security controls, acceptance criteria, or evidence labels to obtain a pass",
+    "Do not claim an environment was verified unless evidence was collected in that environment",
+    "Stop and request approval before changing architecture, license posture, sensitive-data boundaries, destructive behavior, or global tooling policy"
+  ],
+  "stoppingRule": {
+    "requiredCriterionPolicy": "all-passed",
+    "maxRecoveryAttemptsPerFailure": 2,
+    "maxFocusedChangesPerIteration": 1,
+    "approvalCategories": [
+      "security",
+      "license",
+      "architecture",
+      "destructive-change",
+      "global-skill",
+      "tool-policy"
+    ]
+  }
+}

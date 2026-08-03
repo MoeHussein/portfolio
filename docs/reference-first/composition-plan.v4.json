@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "createdAt": "2026-08-03T18:45:00.000Z",
+  "primary": {
+    "id": "github:withastro/astro-minimal",
+    "name": "Official Astro minimal starter",
+    "url": "https://github.com/withastro/astro/tree/astro%407.1.6/examples/minimal",
+    "commit": "9865d1c03af6d1a1f15c9811858778cc952ca4e4",
+    "license": "MIT",
+    "licenseObligations": "Preserve the Astro MIT notice.",
+    "modificationSummary": "Retain the approved Astro application shell without replacement.",
+    "contributionBoundary": "Sole application framework, router, content foundation, and static build model.",
+    "intakeMode": "copy-source"
+  },
+  "secondary": [
+    {
+      "id": "github:DavidHDev/react-bits",
+      "name": "React Bits Plasma",
+      "url": "https://github.com/DavidHDev/react-bits/tree/d26ed7a476148f1253cca3f5bc9f679fda53e1f5/src/content/Backgrounds/Plasma",
+      "commit": "d26ed7a476148f1253cca3f5bc9f679fda53e1f5",
+      "sourceBlob": "abf74f018f51b12ce4ac39aecac0a7406236fb12",
+      "license": "LicenseRef-MIT-Commons-Clause-1.0",
+      "licenseObligations": "Retain the 2026 David Haz copyright, permission notice, Commons Clause restriction, and warranty disclaimer. Do not sell or redistribute the adapted component alone or as part of a component library.",
+      "modificationSummary": "Port only the Plasma shader to an Astro-native fixed backdrop; remove React and pointer interaction; add theme updates, reduced motion, visibility pausing, responsive render scale, a 30 FPS cap, WebGL cleanup, and graceful failure.",
+      "contributionBoundary": "One decorative fixed background. No React runtime, router, content system, styling foundation, or deployment model is adopted.",
+      "intakeMode": "copy-source"
+    }
+  ],
+  "requiredApprovals": [
+    "Replace SideRays with the user-supplied Plasma effect across the entire portfolio."
+  ],
+  "approvalStatus": "approved-by-user-request",
+  "conflicts": [
+    "SideRays is removed rather than retained as a competing background effect.",
+    "The existing OGL pin remains unchanged and React is not introduced.",
+    "The Plasma port remains an inseparable decorative part of this portfolio."
+  ],
+  "remainingUncertainty": [
+    "Final intensity remains subject to the user's physical-phone review."
+  ],
+  "rejectedFinalists": []
+}

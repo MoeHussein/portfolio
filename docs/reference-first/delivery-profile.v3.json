@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0",
+  "mode": "mvp-first",
+  "complexity": "low",
+  "riskProfile": "professional-standard",
+  "firstRunnableSlice": "A local responsive page with real positioning, one representative project, navigation, and contact path; placeholders are allowed for non-blocking content gaps",
+  "intake": {
+    "maxTurns": 1,
+    "maxBlockingQuestions": 5,
+    "batchQuestions": true,
+    "assumeNonBlockingDefaults": true
+  },
+  "preMvp": {
+    "maxApprovalGates": 1,
+    "maxNarrativeDocuments": 0,
+    "maxFullValidationRuns": 1,
+    "showRunnableBeforePolish": true
+  },
+  "research": {
+    "maxQueries": 2,
+    "maxNpmQueries": 1,
+    "githubResultsPerQuery": 5,
+    "maxNpmPackages": 2,
+    "maxCandidates": 4,
+    "maxDeepInspections": 2,
+    "earlyStopScore": 80,
+    "preferOfficialOrExistingStack": true
+  },
+  "context": {
+    "writeCompactState": true,
+    "restateAnswersInChat": false,
+    "readTargetedFilesOnly": true,
+    "targetedChecksBeforeFullSuite": true
+  },
+  "escalationReasons": []
+}

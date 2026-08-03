@@ -52,6 +52,8 @@
     --calligraphy-shine: #fff8e8;
     --verse-muted: #c6c0b7;
     --header: rgba(11, 15, 18, 0.86);
+    --page-layer: rgba(11, 15, 18, 0.84);
+    --section-layer: rgba(15, 20, 24, 0.88);
     --shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.2);
     --page: min(1120px, calc(100vw - 64px));
     --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Variable', sans-serif;
@@ -76,6 +78,8 @@
     --calligraphy-shine: #6f2808;
     --verse-muted: #625b55;
     --header: rgba(245, 245, 242, 0.88);
+    --page-layer: rgba(245, 245, 242, 0.88);
+    --section-layer: rgba(236, 238, 235, 0.9);
     --shadow: 0 1.25rem 3rem rgba(16, 19, 20, 0.08);
   }
 }
@@ -257,7 +261,7 @@
     align-items: center;
     overflow: hidden;
     isolation: isolate;
-    background: var(--page-bg);
+    background: var(--page-layer);
     color: var(--text);
     transition:
       background-color 240ms ease,
@@ -377,12 +381,18 @@
     transform: translateY(-1px);
   }
 
+  main,
+  body > footer {
+    position: relative;
+    z-index: 1;
+  }
+
   .work-section {
     position: relative;
     overflow: hidden;
     isolation: isolate;
     border-block: 1px solid var(--line);
-    background: var(--section-bg);
+    background: var(--section-layer);
     color: var(--text);
     padding-block: clamp(5.5rem, 8vw, 8rem);
     transition:

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectType": "full-page decorative background replacement for an existing static portfolio",
+  "capabilities": [
+    "replace the hero-only SideRays effect with one continuous Plasma backdrop",
+    "keep the effect visible while scrolling through the whole portfolio",
+    "support dark and light themes",
+    "respect reduced-motion preferences and page visibility",
+    "retain responsive mobile and desktop presentation"
+  ],
+  "constraints": {
+    "stack": [
+      "retain Astro 7.1.6 as the sole framework",
+      "retain OGL 1.0.11 as the sole WebGL dependency",
+      "do not add React or a second styling foundation",
+      "retain static GitHub Pages deployment"
+    ],
+    "design": [
+      "one fixed backdrop rather than per-section canvases",
+      "slow non-interactive motion",
+      "low enough opacity to preserve content readability",
+      "theme-specific color and opacity"
+    ],
+    "quality": [
+      "30 FPS cap",
+      "reduced internal render resolution",
+      "lower mobile raymarch quality",
+      "pause while the page is hidden",
+      "render a static frame for reduced motion",
+      "no pointer interception or horizontal overflow"
+    ]
+  },
+  "riskProfile": "professional-standard",
+  "riskElevations": ["continuous WebGL animation across the page"],
+  "licensePolicy": "permissive-default",
+  "explicitRepositoryHints": ["DavidHDev/react-bits Plasma"],
+  "sensitiveTerms": [],
+  "sanitizedSearchTerms": "React Bits Plasma Astro OGL full page background reduced motion performance"
+}

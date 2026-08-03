@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroAtmosphere from './HeroAtmosphere.astro';
+import PlasmaBackdrop from './PlasmaBackdrop.astro';
 
 interface Props {
   locale: 'en' | 'tr';
@@ -77,6 +77,7 @@ const projectGroups = [
   name={content.name}
   headline={content.headline}
 >
+  <PlasmaBackdrop />
   <header class="site-header" data-header>
     <a class="brand" href="#top" aria-label={content.name}>{content.name}</a>
     <nav class="desktop-nav" aria-label="Primary navigation">
@@ -118,7 +119,6 @@ const projectGroups = [
 
   <main id="main-content">
     <section class="hero" id="top">
-      <HeroAtmosphere />
       <div class="hero-content">
         <h1>{content.name}</h1>
         <p class="headline">{content.headline}</p>
