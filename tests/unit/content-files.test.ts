@@ -91,4 +91,12 @@ describe('localized portfolio content', () => {
     expect(englishSource).toContain('Ranked 3rd in my class');
     expect(englishSource).not.toContain('according to university records');
   });
+
+  it('does not keep removed decorative contact or footer copy', () => {
+    for (const profile of readProfiles()) {
+      const ui = (profile as Profile & { ui: Record<string, string> }).ui;
+      expect(ui).not.toHaveProperty('contactTitle');
+      expect(ui).not.toHaveProperty('copyright');
+    }
+  });
 });
