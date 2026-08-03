@@ -54,9 +54,17 @@
     --header: rgba(11, 15, 18, 0.86);
     --page-layer: rgba(11, 15, 18, 0.78);
     --section-layer: rgba(15, 20, 24, 0.8);
+    --hero-scrim: linear-gradient(
+      90deg,
+      rgba(11, 15, 18, 0.9) 0%,
+      rgba(11, 15, 18, 0.62) 46%,
+      rgba(11, 15, 18, 0.08) 72%,
+      transparent 100%
+    );
     --shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.2);
     --page: min(1120px, calc(100vw - 64px));
-    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Variable', sans-serif;
+    --font: 'Noto Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Space Grotesk Variable', 'Noto Sans Variable', sans-serif;
   }
 
   :root[data-theme='light'] {
@@ -80,6 +88,13 @@
     --header: rgba(245, 245, 242, 0.88);
     --page-layer: rgba(245, 245, 242, 0.82);
     --section-layer: rgba(236, 238, 235, 0.84);
+    --hero-scrim: linear-gradient(
+      90deg,
+      rgba(245, 245, 242, 0.94) 0%,
+      rgba(245, 245, 242, 0.7) 46%,
+      rgba(245, 245, 242, 0.12) 72%,
+      transparent 100%
+    );
     --shadow: 0 1.25rem 3rem rgba(16, 19, 20, 0.08);
   }
 }
@@ -152,15 +167,9 @@
     background: var(--header);
     backdrop-filter: blur(18px);
   }
-  .brand {
-    justify-self: start;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    white-space: nowrap;
-  }
   .desktop-nav {
     display: flex;
+    grid-column: 2;
     justify-self: center;
     gap: 1.7rem;
   }
@@ -180,6 +189,7 @@
   }
   .header-actions {
     display: flex;
+    grid-column: 3;
     justify-self: end;
     align-items: center;
     gap: 1.1rem;
@@ -257,7 +267,7 @@
   .hero {
     position: relative;
     display: flex;
-    min-height: clamp(35rem, 68svh, 39rem);
+    min-height: clamp(33rem, 65svh, 37rem);
     align-items: center;
     overflow: hidden;
     isolation: isolate;
@@ -266,6 +276,14 @@
     transition:
       background-color 240ms ease,
       color 240ms ease;
+  }
+  .hero::before {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: var(--hero-scrim);
+    content: '';
+    pointer-events: none;
   }
   .hero::after {
     position: absolute;
@@ -278,83 +296,102 @@
   }
   .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: grid;
     width: var(--page);
     grid-template-areas:
-      'name verse'
-      'headline verse'
-      'statement verse'
-      'actions verse';
-    grid-template-columns: minmax(0, 1.15fr) minmax(19rem, 0.85fr);
-    column-gap: clamp(3rem, 8vw, 7rem);
+      'name .'
+      'role .'
+      'specialties .'
+      'statement .'
+      'actions .';
+    grid-template-columns: minmax(0, 39rem) 1fr;
+    column-gap: clamp(2rem, 7vw, 6rem);
     align-items: start;
     margin-inline: auto;
     padding-block: 8rem 4.5rem;
   }
   .hero-content h1 {
     grid-area: name;
-    max-width: 17ch;
+    max-width: 15ch;
+    font-family: var(--font-display);
     font-size: clamp(3rem, 4.4vw, 4.25rem);
-    font-weight: 500;
+    font-weight: 520;
     letter-spacing: -0.055em;
     line-height: 0.98;
   }
-  .headline {
-    grid-area: headline;
-    max-width: 45rem;
-    margin-block-start: 2rem;
+  .hero-role {
+    grid-area: role;
+    max-width: 36rem;
+    margin-block-start: 1.85rem;
     color: var(--accent);
-    font-size: clamp(0.83rem, 1.15vw, 1.02rem);
-    font-weight: 500;
-    line-height: 1.45;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    font-weight: 560;
+    line-height: 1.35;
+  }
+  .hero-specialties {
+    grid-area: specialties;
+    max-width: 39rem;
+    margin-block-start: 0.65rem;
+    color: var(--muted);
+    font-size: clamp(0.75rem, 0.9vw, 0.84rem);
+    font-weight: 520;
+    letter-spacing: 0.015em;
+    line-height: 1.55;
   }
   .hero-statement {
     grid-area: statement;
     max-width: 36rem;
-    margin-block-start: 1.35rem;
+    margin-block-start: 1.15rem;
     color: var(--muted);
     font-size: clamp(0.92rem, 1.05vw, 1.02rem);
   }
-  .hero-verse-stage {
-    grid-area: verse;
+  .verse-section {
     position: relative;
-    display: flex;
-    min-height: 18rem;
-    align-items: flex-end;
-    isolation: isolate;
-  }
-  .hero-verse {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    align-self: end;
-    margin: 0;
+    border-block-end: 1px solid var(--line);
+    background: var(--page-bg);
     color: var(--verse-text);
-    text-align: end;
+    padding-block: clamp(3.5rem, 6vw, 5rem);
+    transition:
+      background-color 240ms ease,
+      color 240ms ease,
+      border-color 240ms ease;
   }
-  .hero-verse-arabic {
+  .verse-quote {
+    position: relative;
+    display: grid;
+    width: var(--page);
+    grid-template-columns: minmax(0, 1.25fr) minmax(15rem, 0.75fr);
+    align-items: center;
+    gap: clamp(2.5rem, 7vw, 6rem);
+    margin-inline: auto;
+  }
+  .verse-arabic {
     font-family: 'Amiri Quran', 'Noto Naskh Arabic', 'Traditional Arabic', serif;
-    font-size: clamp(1.55rem, 2.25vw, 2rem);
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
     font-weight: 400;
-    line-height: 1.75;
+    line-height: 1.65;
+    text-align: center;
   }
-  .hero-verse-arabic strong {
+  .verse-arabic strong {
     color: var(--verse-accent);
     font-weight: inherit;
   }
-  .hero-verse-translation {
-    max-width: 33rem;
-    margin-block-start: 0.75rem;
-    margin-inline-start: auto;
-    color: var(--verse-muted);
-    font-size: clamp(0.78rem, 0.9vw, 0.86rem);
-    line-height: 1.6;
+  .verse-details {
+    padding-inline-start: clamp(1.75rem, 4vw, 3rem);
+    border-inline-start: 1px solid var(--line-strong);
   }
-  .hero-verse footer {
-    margin-block-start: 0.55rem;
+  .verse-translation {
+    max-width: 28rem;
+    color: var(--verse-muted);
+    font-size: clamp(0.88rem, 1vw, 0.98rem);
+    line-height: 1.7;
+  }
+  .verse-quote footer {
+    margin-block-start: 1rem;
     color: var(--verse-accent);
-    font-size: 0.66rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -422,6 +459,7 @@
     margin-block-end: 3rem;
     font-size: clamp(2rem, 3vw, 2.85rem);
     font-weight: 500;
+    font-family: var(--font-display);
     letter-spacing: -0.045em;
   }
   .project-groups {
@@ -518,7 +556,7 @@
   .project-status {
     max-width: 65%;
     color: var(--muted);
-    font-size: 0.66rem;
+    font-size: 0.72rem;
     line-height: 1.35;
     text-align: end;
   }
@@ -529,6 +567,7 @@
   }
   .project-title strong {
     max-width: 16ch;
+    font-family: var(--font-display);
     font-size: clamp(1.35rem, 2vw, 2rem);
     font-weight: 450;
     letter-spacing: -0.035em;
@@ -537,13 +576,13 @@
   .project-title small {
     max-width: 38ch;
     color: var(--muted);
-    font-size: 0.76rem;
+    font-size: 0.8rem;
     line-height: 1.5;
   }
   .project-card-footer {
     align-items: end;
     color: var(--muted);
-    font-size: 0.66rem;
+    font-size: 0.72rem;
   }
   .project-view {
     color: var(--text);
@@ -724,6 +763,7 @@
   .contact-section h2 {
     max-width: 13ch;
     margin-block: 0 2.5rem;
+    font-family: var(--font-display);
     font-size: clamp(2.6rem, 4.5vw, 4.5rem);
     font-weight: 500;
     letter-spacing: -0.055em;
@@ -789,6 +829,7 @@
   .dialog-header h2 {
     max-width: 18ch;
     margin-block-start: 0.6rem;
+    font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 4rem);
     font-weight: 450;
     letter-spacing: -0.05em;
@@ -867,6 +908,9 @@
     .desktop-nav {
       display: none;
     }
+    .header-actions {
+      grid-column: 2;
+    }
     .hero-content h1 {
       max-width: 12ch;
     }
@@ -877,8 +921,7 @@
       overscroll-behavior-inline: contain;
       scroll-padding-inline: 0.25rem;
       scroll-snap-type: inline proximity;
-      scrollbar-color: var(--line-strong) transparent;
-      scrollbar-width: thin;
+      scrollbar-width: none;
     }
     .project-card {
       min-width: min(22rem, calc(100vw - 5rem));
@@ -897,10 +940,10 @@
     }
     .site-header {
       grid-template-areas:
-        'brand actions'
-        'nav nav';
-      grid-template-columns: minmax(0, 1fr) auto;
-      min-height: 5.9rem;
+        'actions'
+        'nav';
+      grid-template-columns: 1fr;
+      min-height: 5.65rem;
       align-content: center;
       row-gap: 0.45rem;
       padding: 0.65rem 14px 0.5rem;
@@ -908,15 +951,9 @@
       background: var(--header);
       backdrop-filter: blur(18px);
     }
-    .brand {
-      grid-area: brand;
-      max-width: calc(100vw - 7rem);
-      overflow: hidden;
-      font-size: 0.7rem;
-      text-overflow: ellipsis;
-    }
     .desktop-nav {
       grid-area: nav;
+      grid-column: 1;
       display: grid;
       width: 100%;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -933,45 +970,69 @@
     }
     .header-actions {
       grid-area: actions;
+      grid-column: 1;
+      justify-self: end;
       gap: 0.8rem;
     }
     .hero {
-      min-height: 35rem;
+      min-height: 31rem;
       align-items: center;
+    }
+    .hero::before {
+      background: linear-gradient(
+        to bottom,
+        var(--page-layer) 0%,
+        var(--page-layer) 52%,
+        transparent 100%
+      );
     }
     .hero-content {
       grid-template-areas:
         'name'
-        'headline'
+        'role'
+        'specialties'
         'statement'
-        'verse'
         'actions';
       grid-template-columns: 1fr;
-      padding-block: 8.5rem 3.75rem;
+      padding-block: 8.25rem 3.5rem;
     }
     .hero-content h1 {
       max-width: 12ch;
       font-size: clamp(2.55rem, 11vw, 3.55rem);
     }
-    .headline {
-      margin-block-start: 1.4rem;
-      font-size: 0.76rem;
+    .hero-role {
+      margin-block-start: 1.35rem;
+      font-size: 1rem;
+    }
+    .hero-specialties {
+      margin-block-start: 0.55rem;
+      font-size: 0.73rem;
     }
     .hero-statement {
       max-width: 28rem;
       margin-block-start: 1.2rem;
       font-size: 0.87rem;
     }
-    .hero-verse-stage {
-      max-width: 32rem;
-      min-height: 13rem;
-      margin-block-start: 2.25rem;
+    .verse-section {
+      padding-block: 3.5rem;
     }
-    .hero-verse-arabic {
-      font-size: clamp(1.45rem, 7vw, 1.8rem);
+    .verse-quote {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
     }
-    .hero-verse-translation {
-      font-size: 0.78rem;
+    .verse-arabic {
+      font-size: clamp(1.65rem, 7vw, 2.1rem);
+    }
+    .verse-details {
+      padding-block-start: 1.5rem;
+      padding-inline-start: 0;
+      border-block-start: 1px solid var(--line-strong);
+      border-inline-start: 0;
+      text-align: center;
+    }
+    .verse-translation {
+      margin-inline: auto;
+      font-size: 0.82rem;
     }
     .hero-actions {
       gap: 0.65rem;
@@ -993,10 +1054,18 @@
       width: 100%;
       gap: 3.5rem;
     }
+    .project-cards {
+      display: grid;
+      margin-inline-end: 0;
+      padding-inline-end: 0;
+      overflow: visible;
+      gap: 0.9rem;
+    }
     .project-card {
-      min-width: min(84vw, 20rem);
-      min-height: 14rem;
-      flex-basis: min(84vw, 20rem);
+      width: 100%;
+      min-width: 0;
+      min-height: 13.5rem;
+      flex-basis: auto;
       border-radius: 0.9rem;
       padding: 1.2rem;
     }

@@ -32,6 +32,9 @@ const labels = {
     independent: 'Independent study through public materials, not completed certifications.',
     academic: 'Academic Work',
     personal: 'Personal & Product Work',
+    role: 'Biomedical Engineer in Computational Imaging',
+    specialties: 'Digital holographic microscopy · Polarization analysis · Scientific Python',
+    reflection: 'Personal reflection',
   },
   tr: {
     work: 'Seçili Çalışmalar',
@@ -47,6 +50,9 @@ const labels = {
     independent: 'Açık materyallerle bağımsız çalışma, tamamlanmış sertifikalar değildir.',
     academic: 'Akademik Çalışmalar',
     personal: 'Kişisel ve Ürün Çalışmaları',
+    role: 'Hesaplamalı Görüntüleme Alanında Biyomedikal Mühendisi',
+    specialties: 'Dijital holografik mikroskopi · Polarizasyon analizi · Bilimsel Python',
+    reflection: 'Kişisel düşünce',
   },
 }[locale];
 
@@ -78,7 +84,6 @@ const projectGroups = [
   headline={content.headline}
 >
   <header class="site-header" data-header>
-    <a class="brand" href="#top" aria-label={content.name}>{content.name}</a>
     <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="#work">{labels.work}</a>
       <a href="#profile">{labels.profile}</a>
@@ -121,24 +126,28 @@ const projectGroups = [
       <PlasmaBackdrop />
       <div class="hero-content">
         <h1>{content.name}</h1>
-        <p class="headline">{content.headline}</p>
+        <p class="hero-role">{labels.role}</p>
+        <p class="hero-specialties">{labels.specialties}</p>
         <p class="hero-statement">{heroLine}</p>
-        <div class="hero-verse-stage">
-          <blockquote class="hero-verse">
-            <p class="hero-verse-arabic" lang="ar" dir="rtl">
-              ﴿<strong>وَتَوَكَّلْ</strong> عَلَى اللَّهِ وَكَفَىٰ <strong>بِاللَّهِ</strong> وَكِيلًا﴾
-            </p>
-            <p class="hero-verse-translation" lang="en">
-              And rely upon Allah; and sufficient is Allah as Disposer of affairs.
-            </p>
-            <footer>Surah Al-Ahzab · 33:3</footer>
-          </blockquote>
-        </div>
         <div class="hero-actions">
           <a href={`mailto:${content.contact.email}`}>{ui.contact}</a>
           <a href={cvPath} download>{ui.downloadCv}</a>
         </div>
       </div>
+    </section>
+
+    <section class="verse-section" aria-label={labels.reflection}>
+      <blockquote class="verse-quote">
+        <p class="verse-arabic" lang="ar" dir="rtl">
+          ﴿<strong>وَتَوَكَّلْ</strong> عَلَى اللَّهِ وَكَفَىٰ <strong>بِاللَّهِ</strong> وَكِيلًا﴾
+        </p>
+        <div class="verse-details">
+          <p class="verse-translation" lang="en">
+            And rely upon Allah; and sufficient is Allah as Disposer of affairs.
+          </p>
+          <footer>Surah Al-Ahzab · 33:3</footer>
+        </div>
+      </blockquote>
     </section>
 
     <section class="work-section" id="work">

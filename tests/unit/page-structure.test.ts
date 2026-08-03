@@ -31,8 +31,8 @@ describe('portfolio page structure', () => {
     expect(source).toContain('<footer');
     expect(source).not.toContain('OpticField');
     expect(source).not.toContain('brand-mark');
-    expect(source).toContain('class="brand"');
-    expect(source).toContain('{content.name}</a>');
+    expect(source).not.toContain('class="brand"');
+    expect(source).not.toContain('brand-monogram');
     expect(source).toContain("id: 'academic'");
     expect(source).toContain("id: 'personal'");
     expect(source).toContain('project-group--${group.id}');
@@ -46,11 +46,14 @@ describe('portfolio page structure', () => {
     expect(source).toContain('theme-icon--sun');
     expect(source).toContain('theme-icon--moon');
     expect(source).not.toContain('data-theme-label');
-    expect(source).toContain('class="hero-verse"');
-    expect(source).toContain('class="hero-verse-stage"');
+    expect(source).toContain('class="verse-section"');
+    expect(source).toContain('class="verse-quote"');
+    expect(source).not.toContain('class="hero-verse-stage"');
     expect(source).toContain('<PlasmaBackdrop />');
     expect(source).toMatch(/<section class="hero" id="top">\s*<PlasmaBackdrop \/>/);
-    expect(source).not.toMatch(/class="hero-verse-stage">\s*<PlasmaBackdrop \/>/);
+    const heroStart = source.indexOf('<section class="hero"');
+    const heroEnd = source.indexOf('</section>', heroStart);
+    expect(source.indexOf('class="verse-section"')).toBeGreaterThan(heroEnd);
     expect(source).not.toContain('HeroAtmosphere');
     expect(source).not.toContain('ProfileAurora');
     expect(source).toContain('وَتَوَكَّلْ');
@@ -62,7 +65,7 @@ describe('portfolio page structure', () => {
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
   });
 
-  it('keeps one performant hero verse plasma backdrop without pointer interaction', () => {
+  it('keeps one performant hero plasma backdrop without pointer interaction', () => {
     const plasmaPath = join(root, 'src/components/PlasmaBackdrop.astro');
     const source = existsSync(plasmaPath) ? readFileSync(plasmaPath, 'utf8') : '';
 
@@ -74,7 +77,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain('const targetFrameInterval = 1000 / 30');
     expect(source).toContain('window.innerWidth < 700 ? 48 : 60');
     expect(source).toContain('window.innerWidth < 700 ? 0.48 : 0.55');
-    expect(source).toContain("program.uniforms.uCustomColor.value = hexToVec3('#F97316')");
+    expect(source).toContain("program.uniforms.uCustomColor.value = hexToVec3('#FF7A59')");
     expect(source).toContain("program.uniforms.uSecondaryColor.value = hexToVec3('#62E6DC')");
     expect(source).not.toContain("isLight ? '#AD4D10'");
     expect(source).not.toContain("isLight ? '#087F79'");
@@ -83,11 +86,11 @@ describe('portfolio page structure', () => {
     expect(source).toContain('intensity * uOpacity * 1.4');
     expect(source).toContain('vec3 tintedOutput');
     expect(source).toContain('isLight ? 1 : 0');
-    expect(source).toContain('sin(iTime * 0.6283 - 1.5708)');
-    expect(source).toContain('program.uniforms.uOpacity.value = 0.8');
+    expect(source).toContain('sin(iTime * 0.10472 - 1.5708)');
+    expect(source).toContain('program.uniforms.uOpacity.value = 0.72');
     expect(source).toContain('intensity * animatedColor');
     expect(source).toContain('uScale: { value: 0.5 }');
-    expect(source).toContain('uOpacity: { value: 0.8 }');
+    expect(source).toContain('uOpacity: { value: 0.72 }');
     expect(source).toContain('mask-image: linear-gradient');
     expect(source).toContain('transform: translateX(18%)');
     expect(source).toContain('@media (max-width: 699px)');
@@ -105,7 +108,7 @@ describe('portfolio page structure', () => {
     const styles = readFileSync(join(root, 'src/styles/global.css'), 'utf8');
 
     expect(layout).toContain('@fontsource/amiri-quran/arabic-400.css');
-    expect(styles).toMatch(/\.hero-verse-arabic\s*\{[\s\S]*?font-family:\s*'Amiri Quran'/);
+    expect(styles).toMatch(/\.verse-arabic\s*\{[\s\S]*?font-family:\s*'Amiri Quran'/);
     expect(page).not.toContain('ۚ');
     expect(styles).not.toContain('.hero-verse-pause');
   });
@@ -127,7 +130,7 @@ describe('portfolio page structure', () => {
     expect(source).toContain('@media (prefers-reduced-motion: reduce)');
   });
 
-  it('retains visible mobile navigation and compact horizontal project rows', () => {
+  it('retains visible mobile navigation and stacks project cards without scrollbars', () => {
     const path = join(root, 'src/styles/global.css');
     const source = existsSync(path) ? readFileSync(path, 'utf8') : '';
 
@@ -137,6 +140,10 @@ describe('portfolio page structure', () => {
     expect(source).toMatch(
       /@media \(max-width: 900px\)[\s\S]*?\.project-cards\s*\{[\s\S]*?overflow-x:\s*auto/,
     );
+    expect(source).toMatch(
+      /@media \(max-width: 640px\)[\s\S]*?\.project-cards\s*\{[\s\S]*?display:\s*grid[\s\S]*?overflow:\s*visible/,
+    );
+    expect(source).toContain('scrollbar-width: none');
   });
 
   it('renders the CV from one consolidated research role with a visible DOI', () => {
