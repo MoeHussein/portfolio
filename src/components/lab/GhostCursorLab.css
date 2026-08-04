@@ -1,0 +1,156 @@
+.ghost-lab {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(circle at 72% 35%, rgb(234 179 8 / 8%), transparent 32rem), #0b0f12;
+  color: #f4f6f5;
+  cursor: crosshair;
+}
+
+.ghost-lab::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(11 15 18 / 94%) 0%,
+    rgb(11 15 18 / 62%) 48%,
+    transparent 78%
+  );
+  content: '';
+  pointer-events: none;
+}
+
+.ghost-lab__back,
+.ghost-lab__content,
+.ghost-lab__hint {
+  position: relative;
+  z-index: 4;
+}
+
+.ghost-lab__back {
+  position: absolute;
+  inset-block-start: 1.5rem;
+  inset-inline-start: clamp(1.25rem, 4vw, 4rem);
+  border-block-end: 1px solid rgb(244 246 245 / 45%);
+  color: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.ghost-lab__content {
+  width: min(1120px, calc(100vw - 64px));
+  margin-inline: auto;
+}
+
+.ghost-lab__eyebrow {
+  margin: 0 0 1.25rem;
+  color: #eab308;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ghost-lab h1 {
+  max-width: 12ch;
+  margin: 0;
+  font-family: 'Space Grotesk Variable', sans-serif;
+  font-size: clamp(3.2rem, 7vw, 6.8rem);
+  font-weight: 520;
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+}
+
+.ghost-lab__role {
+  max-width: 38rem;
+  margin: 1.6rem 0 0;
+  color: #eab308;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 560;
+}
+
+.ghost-lab__instruction {
+  max-width: 34rem;
+  margin: 1rem 0 0;
+  color: #aab3b3;
+  line-height: 1.65;
+}
+
+.ghost-lab__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block-start: 2rem;
+}
+
+.ghost-lab__actions button,
+.ghost-lab__actions a {
+  min-width: 10rem;
+  border: 1px solid rgb(244 246 245 / 32%);
+  border-radius: 999px;
+  background: rgb(11 15 18 / 62%);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.8rem 1.15rem;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.ghost-lab__actions button:hover,
+.ghost-lab__actions button:focus-visible,
+.ghost-lab__actions a:hover,
+.ghost-lab__actions a:focus-visible {
+  border-color: #eab308;
+  background: #eab308;
+  color: #0b0f12;
+  outline: none;
+}
+
+.ghost-lab__hint {
+  position: absolute;
+  inset-block-end: 1.5rem;
+  inset-inline-end: clamp(1.25rem, 4vw, 4rem);
+  margin: 0;
+  color: #788383;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .ghost-lab__content {
+    width: min(100% - 32px, 34rem);
+  }
+
+  .ghost-lab::before {
+    background: linear-gradient(to bottom, rgb(11 15 18 / 90%), rgb(11 15 18 / 42%));
+  }
+
+  .ghost-lab__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ghost-lab__actions button,
+  .ghost-lab__actions a {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghost-lab__actions button,
+  .ghost-lab__actions a {
+    transition: none;
+  }
+}
