@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
@@ -26,9 +26,11 @@ type GhostCursorProps = {
   positionY?: number;
   mixBlendMode?: React.CSSProperties['mixBlendMode'];
   edgeIntensity?: number;
+  hiddenInLightMode?: boolean;
 
   maxDevicePixelRatio?: number;
   targetPixels?: number;
+  targetFrameRate?: number;
   fadeDelayMs?: number;
   fadeDurationMs?: number;
   zIndex?: number;
@@ -70,9 +72,11 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
   positionY = 0.5,
   mixBlendMode = 'screen',
   edgeIntensity = 0,
+  hiddenInLightMode = false,
 
   maxDevicePixelRatio = 0.5,
   targetPixels,
+  targetFrameRate = 30,
 
   fadeDelayMs,
   fadeDurationMs,
@@ -100,6 +104,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
   const pointerActiveRef = useRef(false);
   const runningRef = useRef(false);
   const hasValidSizeRef = useRef(false);
+  const [isLightTheme, setIsLightTheme] = useState(false);
 
   const isTouch = useMemo(
     () =>
@@ -120,6 +125,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
   const fadeDuration = fadeDurationMs ?? (isTouch ? 1000 : 1500);
   const normalizedPositionX = THREE.MathUtils.clamp(positionX, 0, 1);
   const normalizedPositionY = THREE.MathUtils.clamp(positionY, 0, 1);
+  const normalizedFrameRate = THREE.MathUtils.clamp(targetFrameRate, 1, 60);
 
   const baseVertexShader = `
     varying vec2 vUv;
@@ -142,6 +148,8 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     uniform float iColorHoldSeconds;
     uniform float iBrightness;
     uniform float iEdgeIntensity;
+    uniform float iStaticEffect;
+    uniform float iStaticIntensity;
     varying vec2  vUv;
 
     float hash(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7))) * 43758.5453123); }
@@ -207,18 +215,20 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       vec3 colorAcc = vec3(0.0);
       float alphaAcc = 0.0;
 
-      vec4 b = blob(uv, mouse, 1.0, iOpacity);
+      vec4 b = blob(uv, mouse, iStaticEffect > 0.5 ? iStaticIntensity : 1.0, iOpacity);
       colorAcc += b.rgb;
       alphaAcc += b.a;
 
-      for (int i = 0; i < MAX_TRAIL_LENGTH; i++) {
-        vec2 pm = (iPrevMouse[i] * 2.0 - 1.0) * vec2(iResolution.x / iResolution.y, 1.0);
-        float t = 1.0 - float(i) / float(MAX_TRAIL_LENGTH);
-        t = pow(t, 2.0);
-        if (t > 0.01) {
-          vec4 bt = blob(uv, pm, t * 0.8, iOpacity);
-          colorAcc += bt.rgb;
-          alphaAcc += bt.a;
+      if (iStaticEffect < 0.5) {
+        for (int i = 0; i < MAX_TRAIL_LENGTH; i++) {
+          vec2 pm = (iPrevMouse[i] * 2.0 - 1.0) * vec2(iResolution.x / iResolution.y, 1.0);
+          float t = 1.0 - float(i) / float(MAX_TRAIL_LENGTH);
+          t = pow(t, 2.0);
+          if (t > 0.01) {
+            vec4 bt = blob(uv, pm, t * 0.8, iOpacity);
+            colorAcc += bt.rgb;
+            alphaAcc += bt.a;
+          }
         }
       }
 
@@ -300,6 +310,20 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
   }
 
   useEffect(() => {
+    if (!hiddenInLightMode) return;
+
+    const root = document.documentElement;
+    const syncTheme = () => setIsLightTheme(root.dataset.theme === 'light');
+    syncTheme();
+
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, [hiddenInLightMode]);
+
+  useEffect(() => {
+    if (hiddenInLightMode && document.documentElement.dataset.theme === 'light') return;
+
     const host = containerRef.current;
     const parent = host?.parentElement;
     if (!host || !parent) return;
@@ -312,11 +336,11 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     }
 
     const renderer = new THREE.WebGLRenderer({
-      antialias: !isTouch,
+      antialias: false,
       alpha: true,
       depth: false,
       stencil: false,
-      powerPreference: isTouch ? 'low-power' : 'high-performance',
+      powerPreference: 'low-power',
       premultipliedAlpha: false,
       preserveDrawingBuffer: false,
     });
@@ -337,7 +361,15 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
 
     const geom = new THREE.PlaneGeometry(2, 2);
 
-    const maxTrail = Math.max(1, Math.floor(trailLength));
+    const requestedTrailLength = Math.max(1, Math.floor(trailLength));
+    const maxTrail = interactive ? requestedTrailLength : 1;
+    let staticIntensity = 1;
+    if (!interactive) {
+      for (let i = 0; i < requestedTrailLength; i += 1) {
+        const trailWeight = Math.pow(1 - i / requestedTrailLength, 2);
+        if (trailWeight > 0.01) staticIntensity += trailWeight * 0.8;
+      }
+    }
     currentMouseRef.current.set(normalizedPositionX, normalizedPositionY);
     pointerActiveRef.current = !interactive;
     trailBufRef.current = Array.from(
@@ -364,6 +396,8 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       iColorHoldSeconds: { value: normalizedColorHoldSeconds },
       iBrightness: { value: brightness },
       iEdgeIntensity: { value: edgeIntensity },
+      iStaticEffect: { value: interactive ? 0 : 1 },
+      iStaticIntensity: { value: staticIntensity },
     };
 
     const material = new THREE.ShaderMaterial({
@@ -446,8 +480,17 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     ro.observe(host);
 
     const start = typeof performance !== 'undefined' ? performance.now() : Date.now();
+    const frameInterval = 1000 / normalizedFrameRate;
+    let lastRenderTime = 0;
+    let isInViewport = true;
     const animate = () => {
       if (!active) return;
+
+      if (document.hidden || !isInViewport) {
+        runningRef.current = false;
+        rafRef.current = null;
+        return;
+      }
 
       if (!hasValidSizeRef.current) {
         rafRef.current = requestAnimationFrame(animate);
@@ -455,6 +498,11 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       }
 
       const now = performance.now();
+      if (now - lastRenderTime < frameInterval) {
+        rafRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastRenderTime = now - ((now - lastRenderTime) % frameInterval);
       const t = (now - start) / 1000;
 
       const mat = materialRef.current!;
@@ -511,11 +559,37 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     };
 
     const ensureLoop = () => {
-      if (!runningRef.current) {
+      if (!runningRef.current && !document.hidden && isInViewport) {
         runningRef.current = true;
         rafRef.current = requestAnimationFrame(animate);
       }
     };
+
+    const visibilityObserver =
+      typeof IntersectionObserver === 'undefined'
+        ? null
+        : new IntersectionObserver(([entry]) => {
+            isInViewport = entry?.isIntersecting ?? true;
+            if (isInViewport) {
+              ensureLoop();
+            } else if (rafRef.current) {
+              cancelAnimationFrame(rafRef.current);
+              runningRef.current = false;
+              rafRef.current = null;
+            }
+          });
+    visibilityObserver?.observe(host);
+
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        runningRef.current = false;
+        rafRef.current = null;
+      } else {
+        ensureLoop();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
 
     const onPointerMove = (e: PointerEvent) => {
       const rect = parent.getBoundingClientRect();
@@ -556,6 +630,8 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       parent.removeEventListener('pointerenter', onPointerEnter);
       parent.removeEventListener('pointerleave', onPointerLeave);
       resizeObsRef.current?.disconnect();
+      visibilityObserver?.disconnect();
+      document.removeEventListener('visibilitychange', onVisibilityChange);
 
       scene.clear();
       geom.dispose();
@@ -596,6 +672,9 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     interactive,
     normalizedPositionX,
     normalizedPositionY,
+    normalizedFrameRate,
+    hiddenInLightMode,
+    isLightTheme,
   ]);
 
   useEffect(() => {
@@ -654,6 +733,8 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
 
   const mergedStyle = useMemo<React.CSSProperties>(() => ({ zIndex, ...style }), [zIndex, style]);
 
+  if (hiddenInLightMode && isLightTheme) return null;
+
   return (
     <div
       ref={containerRef}
@@ -667,6 +748,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       data-interactive={interactive}
       data-position-x={normalizedPositionX}
       data-position-y={normalizedPositionY}
+      data-target-frame-rate={normalizedFrameRate}
     />
   );
 };

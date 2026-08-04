@@ -80,8 +80,18 @@ describe('portfolio page structure', () => {
     expect(page).toContain('color="#06B6D4"');
     expect(page).toContain('secondaryColor="#ff9d45"');
     expect(page).toContain('colorHoldSeconds={3}');
+    expect(page).toContain('hiddenInLightMode={true}');
+    expect(page).toContain('maxDevicePixelRatio={0.4}');
+    expect(page).toContain('targetPixels={300000}');
+    expect(page).toContain('targetFrameRate={24}');
+    expect(component).toContain('renderer.forceContextLoss()');
+    expect(component).toContain("powerPreference: 'low-power'");
+    expect(component).toContain('const maxTrail = interactive ? requestedTrailLength : 1');
     expect(styles).toMatch(/\.ghost-cursor\s*\{[\s\S]*?position:\s*absolute/);
     expect(styles).toMatch(/\.ghost-cursor\s*\{[\s\S]*?pointer-events:\s*none/);
+    expect(styles).toMatch(
+      /:root\[data-theme='light'\] \.hero-ghost-cursor\s*\{[\s\S]*?display:\s*none/,
+    );
     expect(existsSync(join(root, 'src/components/PlasmaBackdrop.astro'))).toBe(false);
     expect(existsSync(join(root, 'src/components/HeroAtmosphere.astro'))).toBe(false);
     expect(existsSync(join(root, 'src/components/ProfileAurora.astro'))).toBe(false);

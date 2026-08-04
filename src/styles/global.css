@@ -289,6 +289,10 @@
     height: 100%;
     background: transparent;
   }
+
+  :root[data-theme='light'] .hero-ghost-cursor {
+    display: none;
+  }
   .hero::before {
     position: absolute;
     z-index: 1;

@@ -20,7 +20,26 @@ test('keeps the professional hero focused and moves the verse into its own secti
   await expect(heroEffect).toHaveAttribute('data-interactive', 'false');
   await expect(heroEffect).toHaveAttribute('data-position-x', '0.71');
   await expect(heroEffect).toHaveAttribute('data-position-y', '0.5');
+  await expect(heroEffect).toHaveAttribute('data-target-frame-rate', '24');
   await expect(heroEffect.locator('canvas')).toHaveCSS('pointer-events', 'none');
+  const renderSurface = await heroEffect.locator('canvas').evaluate((element) => {
+    const canvas = element as HTMLCanvasElement;
+    return { width: canvas.width, height: canvas.height };
+  });
+  expect(renderSurface.width * renderSurface.height).toBeLessThanOrEqual(300_000);
+
+  await page.locator('[data-theme-toggle]').click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect(page.locator('.hero .ghost-cursor')).toHaveCount(0);
+
+  await page.locator('[data-theme-toggle]').click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(page.locator('.hero .ghost-cursor canvas')).toBeVisible();
+
+  await page.evaluate(() => localStorage.setItem('portfolio-theme', 'light'));
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect(page.locator('.hero .ghost-cursor')).toHaveCount(0);
   await expect(page.locator('.hero .verse-quote')).toHaveCount(0);
   await expect(page.locator('.verse-section')).toBeVisible();
   await expect(page.locator('.verse-arabic')).toContainText('وَتَوَكَّلْ');
