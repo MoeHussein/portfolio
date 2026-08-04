@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import GhostCursor from '../react-bits/GhostCursor';
 
 import './GhostCursorLab.css';
@@ -9,8 +7,6 @@ type GhostCursorLabProps = {
 };
 
 export default function GhostCursorLab({ homeHref }: GhostCursorLabProps) {
-  const [clickCount, setClickCount] = useState(0);
-
   return (
     <section className="ghost-lab" aria-labelledby="ghost-lab-title">
       <GhostCursor
@@ -23,6 +19,9 @@ export default function GhostCursorLab({ homeHref }: GhostCursorLabProps) {
         color="#06B6D4"
         secondaryColor="#F97316"
         colorCycleSeconds={8}
+        interactive={false}
+        positionX={0.68}
+        positionY={0.5}
         edgeIntensity={0}
         zIndex={3}
       />
@@ -36,20 +35,16 @@ export default function GhostCursorLab({ homeHref }: GhostCursorLabProps) {
         <h1 id="ghost-lab-title">Mohammad Hussein</h1>
         <p className="ghost-lab__role">Biomedical Engineer in Computational Imaging</p>
         <p className="ghost-lab__instruction">
-          Move your cursor across the stage. The trail shifts smoothly between cyan and orange while
-          the controls remain clickable.
+          A fixed ambient form sits right of center and shifts smoothly between cyan and orange.
         </p>
 
         <div className="ghost-lab__actions">
-          <button type="button" onClick={() => setClickCount((count) => count + 1)}>
-            Test interaction{clickCount > 0 ? ` - ${clickCount}` : ''}
-          </button>
           <a href="mailto:mohammad.mtr.hussein@gmail.com">Contact</a>
         </div>
       </div>
 
       <p className="ghost-lab__hint" aria-hidden="true">
-        Move cursor
+        Static ambient effect
       </p>
     </section>
   );

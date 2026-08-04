@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('renders the Ghost Cursor and keeps controls interactive beneath it', async ({ page }) => {
+test('renders the fixed ambient Ghost Cursor without pointer interaction', async ({ page }) => {
   const consoleErrors: string[] = [];
   page.on('console', (message) => {
     if (message.type() === 'error') consoleErrors.push(message.text());
@@ -12,7 +12,6 @@ test('renders the Ghost Cursor and keeps controls interactive beneath it', async
 
   const stage = page.locator('.ghost-lab');
   const canvas = page.locator('.ghost-cursor canvas');
-  const interactionButton = page.getByRole('button', { name: 'Test interaction' });
 
   await expect(stage).toBeVisible();
   await expect(canvas).toBeVisible();
@@ -22,17 +21,9 @@ test('renders the Ghost Cursor and keeps controls interactive beneath it', async
   await expect(ghostCursor).toHaveAttribute('data-primary-color', '#06B6D4');
   await expect(ghostCursor).toHaveAttribute('data-secondary-color', '#F97316');
   await expect(ghostCursor).toHaveAttribute('data-color-cycle-seconds', '8');
-
-  const stageBox = await stage.boundingBox();
-  expect(stageBox).not.toBeNull();
-  if (stageBox) {
-    await page.mouse.move(stageBox.x + stageBox.width * 0.25, stageBox.y + stageBox.height * 0.5);
-    await page.mouse.move(stageBox.x + stageBox.width * 0.75, stageBox.y + stageBox.height * 0.35, {
-      steps: 8,
-    });
-  }
-
-  await interactionButton.click();
-  await expect(interactionButton).toHaveText('Test interaction - 1');
+  await expect(ghostCursor).toHaveAttribute('data-interactive', 'false');
+  await expect(ghostCursor).toHaveAttribute('data-position-x', '0.68');
+  await expect(ghostCursor).toHaveAttribute('data-position-y', '0.5');
+  await expect(page.getByRole('link', { name: 'Contact' })).toBeVisible();
   expect(consoleErrors).toEqual([]);
 });

@@ -21,6 +21,9 @@ type GhostCursorProps = {
   color?: string;
   secondaryColor?: string;
   colorCycleSeconds?: number;
+  interactive?: boolean;
+  positionX?: number;
+  positionY?: number;
   mixBlendMode?: React.CSSProperties['mixBlendMode'];
   edgeIntensity?: number;
 
@@ -60,6 +63,9 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
   color = '#B497CF',
   secondaryColor = color,
   colorCycleSeconds = 0,
+  interactive = true,
+  positionX = 0.5,
+  positionY = 0.5,
   mixBlendMode = 'screen',
   edgeIntensity = 0,
 
@@ -109,6 +115,8 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
   const pixelBudget = targetPixels ?? (isTouch ? 0.9e6 : 1.3e6);
   const fadeDelay = fadeDelayMs ?? (isTouch ? 500 : 1000);
   const fadeDuration = fadeDurationMs ?? (isTouch ? 1000 : 1500);
+  const normalizedPositionX = THREE.MathUtils.clamp(positionX, 0, 1);
+  const normalizedPositionY = THREE.MathUtils.clamp(positionY, 0, 1);
 
   const baseVertexShader = `
     varying vec2 vUv;
@@ -311,7 +319,12 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     const geom = new THREE.PlaneGeometry(2, 2);
 
     const maxTrail = Math.max(1, Math.floor(trailLength));
-    trailBufRef.current = Array.from({ length: maxTrail }, () => new THREE.Vector2(0.5, 0.5));
+    currentMouseRef.current.set(normalizedPositionX, normalizedPositionY);
+    pointerActiveRef.current = !interactive;
+    trailBufRef.current = Array.from(
+      { length: maxTrail },
+      () => new THREE.Vector2(normalizedPositionX, normalizedPositionY),
+    );
     headRef.current = 0;
 
     const baseColor = new THREE.Color(color);
@@ -320,7 +333,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     const materialUniforms: GhostCursorUniforms = {
       iTime: { value: 0 },
       iResolution: { value: new THREE.Vector3(1, 1, 1) },
-      iMouse: { value: new THREE.Vector2(0.5, 0.5) },
+      iMouse: { value: new THREE.Vector2(normalizedPositionX, normalizedPositionY) },
       iPrevMouse: { value: trailBufRef.current.map((v) => v.clone()) },
       iOpacity: { value: 1.0 },
       iScale: { value: 1.0 },
@@ -428,7 +441,10 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       const matUniforms = mat.uniforms as GhostCursorUniforms;
       const comp = composerRef.current!;
 
-      if (pointerActiveRef.current) {
+      if (!interactive) {
+        matUniforms.iMouse.value.set(normalizedPositionX, normalizedPositionY);
+        fadeOpacityRef.current = 1.0;
+      } else if (pointerActiveRef.current) {
         velocityRef.current.set(
           currentMouseRef.current.x - matUniforms.iMouse.value.x,
           currentMouseRef.current.y - matUniforms.iMouse.value.y,
@@ -465,7 +481,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
 
       comp.render();
 
-      if (!pointerActiveRef.current && fadeOpacityRef.current <= 0.001) {
+      if (interactive && !pointerActiveRef.current && fadeOpacityRef.current <= 0.001) {
         runningRef.current = false;
         rafRef.current = null;
         return;
@@ -500,9 +516,11 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       ensureLoop();
     };
 
-    parent.addEventListener('pointermove', onPointerMove, { passive: true });
-    parent.addEventListener('pointerenter', onPointerEnter, { passive: true });
-    parent.addEventListener('pointerleave', onPointerLeave, { passive: true });
+    if (interactive) {
+      parent.addEventListener('pointermove', onPointerMove, { passive: true });
+      parent.addEventListener('pointerenter', onPointerEnter, { passive: true });
+      parent.addEventListener('pointerleave', onPointerLeave, { passive: true });
+    }
 
     ensureLoop();
 
@@ -554,6 +572,9 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     brightness,
     mixBlendMode,
     edgeIntensity,
+    interactive,
+    normalizedPositionX,
+    normalizedPositionY,
   ]);
 
   useEffect(() => {
@@ -619,6 +640,9 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       data-primary-color={color}
       data-secondary-color={secondaryColor}
       data-color-cycle-seconds={effectiveColorCycleSeconds}
+      data-interactive={interactive}
+      data-position-x={normalizedPositionX}
+      data-position-y={normalizedPositionY}
     />
   );
 };
