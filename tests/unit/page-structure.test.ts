@@ -49,8 +49,8 @@ describe('portfolio page structure', () => {
     expect(source).toContain('class="verse-section"');
     expect(source).toContain('class="verse-quote"');
     expect(source).not.toContain('class="hero-verse-stage"');
-    expect(source).toContain('<PlasmaBackdrop />');
-    expect(source).toMatch(/<section class="hero" id="top">\s*<PlasmaBackdrop \/>/);
+    expect(source).toContain('<GhostCursor');
+    expect(source).toMatch(/<section class="hero" id="top">\s*<GhostCursor/);
     const heroStart = source.indexOf('<section class="hero"');
     const heroEnd = source.indexOf('</section>', heroStart);
     expect(source.indexOf('class="verse-section"')).toBeGreaterThan(heroEnd);
@@ -65,39 +65,24 @@ describe('portfolio page structure', () => {
     expect(source).not.toMatch(/lorem|placeholder|coming soon/i);
   });
 
-  it('keeps one performant hero plasma backdrop without pointer interaction', () => {
-    const plasmaPath = join(root, 'src/components/PlasmaBackdrop.astro');
-    const source = existsSync(plasmaPath) ? readFileSync(plasmaPath, 'utf8') : '';
+  it('keeps one fixed ambient hero effect without pointer interaction', () => {
+    const componentPath = join(root, 'src/components/react-bits/GhostCursor.tsx');
+    const component = existsSync(componentPath) ? readFileSync(componentPath, 'utf8') : '';
+    const page = readFileSync(join(root, 'src/components/PortfolioPage.astro'), 'utf8');
+    const styles = readFileSync(join(root, 'src/styles/global.css'), 'utf8');
 
-    expect(source).toContain('data-plasma-backdrop');
-    expect(source).toContain('aria-hidden="true"');
-    expect(source).toContain("matchMedia('(prefers-reduced-motion: reduce)')");
-    expect(source).not.toMatch(/mouse|pointermove/i);
-    expect(source).toContain('webgl: 2');
-    expect(source).toContain('const targetFrameInterval = 1000 / 30');
-    expect(source).toContain('window.innerWidth < 700 ? 48 : 60');
-    expect(source).toContain('window.innerWidth < 700 ? 0.48 : 0.55');
-    expect(source).toContain("program.uniforms.uCustomColor.value = hexToVec3('#FF7A59')");
-    expect(source).toContain("program.uniforms.uSecondaryColor.value = hexToVec3('#62E6DC')");
-    expect(source).not.toContain("isLight ? '#AD4D10'");
-    expect(source).not.toContain("isLight ? '#087F79'");
-    expect(source).toContain('uSecondaryColor');
-    expect(source).toContain('uLightMode');
-    expect(source).toContain('intensity * uOpacity * 1.4');
-    expect(source).toContain('vec3 tintedOutput');
-    expect(source).toContain('isLight ? 1 : 0');
-    expect(source).toContain('sin(iTime * 0.10472 - 1.5708)');
-    expect(source).toContain('program.uniforms.uOpacity.value = 0.72');
-    expect(source).toContain('intensity * animatedColor');
-    expect(source).toContain('uScale: { value: 0.5 }');
-    expect(source).toContain('uOpacity: { value: 0.72 }');
-    expect(source).toContain('mask-image: linear-gradient');
-    expect(source).toContain('transform: translateX(18%)');
-    expect(source).toContain('@media (max-width: 699px)');
-    expect(source).not.toContain('mix-blend-mode');
-    expect(source).toContain('new MutationObserver');
-    expect(source).toMatch(/\.plasma-backdrop\s*\{[\s\S]*?position:\s*absolute/);
-    expect(source).toMatch(/\.plasma-backdrop\s*\{[\s\S]*?pointer-events:\s*none/);
+    expect(component).toContain('aria-hidden="true"');
+    expect(component).toContain("matchMedia('(prefers-reduced-motion: reduce)')");
+    expect(page).toContain('client:load');
+    expect(page).toContain('interactive={false}');
+    expect(page).toContain('positionX={0.71}');
+    expect(page).toContain('positionY={0.5}');
+    expect(page).toContain('color="#06B6D4"');
+    expect(page).toContain('secondaryColor="#ff9d45"');
+    expect(page).toContain('colorHoldSeconds={3}');
+    expect(styles).toMatch(/\.ghost-cursor\s*\{[\s\S]*?position:\s*absolute/);
+    expect(styles).toMatch(/\.ghost-cursor\s*\{[\s\S]*?pointer-events:\s*none/);
+    expect(existsSync(join(root, 'src/components/PlasmaBackdrop.astro'))).toBe(false);
     expect(existsSync(join(root, 'src/components/HeroAtmosphere.astro'))).toBe(false);
     expect(existsSync(join(root, 'src/components/ProfileAurora.astro'))).toBe(false);
   });

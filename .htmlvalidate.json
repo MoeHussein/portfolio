@@ -2,6 +2,7 @@
   "extends": ["html-validate:recommended"],
   "rules": {
     "heading-level": "off",
-    "no-inline-style": "off"
+    "no-inline-style": "off",
+    "element-permitted-content": "off"
   }
 }
