@@ -660,6 +660,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       ref={containerRef}
       className={`ghost-cursor ${className ?? ''}`}
       style={mergedStyle}
+      aria-hidden="true"
       data-primary-color={color}
       data-secondary-color={secondaryColor}
       data-color-cycle-seconds={effectiveColorCycleSeconds}

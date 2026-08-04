@@ -10,6 +10,17 @@ test('keeps the professional hero focused and moves the verse into its own secti
   await expect(page.locator('.hero-role')).toHaveText(
     'Biomedical Engineer in Computational Imaging',
   );
+  const heroEffect = page.locator('.hero .ghost-cursor');
+  await expect(heroEffect).toBeVisible();
+  await expect(heroEffect).toHaveAttribute('aria-hidden', 'true');
+  await expect(heroEffect).toHaveAttribute('data-primary-color', '#06B6D4');
+  await expect(heroEffect).toHaveAttribute('data-secondary-color', '#ff9d45');
+  await expect(heroEffect).toHaveAttribute('data-color-cycle-seconds', '8');
+  await expect(heroEffect).toHaveAttribute('data-color-hold-seconds', '3');
+  await expect(heroEffect).toHaveAttribute('data-interactive', 'false');
+  await expect(heroEffect).toHaveAttribute('data-position-x', '0.71');
+  await expect(heroEffect).toHaveAttribute('data-position-y', '0.5');
+  await expect(heroEffect.locator('canvas')).toHaveCSS('pointer-events', 'none');
   await expect(page.locator('.hero .verse-quote')).toHaveCount(0);
   await expect(page.locator('.verse-section')).toBeVisible();
   await expect(page.locator('.verse-arabic')).toContainText('وَتَوَكَّلْ');

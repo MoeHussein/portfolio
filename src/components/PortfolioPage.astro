@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PlasmaBackdrop from './PlasmaBackdrop.astro';
+import GhostCursor from './react-bits/GhostCursor';
 
 interface Props {
   locale: 'en' | 'tr';
@@ -123,7 +123,26 @@ const projectGroups = [
 
   <main id="main-content">
     <section class="hero" id="top">
-      <PlasmaBackdrop />
+      <GhostCursor
+        className="hero-ghost-cursor"
+        trailLength={50}
+        inertia={0.5}
+        grainIntensity={0.05}
+        bloomStrength={0.1}
+        bloomRadius={1}
+        brightness={2}
+        color="#06B6D4"
+        secondaryColor="#ff9d45"
+        colorCycleSeconds={8}
+        colorHoldSeconds={3}
+        interactive={false}
+        positionX={0.71}
+        positionY={0.5}
+        mixBlendMode="normal"
+        edgeIntensity={0}
+        zIndex={0}
+        client:load
+      />
       <div class="hero-content">
         <h1>{content.name}</h1>
         <p class="hero-role">{labels.role}</p>
