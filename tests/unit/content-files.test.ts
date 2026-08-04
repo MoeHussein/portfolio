@@ -18,6 +18,7 @@ type Profile = {
   direction: 'ltr' | 'rtl';
   name: string;
   headline: string;
+  about: { paragraphs: string[] };
   cv: {
     publicationTier: string;
     researchExperience: { title: string; bullets: string[] };
@@ -78,6 +79,19 @@ describe('localized portfolio content', () => {
         expect(project.outcome.trim()).not.toBe('');
       }
     }
+  });
+
+  it('keeps the profile focused on the complete quantitative imaging pipeline', () => {
+    const profiles = readProfiles();
+
+    for (const profile of profiles) {
+      expect(profile.about.paragraphs).toHaveLength(1);
+      expect(profile.about.paragraphs[0]?.trim()).not.toBe('');
+    }
+
+    const english = profiles.find(({ locale }) => locale === 'en');
+    expect(english?.about.paragraphs[0]).toContain('complete imaging pipeline');
+    expect(english?.about.paragraphs[0]).toContain('reliable quantitative information');
   });
 
   it('includes the approved language proficiency levels in the CV source', () => {
