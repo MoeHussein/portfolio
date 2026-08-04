@@ -26,7 +26,7 @@ test('keeps the professional hero focused and moves the verse into its own secti
     const canvas = element as HTMLCanvasElement;
     return { width: canvas.width, height: canvas.height };
   });
-  expect(renderSurface.width * renderSurface.height).toBeLessThanOrEqual(300_000);
+  expect(renderSurface.width * renderSurface.height).toBeLessThanOrEqual(600_000);
 
   await page.locator('[data-theme-toggle]').click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');

@@ -81,8 +81,8 @@ describe('portfolio page structure', () => {
     expect(page).toContain('secondaryColor="#ff9d45"');
     expect(page).toContain('colorHoldSeconds={3}');
     expect(page).toContain('hiddenInLightMode={true}');
-    expect(page).toContain('maxDevicePixelRatio={0.4}');
-    expect(page).toContain('targetPixels={300000}');
+    expect(page).toContain('maxDevicePixelRatio={0.75}');
+    expect(page).toContain('targetPixels={600000}');
     expect(page).toContain('targetFrameRate={24}');
     expect(component).toContain('renderer.forceContextLoss()');
     expect(component).toContain("powerPreference: 'low-power'");
