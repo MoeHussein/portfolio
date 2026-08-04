@@ -150,4 +150,12 @@ describe('portfolio page structure', () => {
     expect(source).toContain('href={content.research.doi}');
     expect(source).toContain('doi.org/10.1364/BOE.585564');
   });
+
+  it('uses the cyan and orange portfolio palette in the favicon', () => {
+    const source = readFileSync(join(root, 'public/favicon.svg'), 'utf8');
+
+    expect(source).toContain('stroke="#06B6D4"');
+    expect(source).toContain('stroke="#ff9d45"');
+    expect(source).not.toContain('#a88cf8');
+  });
 });
