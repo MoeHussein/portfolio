@@ -21,6 +21,7 @@ type GhostCursorProps = {
   color?: string;
   secondaryColor?: string;
   colorCycleSeconds?: number;
+  colorHoldSeconds?: number;
   interactive?: boolean;
   positionX?: number;
   positionY?: number;
@@ -45,6 +46,7 @@ type GhostCursorUniforms = {
   iBaseColor: { value: THREE.Vector3 };
   iSecondaryColor: { value: THREE.Vector3 };
   iColorCycleSeconds: { value: number };
+  iColorHoldSeconds: { value: number };
   iBrightness: { value: number };
   iEdgeIntensity: { value: number };
 };
@@ -63,6 +65,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
   color = '#B497CF',
   secondaryColor = color,
   colorCycleSeconds = 0,
+  colorHoldSeconds = 0,
   interactive = true,
   positionX = 0.5,
   positionY = 0.5,
@@ -111,6 +114,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     [],
   );
   const effectiveColorCycleSeconds = prefersReducedMotion ? 0 : Math.max(0, colorCycleSeconds);
+  const normalizedColorHoldSeconds = Math.max(0, colorHoldSeconds);
 
   const pixelBudget = targetPixels ?? (isTouch ? 0.9e6 : 1.3e6);
   const fadeDelay = fadeDelayMs ?? (isTouch ? 500 : 1000);
@@ -136,6 +140,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     uniform vec3  iBaseColor;
     uniform vec3  iSecondaryColor;
     uniform float iColorCycleSeconds;
+    uniform float iColorHoldSeconds;
     uniform float iBrightness;
     uniform float iEdgeIntensity;
     varying vec2  vUv;
@@ -170,9 +175,24 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       float distFactor = 1.0 - smoothstep(0.0, radius * activity, length(p - mousePos));
       float alpha = pow(smoke, 2.5) * distFactor;
 
-      float colorMix = iColorCycleSeconds > 0.0
-        ? 0.5 - 0.5 * cos(6.2831853 * iTime / iColorCycleSeconds)
-        : 0.0;
+      float colorMix = 0.0;
+      if (iColorCycleSeconds > 0.0) {
+        float transitionSeconds = max(iColorCycleSeconds * 0.5, 0.0001);
+        float cycleDuration = iColorCycleSeconds + iColorHoldSeconds * 2.0;
+        float phase = mod(iTime, cycleDuration);
+
+        if (phase < iColorHoldSeconds) {
+          colorMix = 0.0;
+        } else if (phase < iColorHoldSeconds + transitionSeconds) {
+          float progress = (phase - iColorHoldSeconds) / transitionSeconds;
+          colorMix = 0.5 - 0.5 * cos(3.14159265 * progress);
+        } else if (phase < iColorHoldSeconds * 2.0 + transitionSeconds) {
+          colorMix = 1.0;
+        } else {
+          float progress = (phase - iColorHoldSeconds * 2.0 - transitionSeconds) / transitionSeconds;
+          colorMix = 0.5 + 0.5 * cos(3.14159265 * progress);
+        }
+      }
       vec3 animatedBaseColor = mix(iBaseColor, iSecondaryColor, colorMix);
       vec3 c1 = tint1(animatedBaseColor);
       vec3 c2 = tint2(animatedBaseColor);
@@ -342,6 +362,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
         value: new THREE.Vector3(alternateColor.r, alternateColor.g, alternateColor.b),
       },
       iColorCycleSeconds: { value: effectiveColorCycleSeconds },
+      iColorHoldSeconds: { value: normalizedColorHoldSeconds },
       iBrightness: { value: brightness },
       iEdgeIntensity: { value: edgeIntensity },
     };
@@ -569,6 +590,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     color,
     secondaryColor,
     effectiveColorCycleSeconds,
+    normalizedColorHoldSeconds,
     brightness,
     mixBlendMode,
     edgeIntensity,
@@ -597,8 +619,9 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     if (materialRef.current) {
       const uniforms = materialRef.current.uniforms as GhostCursorUniforms;
       uniforms.iColorCycleSeconds.value = effectiveColorCycleSeconds;
+      uniforms.iColorHoldSeconds.value = normalizedColorHoldSeconds;
     }
-  }, [effectiveColorCycleSeconds]);
+  }, [effectiveColorCycleSeconds, normalizedColorHoldSeconds]);
 
   useEffect(() => {
     if (materialRef.current) {
@@ -640,6 +663,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       data-primary-color={color}
       data-secondary-color={secondaryColor}
       data-color-cycle-seconds={effectiveColorCycleSeconds}
+      data-color-hold-seconds={normalizedColorHoldSeconds}
       data-interactive={interactive}
       data-position-x={normalizedPositionX}
       data-position-y={normalizedPositionY}

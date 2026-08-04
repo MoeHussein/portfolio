@@ -17,8 +17,9 @@ export default function GhostCursorLab({ homeHref }: GhostCursorLabProps) {
         bloomRadius={1}
         brightness={2}
         color="#06B6D4"
-        secondaryColor="#F97316"
+        secondaryColor="#ff9d45"
         colorCycleSeconds={8}
+        colorHoldSeconds={3}
         interactive={false}
         positionX={0.68}
         positionY={0.5}
@@ -35,7 +36,8 @@ export default function GhostCursorLab({ homeHref }: GhostCursorLabProps) {
         <h1 id="ghost-lab-title">Mohammad Hussein</h1>
         <p className="ghost-lab__role">Biomedical Engineer in Computational Imaging</p>
         <p className="ghost-lab__instruction">
-          A fixed ambient form sits right of center and shifts smoothly between cyan and orange.
+          A fixed ambient form sits right of center, resting briefly at cyan and orange before each
+          transition.
         </p>
 
         <div className="ghost-lab__actions">

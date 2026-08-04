@@ -19,8 +19,9 @@ test('renders the fixed ambient Ghost Cursor without pointer interaction', async
 
   const ghostCursor = page.locator('.ghost-cursor');
   await expect(ghostCursor).toHaveAttribute('data-primary-color', '#06B6D4');
-  await expect(ghostCursor).toHaveAttribute('data-secondary-color', '#F97316');
+  await expect(ghostCursor).toHaveAttribute('data-secondary-color', '#ff9d45');
   await expect(ghostCursor).toHaveAttribute('data-color-cycle-seconds', '8');
+  await expect(ghostCursor).toHaveAttribute('data-color-hold-seconds', '3');
   await expect(ghostCursor).toHaveAttribute('data-interactive', 'false');
   await expect(ghostCursor).toHaveAttribute('data-position-x', '0.68');
   await expect(ghostCursor).toHaveAttribute('data-position-y', '0.5');
