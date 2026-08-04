@@ -18,6 +18,11 @@ test('renders the Ghost Cursor and keeps controls interactive beneath it', async
   await expect(canvas).toBeVisible();
   await expect(canvas).toHaveCSS('pointer-events', 'none');
 
+  const ghostCursor = page.locator('.ghost-cursor');
+  await expect(ghostCursor).toHaveAttribute('data-primary-color', '#06B6D4');
+  await expect(ghostCursor).toHaveAttribute('data-secondary-color', '#F97316');
+  await expect(ghostCursor).toHaveAttribute('data-color-cycle-seconds', '8');
+
   const stageBox = await stage.boundingBox();
   expect(stageBox).not.toBeNull();
   if (stageBox) {
@@ -28,6 +33,6 @@ test('renders the Ghost Cursor and keeps controls interactive beneath it', async
   }
 
   await interactionButton.click();
-  await expect(interactionButton).toHaveText('Test interaction · 1');
+  await expect(interactionButton).toHaveText('Test interaction - 1');
   expect(consoleErrors).toEqual([]);
 });

@@ -19,6 +19,8 @@ type GhostCursorProps = {
 
   brightness?: number;
   color?: string;
+  secondaryColor?: string;
+  colorCycleSeconds?: number;
   mixBlendMode?: React.CSSProperties['mixBlendMode'];
   edgeIntensity?: number;
 
@@ -38,6 +40,8 @@ type GhostCursorUniforms = {
   iOpacity: { value: number };
   iScale: { value: number };
   iBaseColor: { value: THREE.Vector3 };
+  iSecondaryColor: { value: THREE.Vector3 };
+  iColorCycleSeconds: { value: number };
   iBrightness: { value: number };
   iEdgeIntensity: { value: number };
 };
@@ -54,6 +58,8 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
 
   brightness = 1,
   color = '#B497CF',
+  secondaryColor = color,
+  colorCycleSeconds = 0,
   mixBlendMode = 'screen',
   edgeIntensity = 0,
 
@@ -92,6 +98,13 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0),
     [],
   );
+  const prefersReducedMotion = useMemo(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    [],
+  );
+  const effectiveColorCycleSeconds = prefersReducedMotion ? 0 : Math.max(0, colorCycleSeconds);
 
   const pixelBudget = targetPixels ?? (isTouch ? 0.9e6 : 1.3e6);
   const fadeDelay = fadeDelayMs ?? (isTouch ? 500 : 1000);
@@ -113,6 +126,8 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     uniform float iOpacity;
     uniform float iScale;
     uniform vec3  iBaseColor;
+    uniform vec3  iSecondaryColor;
+    uniform float iColorCycleSeconds;
     uniform float iBrightness;
     uniform float iEdgeIntensity;
     varying vec2  vUv;
@@ -147,8 +162,12 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       float distFactor = 1.0 - smoothstep(0.0, radius * activity, length(p - mousePos));
       float alpha = pow(smoke, 2.5) * distFactor;
 
-      vec3 c1 = tint1(iBaseColor);
-      vec3 c2 = tint2(iBaseColor);
+      float colorMix = iColorCycleSeconds > 0.0
+        ? 0.5 - 0.5 * cos(6.2831853 * iTime / iColorCycleSeconds)
+        : 0.0;
+      vec3 animatedBaseColor = mix(iBaseColor, iSecondaryColor, colorMix);
+      vec3 c1 = tint1(animatedBaseColor);
+      vec3 c2 = tint2(animatedBaseColor);
       vec3 color = mix(c1, c2, sin(iTime * 0.5) * 0.5 + 0.5);
 
       return vec4(color * alpha * intensity, alpha * intensity);
@@ -296,6 +315,7 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     headRef.current = 0;
 
     const baseColor = new THREE.Color(color);
+    const alternateColor = new THREE.Color(secondaryColor);
 
     const materialUniforms: GhostCursorUniforms = {
       iTime: { value: 0 },
@@ -305,6 +325,10 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       iOpacity: { value: 1.0 },
       iScale: { value: 1.0 },
       iBaseColor: { value: new THREE.Vector3(baseColor.r, baseColor.g, baseColor.b) },
+      iSecondaryColor: {
+        value: new THREE.Vector3(alternateColor.r, alternateColor.g, alternateColor.b),
+      },
+      iColorCycleSeconds: { value: effectiveColorCycleSeconds },
       iBrightness: { value: brightness },
       iEdgeIntensity: { value: edgeIntensity },
     };
@@ -523,7 +547,10 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     fadeDelay,
     fadeDuration,
     isTouch,
+    maxDevicePixelRatio,
     color,
+    secondaryColor,
+    effectiveColorCycleSeconds,
     brightness,
     mixBlendMode,
     edgeIntensity,
@@ -536,6 +563,21 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       uniforms.iBaseColor.value.set(c.r, c.g, c.b);
     }
   }, [color]);
+
+  useEffect(() => {
+    if (materialRef.current) {
+      const c = new THREE.Color(secondaryColor);
+      const uniforms = materialRef.current.uniforms as GhostCursorUniforms;
+      uniforms.iSecondaryColor.value.set(c.r, c.g, c.b);
+    }
+  }, [secondaryColor]);
+
+  useEffect(() => {
+    if (materialRef.current) {
+      const uniforms = materialRef.current.uniforms as GhostCursorUniforms;
+      uniforms.iColorCycleSeconds.value = effectiveColorCycleSeconds;
+    }
+  }, [effectiveColorCycleSeconds]);
 
   useEffect(() => {
     if (materialRef.current) {
@@ -570,7 +612,14 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
   const mergedStyle = useMemo<React.CSSProperties>(() => ({ zIndex, ...style }), [zIndex, style]);
 
   return (
-    <div ref={containerRef} className={`ghost-cursor ${className ?? ''}`} style={mergedStyle} />
+    <div
+      ref={containerRef}
+      className={`ghost-cursor ${className ?? ''}`}
+      style={mergedStyle}
+      data-primary-color={color}
+      data-secondary-color={secondaryColor}
+      data-color-cycle-seconds={effectiveColorCycleSeconds}
+    />
   );
 };
 

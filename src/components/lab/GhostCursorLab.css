@@ -5,7 +5,7 @@
   place-items: center;
   overflow: hidden;
   isolation: isolate;
-  background: radial-gradient(circle at 72% 35%, rgb(234 179 8 / 8%), transparent 32rem), #0b0f12;
+  background: radial-gradient(circle at 72% 35%, rgb(6 182 212 / 8%), transparent 32rem), #0b0f12;
   color: #f4f6f5;
   cursor: crosshair;
 }
@@ -49,7 +49,7 @@
 
 .ghost-lab__eyebrow {
   margin: 0 0 1.25rem;
-  color: #eab308;
+  color: #06b6d4;
   font-size: 0.72rem;
   font-weight: 650;
   letter-spacing: 0.12em;
@@ -69,7 +69,7 @@
 .ghost-lab__role {
   max-width: 38rem;
   margin: 1.6rem 0 0;
-  color: #eab308;
+  color: #06b6d4;
   font-size: clamp(1rem, 1.4vw, 1.25rem);
   font-weight: 560;
 }
@@ -111,8 +111,8 @@
 .ghost-lab__actions button:focus-visible,
 .ghost-lab__actions a:hover,
 .ghost-lab__actions a:focus-visible {
-  border-color: #eab308;
-  background: #eab308;
+  border-color: #f97316;
+  background: #f97316;
   color: #0b0f12;
   outline: none;
 }

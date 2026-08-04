@@ -20,7 +20,9 @@ export default function GhostCursorLab({ homeHref }: GhostCursorLabProps) {
         bloomStrength={0.1}
         bloomRadius={1}
         brightness={2}
-        color="#EAB308"
+        color="#06B6D4"
+        secondaryColor="#F97316"
+        colorCycleSeconds={8}
         edgeIntensity={0}
         zIndex={3}
       />
@@ -30,17 +32,17 @@ export default function GhostCursorLab({ homeHref }: GhostCursorLabProps) {
       </a>
 
       <div className="ghost-lab__content">
-        <p className="ghost-lab__eyebrow">Local interaction lab · Ghost Cursor</p>
+        <p className="ghost-lab__eyebrow">Local interaction lab / Cyan to Orange</p>
         <h1 id="ghost-lab-title">Mohammad Hussein</h1>
         <p className="ghost-lab__role">Biomedical Engineer in Computational Imaging</p>
         <p className="ghost-lab__instruction">
-          Move your cursor across the stage. The yellow trail follows it while the controls remain
-          clickable.
+          Move your cursor across the stage. The trail shifts smoothly between cyan and orange while
+          the controls remain clickable.
         </p>
 
         <div className="ghost-lab__actions">
           <button type="button" onClick={() => setClickCount((count) => count + 1)}>
-            Test interaction{clickCount > 0 ? ` · ${clickCount}` : ''}
+            Test interaction{clickCount > 0 ? ` - ${clickCount}` : ''}
           </button>
           <a href="mailto:mohammad.mtr.hussein@gmail.com">Contact</a>
         </div>
