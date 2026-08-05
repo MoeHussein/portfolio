@@ -42,11 +42,11 @@
   "about": {
     "title": "About",
     "paragraphs": [
-      "I am a biomedical engineer with experience in medical imaging, computational modeling, signal processing, and Python-based image processing and quantitative analysis. During my master’s, I specialized in optical and computational imaging, developing polarization-sensitive digital holographic microscopy methods for Jones-matrix reconstruction and phase-error correction. I am most interested in solving problems across the complete imaging pipeline, from optical system design and data acquisition to reconstruction, calibration, and quantitative interpretation."
+      "I am a biomedical engineer with experience in medical imaging, computational modeling, signal processing, and Python-based image processing and quantitative analysis. During my master’s, I specialized in optical and computational imaging, developing polarization-sensitive digital holographic microscopy methods for Jones-matrix reconstruction and phase-error correction. I am most interested in solving problems across the complete imaging pipeline, from optical system design and data acquisition to reconstruction, calibration, and quantitative interpretation. I also have a developing research interest in diabetes, continuous glucose monitoring, and the relationship between nutrition and glucose regulation."
     ]
   },
   "cv": {
-    "summary": "Biomedical engineer and MSc candidate focused on computational imaging and polarization-sensitive digital holographic microscopy. Experienced in optical system development, scientific Python, full-field Jones matrix reconstruction and research communication.",
+    "summary": "Biomedical engineer and MSc candidate focused on computational imaging and polarization-sensitive digital holographic microscopy, with a developing research interest in diabetes, continuous glucose monitoring, and nutrition. Experienced in optical system development, Python-based image and data processing, full-field Jones matrix reconstruction and research communication.",
     "publicationTier": "Peer-reviewed article | Q1 in the SJR optics category",
     "researchExperience": {
       "period": "15 Sep 2023 - Present",
