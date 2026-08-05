@@ -21,8 +21,6 @@ type GhostCursorProps = {
   secondaryColor?: string;
   colorCycleSeconds?: number;
   colorHoldSeconds?: number;
-  rainbow?: boolean;
-  rainbowSpeed?: number;
   interactive?: boolean;
   positionX?: number;
   positionY?: number;
@@ -50,8 +48,6 @@ type GhostCursorUniforms = {
   iSecondaryColor: { value: THREE.Vector3 };
   iColorCycleSeconds: { value: number };
   iColorHoldSeconds: { value: number };
-  iRainbow: { value: number };
-  iRainbowSpeed: { value: number };
   iBrightness: { value: number };
   iEdgeIntensity: { value: number };
 };
@@ -71,8 +67,6 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
   secondaryColor = color,
   colorCycleSeconds = 0,
   colorHoldSeconds = 0,
-  rainbow = false,
-  rainbowSpeed = 6,
   interactive = true,
   positionX = 0.5,
   positionY = 0.5,
@@ -152,8 +146,6 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     uniform vec3  iSecondaryColor;
     uniform float iColorCycleSeconds;
     uniform float iColorHoldSeconds;
-    uniform float iRainbow;
-    uniform float iRainbowSpeed;
     uniform float iBrightness;
     uniform float iEdgeIntensity;
     uniform float iStaticEffect;
@@ -180,11 +172,6 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     }
     vec3 tint1(vec3 base){ return mix(base, vec3(1.0), 0.15); }
     vec3 tint2(vec3 base){ return mix(base, vec3(0.8, 0.9, 1.0), 0.25); }
-    vec3 hsv2rgb(vec3 c){
-      vec4 K = vec4(1.0, 2.0/3.0, 1.0/3.0, 3.0);
-      vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 + K.www);
-      return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
-    }
 
     vec4 blob(vec2 p, vec2 mousePos, float intensity, float activity) {
       vec2 q = vec2(fbm(p * iScale + iTime * 0.1), fbm(p * iScale + vec2(5.2,1.3) + iTime * 0.1));
@@ -214,9 +201,6 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
         }
       }
       vec3 animatedBaseColor = mix(iBaseColor, iSecondaryColor, colorMix);
-      if (iRainbow > 0.5) {
-        animatedBaseColor = hsv2rgb(vec3(fract(iTime / iRainbowSpeed), 1.0, 1.0));
-      }
       vec3 c1 = tint1(animatedBaseColor);
       vec3 c2 = tint2(animatedBaseColor);
       vec3 color = mix(c1, c2, sin(iTime * 0.5) * 0.5 + 0.5);
@@ -410,8 +394,6 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       },
       iColorCycleSeconds: { value: effectiveColorCycleSeconds },
       iColorHoldSeconds: { value: normalizedColorHoldSeconds },
-      iRainbow: { value: rainbow ? 1.0 : 0.0 },
-      iRainbowSpeed: { value: rainbowSpeed },
       iBrightness: { value: brightness },
       iEdgeIntensity: { value: edgeIntensity },
       iStaticEffect: { value: interactive ? 0 : 1 },
@@ -684,8 +666,6 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
     secondaryColor,
     effectiveColorCycleSeconds,
     normalizedColorHoldSeconds,
-    rainbow,
-    rainbowSpeed,
     brightness,
     mixBlendMode,
     edgeIntensity,
@@ -716,18 +696,10 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
   useEffect(() => {
     if (materialRef.current) {
       const uniforms = materialRef.current.uniforms as GhostCursorUniforms;
-     uniforms.iColorCycleSeconds.value = effectiveColorCycleSeconds;
-     uniforms.iColorHoldSeconds.value = normalizedColorHoldSeconds;
-   }
- }, [effectiveColorCycleSeconds, normalizedColorHoldSeconds]);
-
-  useEffect(() => {
-    if (materialRef.current) {
-      const uniforms = materialRef.current.uniforms as GhostCursorUniforms;
-      uniforms.iRainbow.value = rainbow ? 1.0 : 0.0;
-      uniforms.iRainbowSpeed.value = rainbowSpeed;
+      uniforms.iColorCycleSeconds.value = effectiveColorCycleSeconds;
+      uniforms.iColorHoldSeconds.value = normalizedColorHoldSeconds;
     }
-  }, [rainbow, rainbowSpeed]);
+  }, [effectiveColorCycleSeconds, normalizedColorHoldSeconds]);
 
   useEffect(() => {
     if (materialRef.current) {
@@ -769,13 +741,11 @@ const GhostCursor: React.FC<GhostCursorProps> = ({
       className={`ghost-cursor ${className ?? ''}`}
       style={mergedStyle}
       aria-hidden="true"
-     data-primary-color={color}
-     data-secondary-color={secondaryColor}
-     data-color-cycle-seconds={effectiveColorCycleSeconds}
-     data-color-hold-seconds={normalizedColorHoldSeconds}
-      data-rainbow={rainbow}
-      data-rainbow-speed={rainbowSpeed}
-     data-interactive={interactive}
+      data-primary-color={color}
+      data-secondary-color={secondaryColor}
+      data-color-cycle-seconds={effectiveColorCycleSeconds}
+      data-color-hold-seconds={normalizedColorHoldSeconds}
+      data-interactive={interactive}
       data-position-x={normalizedPositionX}
       data-position-y={normalizedPositionY}
       data-target-frame-rate={normalizedFrameRate}
