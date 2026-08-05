@@ -18,7 +18,7 @@ type Profile = {
   direction: 'ltr' | 'rtl';
   name: string;
   headline: string;
-  about: { paragraphs: string[]; highlights: string[] };
+  about: { paragraphs: string[] };
   cv: {
     publicationTier: string;
     researchExperience: { title: string; bullets: string[] };
@@ -87,10 +87,6 @@ describe('localized portfolio content', () => {
     for (const profile of profiles) {
       expect(profile.about.paragraphs).toHaveLength(1);
       expect(profile.about.paragraphs[0]?.trim()).not.toBe('');
-      expect(profile.about.highlights).toHaveLength(5);
-      for (const highlight of profile.about.highlights) {
-        expect(profile.about.paragraphs[0]).toContain(highlight);
-      }
     }
 
     const english = profiles.find(({ locale }) => locale === 'en');

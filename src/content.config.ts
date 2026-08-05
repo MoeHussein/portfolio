@@ -27,11 +27,7 @@ const profile = defineCollection({
     nav: z.array(z.object({ label: z.string(), href: z.string() })),
     ui: z.record(z.string(), z.string()),
     hero: z.object({ statement: z.string(), availability: z.string() }),
-    about: z.object({
-      title: z.string(),
-      paragraphs: z.array(z.string()).min(1),
-      highlights: z.array(z.string()).min(1),
-    }),
+    about: z.object({ title: z.string(), paragraphs: z.array(z.string()) }),
     cv: z.object({
       summary: z.string(),
       publicationTier: z.string(),

@@ -42,14 +42,7 @@
   "about": {
     "title": "About",
     "paragraphs": [
-      "I am a biomedical engineer with experience in medical imaging, computational modeling, signal processing, and Python-based image processing and quantitative analysis. During my master’s, I specialized in optical and computational imaging, developing polarization-sensitive digital holographic microscopy methods for Jones-matrix reconstruction and phase-error correction. I am most interested in solving problems across the complete imaging pipeline, from optical system design and data acquisition to reconstruction, calibration, and quantitative interpretation. I also have a developing research interest in diabetes, continuous glucose monitoring, and the relationship between nutrition and glucose regulation. Alongside this, I am interested in full-stack software development, particularly building practical applications that turn technical workflows and everyday needs into clear, useful products."
-    ],
-    "highlights": [
-      "biomedical engineer",
-      "optical and computational imaging",
-      "complete imaging pipeline",
-      "diabetes, continuous glucose monitoring",
-      "full-stack software development"
+      "I am a biomedical engineer focused on optical and computational imaging, with experience in medical imaging, signal processing, Python-based image processing, and quantitative analysis. During my master’s, I developed polarization-sensitive digital holographic microscopy methods across the complete imaging pipeline, from optical system design and data acquisition to phase-error correction, Jones-matrix reconstruction, calibration, and quantitative interpretation. I also have developing interests in diabetes, continuous glucose monitoring, nutrition, and full-stack software development for practical, useful products."
     ]
   },
   "cv": {

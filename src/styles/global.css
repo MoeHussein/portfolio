@@ -640,23 +640,14 @@
     padding-block: 2.25rem 3rem;
     border-block-start: 1px solid var(--line);
     color: var(--muted);
-    text-align: start;
+    text-align: center;
   }
   .story p:first-child {
-    max-width: 66ch;
+    max-width: 76ch;
     margin-inline: auto;
-    color: var(--muted);
-    font-size: clamp(1rem, 1.15vw, 1.1rem);
-    line-height: 1.72;
-  }
-  .story strong {
-    padding-inline: 0.08em;
-    border-radius: 0.14em;
-    background: var(--accent-soft);
     color: var(--text);
-    font-weight: 650;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
+    font-size: clamp(1rem, 1.25vw, 1.15rem);
+    line-height: 1.65;
   }
   .profile-groups {
     border-block-start: 1px solid var(--line);
