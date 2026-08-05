@@ -11,7 +11,7 @@ test('keeps the professional hero focused and moves the verse into its own secti
     'Biomedical Engineer in Computational Imaging',
   );
   await expect(page.locator('.hero-specialties')).toHaveText(
-    'Medical imaging & computational modeling · Digital holographic microscopy · Polarization analysis',
+    'Medical imaging & modeling',
   );
   const heroEffect = page.locator('.hero .ghost-cursor');
   await expect(heroEffect).toBeVisible();
