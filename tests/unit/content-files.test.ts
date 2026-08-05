@@ -91,7 +91,13 @@ describe('localized portfolio content', () => {
 
     const english = profiles.find(({ locale }) => locale === 'en');
     expect(english?.about.paragraphs[0]).toContain('complete imaging pipeline');
-    expect(english?.about.paragraphs[0]).toContain('reliable quantitative information');
+    expect(english?.about.paragraphs[0]).toContain('Python-based image processing');
+    expect(english?.about.paragraphs[0]).toContain('optical system design and data acquisition');
+    expect(english?.about.paragraphs[0]).toContain(
+      'reconstruction, calibration, and quantitative interpretation',
+    );
+    expect(english?.about.paragraphs[0]).not.toContain('scientific programming');
+    expect(english?.about.paragraphs[0]).not.toContain('the algorithms');
   });
 
   it('includes the approved language proficiency levels in the CV source', () => {

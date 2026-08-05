@@ -42,7 +42,7 @@
   "about": {
     "title": "About",
     "paragraphs": [
-      "I am a biomedical engineer with experience across medical imaging, computational modeling, signal processing, and scientific programming. During my master’s, I specialized in optical and computational imaging, developing polarization-sensitive digital holographic microscopy methods for Jones-matrix reconstruction and phase-error correction. I am most interested in solving problems across the complete imaging pipeline, from the physical system and measurements to the algorithms that produce reliable quantitative information."
+      "I am a biomedical engineer with experience in medical imaging, computational modeling, signal processing, and Python-based image processing and quantitative analysis. During my master’s, I specialized in optical and computational imaging, developing polarization-sensitive digital holographic microscopy methods for Jones-matrix reconstruction and phase-error correction. I am most interested in solving problems across the complete imaging pipeline, from optical system design and data acquisition to reconstruction, calibration, and quantitative interpretation."
     ]
   },
   "cv": {
