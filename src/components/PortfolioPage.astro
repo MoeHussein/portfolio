@@ -16,6 +16,12 @@ const base = import.meta.env.BASE_URL;
 const localeUrl = (value: 'en' | 'tr') => (value === 'en' ? base : `${base}${value}/`);
 const cvPath = `${base}downloads/mohammad-hussein-cv-${locale}.pdf`;
 const heroLine = `${content.hero.statement.split('. ')[0]}.`;
+const profileText = content.about.paragraphs[0] ?? '';
+const profileHighlights = new Set(content.about.highlights);
+const escapedHighlights = content.about.highlights.map((phrase) =>
+  phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+);
+const profileSegments = profileText.split(new RegExp(`(${escapedHighlights.join('|')})`, 'g'));
 
 const labels = {
   en: {
@@ -231,7 +237,13 @@ const projectGroups = [
       </header>
 
       <div class="story">
-        <p>{content.about.paragraphs[0]}</p>
+        <p>
+          {
+            profileSegments.map((segment) =>
+              profileHighlights.has(segment) ? <strong>{segment}</strong> : segment,
+            )
+          }
+        </p>
       </div>
 
       <div class="profile-groups">
