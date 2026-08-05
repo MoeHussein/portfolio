@@ -10,7 +10,9 @@ test('keeps the professional hero focused and moves the verse into its own secti
   await expect(page.locator('.hero-role')).toHaveText(
     'Biomedical Engineer in Computational Imaging',
   );
-  await expect(page.locator('.hero-specialties')).toHaveText('Medical imaging & modeling');
+  await expect(page.locator('.hero-specialties')).toHaveText(
+    'Medical imaging & modeling · Digital holographic microscopy · Polarization analysis',
+  );
   const heroEffect = page.locator('.hero .ghost-cursor');
   await expect(heroEffect).toBeVisible();
   await expect(heroEffect).toHaveAttribute('aria-hidden', 'true');
