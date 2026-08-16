@@ -90,21 +90,15 @@
       "featured": true
     },
     {
-      "id": "reference-free-phase-bias",
-      "title": "Reference-Free Phase Bias Equalization",
-      "status": "Completed draft · Not submitted",
-      "summary": "An optimization-based approach that removes the need for an isotropic reference region.",
-      "role": "Designed the approach, built the processing workflow, tested the method, analyzed the results and completed the manuscript draft in collaboration with my academic advisor.",
-      "problem": "The first method depends on finding an isotropic reference region. Some samples do not provide one, which limits where the correction can be used.",
-      "process": "Formulated phase bias as an optimization problem and evaluated whether the Jones matrix can be corrected without a sample reference region.",
-      "outcome": "Completed an optimization-based reference-free method and a full manuscript draft. The work is not yet submitted or published.",
-      "technologies": [
-        "Optimization",
-        "Jones matrices",
-        "Python",
-        "Phase correction",
-        "Computational imaging"
-      ],
+      "id": "ongoing-computational-imaging",
+      "title": "Ongoing Computational Imaging Research",
+      "status": "Manuscript in preparation",
+      "summary": "Optimization-based methods for quantitative imaging.",
+      "role": "Conducted method development, implementation, evaluation, analysis and manuscript preparation with academic supervision.",
+      "problem": "Addresses a technical limitation in an existing quantitative imaging workflow.",
+      "process": "Developed and evaluated a computational approach in Python.",
+      "outcome": "The core method and manuscript draft are complete. Technical details are withheld pending submission.",
+      "technologies": ["Optimization", "Python", "Computational imaging"],
       "links": [],
       "featured": true
     },

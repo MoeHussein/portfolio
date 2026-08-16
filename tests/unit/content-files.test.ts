@@ -10,7 +10,10 @@ type Project = {
   status: string;
   summary: string;
   role: string;
+  problem: string;
+  process: string;
   outcome: string;
+  technologies: string[];
 };
 
 type Profile = {
@@ -78,6 +81,21 @@ describe('localized portfolio content', () => {
         expect(project.role.trim()).not.toBe('');
         expect(project.outcome.trim()).not.toBe('');
       }
+    }
+  });
+
+  it('redacts unpublished research details from every public profile', () => {
+    const restrictedDetails =
+      /reference[- ]free|isotropic|phase bias|jones matri|faz sapmas|izotropik/i;
+
+    for (const profile of readProfiles()) {
+      const unpublishedProject = profile.projects.find(
+        ({ id }) => id === 'ongoing-computational-imaging',
+      );
+      const publicProjectText = JSON.stringify(unpublishedProject);
+
+      expect(unpublishedProject).toBeDefined();
+      expect(publicProjectText).not.toMatch(restrictedDetails);
     }
   });
 

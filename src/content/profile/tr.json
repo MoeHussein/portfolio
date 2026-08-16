@@ -90,21 +90,15 @@
       "featured": true
     },
     {
-      "id": "reference-free-phase-bias",
-      "title": "Referanssız Faz Sapması Eşitleme",
-      "status": "Taslak tamamlandı · Henüz gönderilmedi",
-      "summary": "İzotropik referans bölgesi ihtiyacını kaldıran optimizasyon tabanlı yaklaşım.",
-      "role": "Yaklaşımı tasarladım, işleme hattını kurdum, yöntemi test ettim, sonuçları analiz ettim ve akademik danışmanımla birlikte makale taslağını tamamladım.",
-      "problem": "İlk yöntem izotropik bir referans bölgesine dayanıyor. Bazı örneklerde böyle bir bölge bulunmuyor.",
-      "process": "Faz sapmasını bir optimizasyon problemi olarak formüle ettim ve örnek içi referans olmadan Jones matrisinin düzeltilmesini değerlendirdim.",
-      "outcome": "Optimizasyon tabanlı referanssız yöntem ve tam makale taslağı tamamlandı. Çalışma henüz gönderilmedi veya yayımlanmadı.",
-      "technologies": [
-        "Optimizasyon",
-        "Jones matrisleri",
-        "Python",
-        "Faz düzeltme",
-        "Hesaplamalı görüntüleme"
-      ],
+      "id": "ongoing-computational-imaging",
+      "title": "Devam Eden Hesaplamalı Görüntüleme Araştırması",
+      "status": "Makale hazırlık aşamasında",
+      "summary": "Nicel görüntüleme için optimizasyon tabanlı yöntemler.",
+      "role": "Akademik danışmanlık altında yöntem geliştirme, uygulama, değerlendirme, analiz ve makale hazırlığı yürüttüm.",
+      "problem": "Mevcut bir nicel görüntüleme iş akışındaki teknik sınırlamayı ele alıyor.",
+      "process": "Python ile hesaplamalı bir yaklaşım geliştirdim ve değerlendirdim.",
+      "outcome": "Temel yöntem ve makale taslağı tamamlandı. Teknik ayrıntılar gönderim sürecine kadar paylaşılmamaktadır.",
+      "technologies": ["Optimizasyon", "Python", "Hesaplamalı görüntüleme"],
       "links": [],
       "featured": true
     },
