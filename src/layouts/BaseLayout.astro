@@ -17,7 +17,7 @@ const { locale, direction, title, description, name, headline } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const localePath = (value: 'en' | 'tr') => (value === 'en' ? base : `${base}${value}/`);
 const canonical = new URL(localePath(locale), Astro.site);
-const ogImage = new URL(`${base}og.svg`, Astro.site);
+const ogImage = new URL(`${base}og.png`, Astro.site);
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -54,6 +54,9 @@ const structuredData = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

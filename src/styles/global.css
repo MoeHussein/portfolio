@@ -610,6 +610,13 @@
     font-size: clamp(1.1rem, 1.45vw, 1.45rem);
     line-height: 1.18;
   }
+  .project-card--draft {
+    border-style: dashed;
+  }
+  .project-card--draft .project-status {
+    color: var(--faint);
+    font-style: italic;
+  }
 
   .profile-section {
     position: relative;

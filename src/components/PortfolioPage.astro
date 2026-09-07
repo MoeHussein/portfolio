@@ -15,7 +15,6 @@ const { ui } = content;
 const base = import.meta.env.BASE_URL;
 const localeUrl = (value: 'en' | 'tr') => (value === 'en' ? base : `${base}${value}/`);
 const cvPath = `${base}downloads/mohammad-hussein-cv-${locale}.pdf`;
-const heroLine = `${content.hero.statement.split('. ')[0]}.`;
 
 const labels = {
   en: {
@@ -75,6 +74,17 @@ const projectGroups = [
     projects: content.projects.filter((project) => !academicProjectIds.has(project.id)),
   },
 ];
+
+const authorsPart = content.research.citation.split(' · ')[0] ?? '';
+const scholarlyArticleData = {
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  headline: content.research.paperTitle,
+  author: authorsPart.split(' and ').map((name) => ({ '@type': 'Person', name: name.trim() })),
+  description: content.research.explanation,
+  sameAs: content.research.doi,
+  url: content.research.doi,
+};
 ---
 
 <BaseLayout
@@ -85,6 +95,8 @@ const projectGroups = [
   name={content.name}
   headline={content.headline}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(scholarlyArticleData)} />
+
   <header class="site-header" data-header>
     <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="#work">{labels.work}</a>
@@ -153,7 +165,7 @@ const projectGroups = [
         <h1>{content.name}</h1>
         <p class="hero-role">{labels.role}</p>
         <p class="hero-specialties">{labels.specialties}</p>
-        <p class="hero-statement">{heroLine}</p>
+        <p class="hero-statement">{content.hero.statement}</p>
         <div class="hero-actions">
           <a href={`mailto:${content.contact.email}`}>{ui.contact}</a>
           <a href={cvPath} download>{ui.downloadCv}</a>
@@ -192,7 +204,10 @@ const projectGroups = [
                       type="button"
                       class:list={[
                         'project-card',
-                        { 'project-card--publication': project.id === 'dual-shot-pdhm' },
+                        {
+                          'project-card--publication': project.id === 'dual-shot-pdhm',
+                          'project-card--draft': project.id === 'reference-free-phase-bias',
+                        },
                       ]}
                       data-dialog-open={`project-${project.id}`}
                       aria-label={`${labels.view}: ${project.title}`}
