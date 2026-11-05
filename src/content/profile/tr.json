@@ -5,7 +5,7 @@
   "headline": "Biomedical Engineering & Bioinformatics | Computational Imaging | Digital Holographic Microscopy",
   "metadata": {
     "title": "Mohammad Hussein | Biyomedikal Optik ve Hesaplamalı Görüntüleme",
-    "description": "Mohammad M. T.R. Hussein'in hesaplamalı görüntüleme, dijital holografik mikroskopi, biyomedikal mühendisliği, simülasyon ve ürün tasarımı portfolyosu."
+    "description": "Optik mikroskopi, hesaplamalı görüntüleme ve biyomedikal mühendisliği alanlarında çalışan biyomedikal mühendisi ve KAUST misafir araştırmacısı Mohammad M. T.R. Hussein'in portfolyosu."
   },
   "nav": [
     { "label": "Hakkımda", "href": "#about" },
@@ -37,28 +37,41 @@
   },
   "hero": {
     "statement": "Optik, hesaplama ve biyomedikal mühendisliğinin kesişiminde çalışıyorum. Karmaşık ölçümleri faydalı görüntülere, modellere ve araçlara dönüştürmeye odaklanıyorum.",
-    "availability": "İstanbul'da · Biyomedikal, optik ve araştırma fırsatlarına açık"
+    "availability": "Şu anda KAUST, Suudi Arabistan'da · Biyomedikal, optik ve araştırma fırsatlarına açık"
   },
   "about": {
     "title": "Merak zamanla bir yöne dönüştü",
     "paragraphs": [
-      "Medikal görüntüleme, sinyal işleme, Python tabanlı işleme ve nicel analiz deneyimine sahip, optik ve hesaplamalı görüntülemeye odaklanan bir biyomedikal mühendisiyim. Yüksek lisansım sırasında, tüm görüntüleme hattını kapsayan Jones matrisi rekonstrüksiyonu ve faz hatası düzeltmesi için polarizasyona duyarlı dijital holografik mikroskopi yöntemleri geliştirdim. Ayrıca diyabet, sürekli glikoz izleme, beslenme ve pratik, kullanışlı ürünler geliştirmeye yönelik full-stack yazılım alanlarına ilgi duyuyorum."
+      "Biyomedikal Mühendisliği ve Biyoinformatik alanında yüksek lisans derecesine sahip, optik ve hesaplamalı görüntülemeye odaklanan bir biyomedikal mühendisiyim. Şu anda KAUST VSRP kapsamında, iSCAT ve TIRF sistemlerini içeren ancak bunlarla sınırlı olmayan, biyomedikal uygulamalara yönelik optik mikroskopi sistemleri üzerinde Misafir Öğrenci Araştırmacı olarak çalışıyorum. Yüksek lisansım sırasında, optik sistem tasarımı ve veri ediniminden Python tabanlı görüntü işleme, faz hatası düzeltmesi, Jones matrisi rekonstrüksiyonu, kalibrasyon ve nicel yorumlamaya kadar tüm görüntüleme hattını kapsayan polarizasyona duyarlı dijital holografik mikroskopi yöntemleri geliştirdim. Ayrıca diyabet, sürekli glikoz izleme, beslenme ve pratik, kullanışlı ürünler geliştirmeye yönelik full-stack yazılım alanlarına ilgi duyuyorum."
     ]
   },
   "cv": {
-    "summary": "Hesaplamalı görüntüleme ve polarizasyona duyarlı dijital holografik mikroskopiye odaklanan, diyabet, sürekli glikoz izleme ve beslenme alanlarında gelişmekte olan bir araştırma ilgisine sahip biyomedikal mühendisi ve yüksek lisans adayı. Optik sistem geliştirme, Python tabanlı görüntü ve veri işleme, tam alan Jones matrisi rekonstrüksiyonu ve araştırma iletişimi deneyimine sahibim.",
+    "summary": "Biyomedikal Mühendisliği ve Biyoinformatik alanında yüksek lisans derecesine sahip, şu anda KAUST'ta Misafir Öğrenci Araştırmacı olarak çalışan biyomedikal mühendisi. Optik ve hesaplamalı görüntülemeye odaklanmakta; optik sistem geliştirme, polarizasyona duyarlı dijital holografik mikroskopi, Python tabanlı görüntü ve veri işleme, tam alan Jones matrisi rekonstrüksiyonu ile iSCAT ve TIRF mikroskopi sistemlerinde deneyim kazanmaktadır.",
     "publicationTier": "Hakemli makale | SJR optik kategorisinde Q1",
-    "researchExperience": {
-      "period": "15 Eyl 2023 - Günümüz",
-      "title": "Lisansüstü Araştırmacı - Biyomedikal Optik ve Hesaplamalı Görüntüleme",
-      "organization": "İstanbul Medipol Üniversitesi",
-      "project": "TÜBİTAK 2530 Türkiye-Moldova İkili İş Birliği, Proje 123N774",
-      "bullets": [
-        "FFT hologram rekonstrüksiyonu, faz işleme, tam alan Jones matrisi rekonstrüksiyonu, retardans ve hızlı eksen analizi için polarizasyona duyarlı bir DHM sistemi ve Python hattı geliştirdim.",
-        "Akademik danışmanımla iş birliği içinde sistem tasarımı ve kurulumu, ekipman planlama, kamera yapılandırması, deneyler, görüntü işleme, doğrulama, görselleştirme ve makale hazırlığını kapsayan uçtan uca deneysel süreci yürüttüm.",
-        "Çift kırıcı filmle doğrulanan ve fare beyni ile insan korneası örneklerine uygulanan çift çekimli faz sapması eşitleme yöntemini yayımladım."
-      ]
-    }
+    "researchExperiences": [
+      {
+        "period": "15 Eki 2026 - 15 Nis 2027",
+        "title": "Misafir Öğrenci Araştırmacı (VSRP) - Biyomedikal Uygulamalar için Optik Mikroskopi",
+        "organization": "King Abdullah University of Science and Technology (KAUST)",
+        "project": "Development of Label-Free Optical Microscopy for Biomedical Applications | Prof. Wen Wei Wayne Yang",
+        "bullets": [
+          "KAUST Misafir Öğrenci Araştırma Programı kapsamında biyomedikal uygulamalara yönelik optik mikroskopi sistemlerinin geliştirilmesine katkıda bulunuyorum.",
+          "Mevcut çalışmalar, daha geniş proje kapsamında interferometrik saçılma mikroskopisi (iSCAT) ve toplam iç yansıma floresans (TIRF) mikroskopi sistemlerini içermekle birlikte bunlarla sınırlı değildir.",
+          "Projenin daha geniş kapsamı nicel veri edinimi, hesaplamalı analiz, otomatik özellik çıkarımı ve biyolojik veya klinik örneklerle yöntem doğrulamayı hedeflemektedir."
+        ]
+      },
+      {
+        "period": "15 Eyl 2023 - Eyl 2026",
+        "title": "Lisansüstü Araştırmacı - Biyomedikal Optik ve Hesaplamalı Görüntüleme",
+        "organization": "İstanbul Medipol Üniversitesi",
+        "project": "TÜBİTAK 2530 Türkiye-Moldova İkili İş Birliği, Proje 123N774",
+        "bullets": [
+          "FFT hologram rekonstrüksiyonu, faz işleme, tam alan Jones matrisi rekonstrüksiyonu, retardans ve hızlı eksen analizi için polarizasyona duyarlı bir DHM sistemi ve Python hattı geliştirdim.",
+          "Akademik danışmanımla iş birliği içinde sistem tasarımı ve kurulumu, ekipman planlama, kamera yapılandırması, deneyler, görüntü işleme, doğrulama, görselleştirme ve makale hazırlığını kapsayan uçtan uca deneysel süreci yürüttüm.",
+          "Çift kırıcı filmle doğrulanan ve fare beyni ile insan korneası örneklerine uygulanan çift çekimli faz sapması eşitleme yöntemini yayımladım."
+        ]
+      }
+    ]
   },
   "research": {
     "title": "Öne çıkan araştırma",
@@ -179,21 +192,26 @@
   ],
   "timeline": [
     {
-      "period": "15 Eyl 2023 — Günümüz",
-      "title": "Yüksek Lisans Öğrencisi ve Lisansüstü Araştırmacı · Optik Görüntüleme ve Polarizasyon Analizi",
+      "period": "15 Eki 2026 — 15 Nis 2027",
+      "title": "Misafir Öğrenci Araştırmacı (VSRP) · Biyomedikal Uygulamalar için Optik Mikroskopi",
+      "organization": "King Abdullah University of Science and Technology (KAUST) · Prof. Wen Wei Wayne Yang",
+      "description": "Ana proje: Development of Label-Free Optical Microscopy for Biomedical Applications · Çalışmalar iSCAT ve TIRF mikroskopi sistemlerini içerir ancak bunlarla sınırlı değildir"
+    },
+    {
+      "period": "15 Eyl 2023 — Eyl 2026",
+      "title": "Lisansüstü Araştırmacı · Optik Görüntüleme ve Polarizasyon Analizi",
       "organization": "İstanbul Medipol Üniversitesi · TÜBİTAK 2530 Türkiye–Moldova İkili İş Birliği · Proje 123N774",
-      "description": "Biyomedikal Mühendisliği ve Biyoinformatik · Devam ediyor · Tez savunması 13 Ağustos 2026 için planlandı · Odak: polarizasyona duyarlı dijital holografik mikroskopi · TÜBİTAK burs başlangıcı: 15 Oca 2024"
+      "description": "Yüksek lisans Eyl 2026'da tamamlandı · Odak: polarizasyona duyarlı dijital holografik mikroskopi · TÜBİTAK bursu: 15 Oca 2024'ten itibaren"
     }
   ],
   "education": [
     {
-      "period": "15 Eyl 2023 — Günümüz",
+      "period": "15 Eyl 2023 — Eyl 2026",
       "degree": "Yüksek Lisans · Biyomedikal Mühendisliği ve Biyoinformatik",
       "institution": "İstanbul Medipol Üniversitesi",
       "details": [
-        "Devam ediyor",
-        "Tez savunması 13 Ağustos 2026 için planlandı",
-        "Odak: polarizasyona duyarlı dijital holografik mikroskopi"
+        "Eyl 2026'da tamamlandı",
+        "Tez odağı: polarizasyona duyarlı dijital holografik mikroskopi"
       ]
     },
     {
@@ -205,9 +223,11 @@
   ],
   "skillGroups": [
     {
-      "title": "Hesaplamalı görüntüleme",
+      "title": "Optik ve hesaplamalı görüntüleme",
       "items": [
         "PDHM",
+        "iSCAT mikroskopisi",
+        "TIRF mikroskopisi",
         "Jones matrisi rekonstrüksiyonu",
         "Polarizasyon analizi",
         "FFT hologram rekonstrüksiyonu",
@@ -288,6 +308,6 @@
     "email": "mohammad.mtr.hussein@gmail.com",
     "github": "https://github.com/MoeHussein",
     "orcid": "https://orcid.org/0009-0009-7211-0974",
-    "location": "İstanbul, Türkiye"
+    "location": "KAUST, Suudi Arabistan"
   }
 }

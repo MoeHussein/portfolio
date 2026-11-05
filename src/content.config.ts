@@ -31,13 +31,15 @@ const profile = defineCollection({
     cv: z.object({
       summary: z.string(),
       publicationTier: z.string(),
-      researchExperience: z.object({
-        period: z.string(),
-        title: z.string(),
-        organization: z.string(),
-        project: z.string(),
-        bullets: z.array(z.string()).min(3),
-      }),
+      researchExperiences: z.array(
+        z.object({
+          period: z.string(),
+          title: z.string(),
+          organization: z.string(),
+          project: z.string(),
+          bullets: z.array(z.string()).min(2),
+        }),
+      ),
     }),
     research: z.object({
       title: z.string(),

@@ -83,15 +83,19 @@ const selectedRecognition = content.achievements.filter(
           <div class="primary">
             <section>
               <h2>{labels.experience}</h2>
-              <article class="entry research-entry">
-                <p class="date">{cvText(content.cv.researchExperience.period)}</p>
-                <h3>{cvText(content.cv.researchExperience.title)}</h3>
-                <p class="organization">{content.cv.researchExperience.organization}</p>
-                <p class="project-line">{cvText(content.cv.researchExperience.project)}</p>
-                <ul>
-                  {content.cv.researchExperience.bullets.map((bullet) => <li>{cvText(bullet)}</li>)}
-                </ul>
-              </article>
+              {
+                content.cv.researchExperiences.map((experience) => (
+                  <article class="entry research-entry">
+                    <p class="date">{cvText(experience.period)}</p>
+                    <h3>{cvText(experience.title)}</h3>
+                    <p class="organization">{experience.organization}</p>
+                    <p class="project-line">{cvText(experience.project)}</p>
+                    <ul>
+                      {experience.bullets.map((bullet) => <li>{cvText(bullet)}</li>)}
+                    </ul>
+                  </article>
+                ))
+              }
             </section>
 
             <section>
@@ -108,23 +112,6 @@ const selectedRecognition = content.achievements.filter(
               </article>
             </section>
 
-            <section>
-              <h2>{labels.education}</h2>
-              {
-                content.education.map((item) => (
-                  <article class="entry education-entry">
-                    <p class="date">{cvText(item.period)}</p>
-                    <h3>{cvText(item.degree)}</h3>
-                    <p class="organization">{item.institution}</p>
-                    <ul>
-                      {item.details.map((detail) => (
-                        <li>{cvText(detail)}</li>
-                      ))}
-                    </ul>
-                  </article>
-                ))
-              }
-            </section>
           </div>
 
           <div class="sidebar">
@@ -186,6 +173,24 @@ const selectedRecognition = content.achievements.filter(
           </div>
 
           <div class="sidebar">
+            <section>
+              <h2>{labels.education}</h2>
+              {
+                content.education.map((item) => (
+                  <article class="entry education-entry">
+                    <p class="date">{cvText(item.period)}</p>
+                    <h3>{cvText(item.degree)}</h3>
+                    <p class="organization">{item.institution}</p>
+                    <ul>
+                      {item.details.map((detail) => (
+                        <li>{cvText(detail)}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))
+              }
+            </section>
+
             <section>
               <h2>{labels.recognition}</h2>
               {

@@ -24,7 +24,7 @@ type Profile = {
   about: { paragraphs: string[] };
   cv: {
     publicationTier: string;
-    researchExperience: { title: string; bullets: string[] };
+    researchExperiences: { title: string; organization: string; bullets: string[] }[];
   };
   research: { doi: string };
   timeline: { period: string; title: string; organization: string; description: string }[];
@@ -129,24 +129,28 @@ describe('localized portfolio content', () => {
     ]);
   });
 
-  it('keeps one consolidated research role and the DOI-led Q1 publication highlight', () => {
+  it('keeps current and completed research roles with the DOI-led Q1 publication highlight', () => {
     for (const profile of readProfiles()) {
-      expect(profile.cv.researchExperience.title.trim()).not.toBe('');
-      expect(profile.cv.researchExperience.bullets).toHaveLength(3);
+      expect(profile.cv.researchExperiences).toHaveLength(2);
+      expect(profile.cv.researchExperiences[0]?.organization).toContain('KAUST');
+      expect(profile.cv.researchExperiences[0]?.bullets.length).toBeGreaterThanOrEqual(2);
       expect(profile.cv.publicationTier).toContain('Q1');
       expect(profile.research.doi).toBe('https://doi.org/10.1364/BOE.585564');
     }
   });
 
-  it('presents the MSc study, graduate research, and TÜBİTAK project as one current entry', () => {
+  it('presents KAUST as current experience and the completed MSc research separately', () => {
     for (const profile of readProfiles()) {
-      expect(profile.timeline).toHaveLength(1);
-      expect(profile.timeline[0]?.organization).toContain('123N774');
+      expect(profile.timeline).toHaveLength(2);
+      expect(profile.timeline[0]?.organization).toContain('KAUST');
+      expect(profile.timeline[1]?.organization).toContain('123N774');
     }
 
     const english = readProfiles().find(({ locale }) => locale === 'en');
-    expect(english?.timeline[0]?.title).toContain('MSc Student & Graduate Researcher');
-    expect(english?.timeline[0]?.description).toContain('TÜBİTAK scholarship since 15 Jan 2024');
+    expect(english?.timeline[0]?.title).toContain('Visiting Student Researcher');
+    expect(english?.timeline[0]?.description).toContain('iSCAT');
+    expect(english?.timeline[0]?.description).toContain('TIRF');
+    expect(english?.timeline[1]?.description).toContain('MSc awarded Sep 2026');
   });
 
   it('uses the approved concise class rank wording', () => {

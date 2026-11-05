@@ -5,7 +5,7 @@
   "headline": "Biomedical Engineering & Bioinformatics | Computational Imaging | Digital Holographic Microscopy",
   "metadata": {
     "title": "Mohammad Hussein | Biomedical Optics & Computational Imaging",
-    "description": "Portfolio of Mohammad M. T.R. Hussein across computational imaging, digital holographic microscopy, biomedical engineering, simulation and product design."
+    "description": "Portfolio of Mohammad M. T.R. Hussein, a biomedical engineer and KAUST visiting researcher working across optical microscopy, computational imaging and biomedical engineering."
   },
   "nav": [
     { "label": "About", "href": "#about" },
@@ -37,28 +37,41 @@
   },
   "hero": {
     "statement": "I work where optics, computation and biomedical engineering meet. My focus is turning complex measurements into useful images, models and tools.",
-    "availability": "Based in Istanbul · Open to biomedical, optics and research opportunities"
+    "availability": "Currently at KAUST, Saudi Arabia · Open to biomedical, optics and research opportunities"
   },
   "about": {
     "title": "About",
     "paragraphs": [
-      "I am a biomedical engineer focused on optical and computational imaging, with experience in medical imaging, signal processing, Python-based image processing, and quantitative analysis. During my master’s, I developed polarization-sensitive digital holographic microscopy methods across the complete imaging pipeline, from optical system design and data acquisition to phase-error correction, Jones-matrix reconstruction, calibration, and quantitative interpretation. I also have developing interests in diabetes, continuous glucose monitoring, nutrition, and full-stack software development for practical, useful products."
+      "I am a biomedical engineer with an MSc in Biomedical Engineering and Bioinformatics, focused on optical and computational imaging. I am currently a Visiting Student Researcher in KAUST’s VSRP, working on optical microscopy systems for biomedical applications, including but not limited to iSCAT and TIRF systems. During my master’s, I developed polarization-sensitive digital holographic microscopy methods across the complete imaging pipeline, from optical system design and data acquisition to Python-based image processing, phase-error correction, Jones-matrix reconstruction, calibration, and quantitative interpretation. I also have developing interests in diabetes, continuous glucose monitoring, nutrition, and full-stack software development for practical, useful products."
     ]
   },
   "cv": {
-    "summary": "Biomedical engineer and MSc candidate focused on computational imaging and polarization-sensitive digital holographic microscopy, with a developing research interest in diabetes, continuous glucose monitoring, and nutrition. Experienced in optical system development, Python-based image and data processing, full-field Jones matrix reconstruction and research communication.",
+    "summary": "Biomedical engineer with an MSc in Biomedical Engineering and Bioinformatics, currently a Visiting Student Researcher at KAUST. Focused on optical and computational imaging, with experience in optical system development, polarization-sensitive digital holographic microscopy, Python-based image and data processing, full-field Jones matrix reconstruction, and current work involving iSCAT and TIRF microscopy systems.",
     "publicationTier": "Peer-reviewed article | Q1 in the SJR optics category",
-    "researchExperience": {
-      "period": "15 Sep 2023 - Present",
-      "title": "Graduate Researcher - Biomedical Optics & Computational Imaging",
-      "organization": "Istanbul Medipol University",
-      "project": "TÜBİTAK 2530 Türkiye-Moldova Bilateral Cooperation, Project 123N774",
-      "bullets": [
-        "Developed a polarization-sensitive DHM system and Python pipeline for FFT hologram reconstruction, phase processing, full-field Jones matrix reconstruction, retardance and fast-axis analysis.",
-        "Led the end-to-end experimental workflow in collaboration with my academic advisor, including system design and setup, equipment planning, camera configuration, experiments, image processing, validation, visualization and manuscript preparation.",
-        "Published a dual-shot phase-bias equalization method validated with birefringent film and applied to mouse brain and human cornea samples."
-      ]
-    }
+    "researchExperiences": [
+      {
+        "period": "15 Oct 2026 - 15 Apr 2027",
+        "title": "Visiting Student Researcher (VSRP) - Optical Microscopy for Biomedical Applications",
+        "organization": "King Abdullah University of Science and Technology (KAUST)",
+        "project": "Development of Label-Free Optical Microscopy for Biomedical Applications | Prof. Wen Wei Wayne Yang",
+        "bullets": [
+          "Contributing to the development of optical microscopy systems for biomedical applications within the KAUST Visiting Student Research Program.",
+          "Current work includes, but is not limited to, interferometric scattering microscopy (iSCAT) and total internal reflection fluorescence (TIRF) microscopy systems.",
+          "The broader project targets quantitative data acquisition, computational analysis, automated feature extraction, and validation using biological or clinical samples."
+        ]
+      },
+      {
+        "period": "15 Sep 2023 - Sep 2026",
+        "title": "Graduate Researcher - Biomedical Optics & Computational Imaging",
+        "organization": "Istanbul Medipol University",
+        "project": "TÜBİTAK 2530 Türkiye-Moldova Bilateral Cooperation, Project 123N774",
+        "bullets": [
+          "Developed a polarization-sensitive DHM system and Python pipeline for FFT hologram reconstruction, phase processing, full-field Jones matrix reconstruction, retardance and fast-axis analysis.",
+          "Led the end-to-end experimental workflow in collaboration with my academic advisor, including system design and setup, equipment planning, camera configuration, experiments, image processing, validation, visualization and manuscript preparation.",
+          "Published a dual-shot phase-bias equalization method validated with birefringent film and applied to mouse brain and human cornea samples."
+        ]
+      }
+    ]
   },
   "research": {
     "title": "Featured research",
@@ -179,21 +192,26 @@
   ],
   "timeline": [
     {
-      "period": "15 Sep 2023 — Present",
-      "title": "MSc Student & Graduate Researcher · Optical Imaging & Polarization Analysis",
+      "period": "15 Oct 2026 — 15 Apr 2027",
+      "title": "Visiting Student Researcher (VSRP) · Optical Microscopy for Biomedical Applications",
+      "organization": "King Abdullah University of Science and Technology (KAUST) · Prof. Wen Wei Wayne Yang",
+      "description": "Primary project: Development of Label-Free Optical Microscopy for Biomedical Applications · Work includes, but is not limited to, iSCAT and TIRF microscopy systems"
+    },
+    {
+      "period": "15 Sep 2023 — Sep 2026",
+      "title": "Graduate Researcher · Optical Imaging & Polarization Analysis",
       "organization": "Istanbul Medipol University · TÜBİTAK 2530 Türkiye–Moldova Bilateral Cooperation · Project 123N774",
-      "description": "Biomedical Engineering and Bioinformatics · Ongoing · Thesis defense scheduled for 13 Aug 2026 · Focus: polarization-sensitive digital holographic microscopy · TÜBİTAK scholarship since 15 Jan 2024"
+      "description": "MSc awarded Sep 2026 · Focus: polarization-sensitive digital holographic microscopy · TÜBİTAK scholarship from 15 Jan 2024"
     }
   ],
   "education": [
     {
-      "period": "15 Sep 2023 — Present",
+      "period": "15 Sep 2023 — Sep 2026",
       "degree": "MSc · Biomedical Engineering and Bioinformatics",
       "institution": "Istanbul Medipol University",
       "details": [
-        "Ongoing",
-        "Thesis defense scheduled for 13 Aug 2026",
-        "Focus: polarization-sensitive digital holographic microscopy"
+        "Awarded Sep 2026",
+        "Thesis focus: polarization-sensitive digital holographic microscopy"
       ]
     },
     {
@@ -205,9 +223,11 @@
   ],
   "skillGroups": [
     {
-      "title": "Computational imaging",
+      "title": "Optical & computational imaging",
       "items": [
         "PDHM",
+        "iSCAT microscopy",
+        "TIRF microscopy",
         "Jones matrix reconstruction",
         "Polarization analysis",
         "FFT hologram reconstruction",
@@ -293,6 +313,6 @@
     "email": "mohammad.mtr.hussein@gmail.com",
     "github": "https://github.com/MoeHussein",
     "orcid": "https://orcid.org/0009-0009-7211-0974",
-    "location": "Istanbul, Türkiye"
+    "location": "KAUST, Saudi Arabia"
   }
 }

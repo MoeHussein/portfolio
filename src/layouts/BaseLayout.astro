@@ -11,9 +11,10 @@ interface Props {
   description: string;
   name: string;
   headline: string;
+  location: string;
 }
 
-const { locale, direction, title, description, name, headline } = Astro.props;
+const { locale, direction, title, description, name, headline, location } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const localePath = (value: 'en' | 'tr') => (value === 'en' ? base : `${base}${value}/`);
 const canonical = new URL(localePath(locale), Astro.site);
@@ -26,12 +27,15 @@ const structuredData = {
   email: 'mailto:mohammad.mtr.hussein@gmail.com',
   sameAs: ['https://github.com/MoeHussein', 'https://orcid.org/0009-0009-7211-0974'],
   jobTitle: headline,
-  homeLocation: { '@type': 'Place', name: 'Istanbul, Türkiye' },
+  homeLocation: { '@type': 'Place', name: location },
+  affiliation: { '@type': 'CollegeOrUniversity', name: 'King Abdullah University of Science and Technology' },
   knowsAbout: [
     'Computational imaging',
     'Digital holographic microscopy',
     'Polarization imaging',
     'Jones matrix reconstruction',
+    'Interferometric scattering microscopy',
+    'Total internal reflection fluorescence microscopy',
     'Biomedical engineering',
   ],
 };
